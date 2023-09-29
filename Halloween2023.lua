@@ -125,6 +125,7 @@ function dracula1(data)
 	else
 	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
 end
+end
 
 function pit1(data)
         local player = Player:new(data.player);
@@ -134,6 +135,7 @@ function pit1(data)
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 	spawnsound:playSound('LAVA', 100, 0.2);
 	player:teleport(tp1);
+end
 end
 
 function scare1(data)
