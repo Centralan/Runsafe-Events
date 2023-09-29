@@ -11,6 +11,7 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 ----------------
 --Chests--
 ----------------
+local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
 
 --------
 -----AI---
@@ -37,8 +38,9 @@ end
 ----------
 function welcome(data)
         local player = Player:new(data.player);
-        h_whisper_good(spook1, player.name .. " a cold wind gives you a chill, you hear a wolf in the distance.");
+        player:sendMessage("A cold wind gives you a chill, you hear a wolf in the distance.");
 	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
+	spawn1:cloneChestToPlayer(player.name);
 end
 
 registerHook("REGION_EXIT", "welcome", "spawn2-h2023_enter");
