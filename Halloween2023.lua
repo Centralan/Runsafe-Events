@@ -95,6 +95,6 @@ function knock2(data)
 end
 
 registerHook("REGION_ENTER", "knock1", "spawn2-knock1");
-registerHook("REGION_ENTER", "knock1", "spawn2-knock1");
-registerHook("REGION_LEAVE", "knock2", "spawn2-grave1");
+registerHook("REGION_ENTER", "knock1", "spawn2-knock2");
+registerHook("REGION_LEAVE", "knock2", "spawn2-knock1");
 registerHook("REGION_LEAVE", "knock2", "spawn2-knock2");
