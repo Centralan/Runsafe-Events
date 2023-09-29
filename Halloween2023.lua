@@ -122,7 +122,7 @@ function dracula1(data)
         player:sendMessage("(&6???&f) The pit will guide the way.);
 	drac1:cloneChestToPlayer(player.name);
 	else
-	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
+	player:sendMessage("&7 The tree seems to have no reaction, maybe im missing something.");
 end
 
 function pit1(data)
