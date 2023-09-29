@@ -53,3 +53,23 @@ end
 
 registerHook("REGION_LEAVE", "welcome", "spawn2-h2023_enter");
 registerHook("REGION_ENTER", "welcome2", "spawn2-h2023_enter2");
+
+-------------------
+-----Step 1 Tree---
+-------------------
+function tree1(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("The grave reacts to your presence.");
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+end
+
+registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
+
+function tree2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("Nothing seems to have happened, you keep looking around");
+end
+
+registerHook("REGION_LEAVE", "tree2", "spawn2-grave1");
