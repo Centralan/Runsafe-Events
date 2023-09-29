@@ -121,7 +121,6 @@ function dracula1(data)
         player:sendMessage("(&6???&f) I remember you... ");
         player:sendMessage("(&6???&f) The pit will guide the way.");
 	spawnsound:playSound('VILLAGER_HAGGLE', 100, 0.5);
-	drac1:cloneChestToPlayer(player.name);
 	else
 	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
 end
@@ -129,8 +128,8 @@ end
 
 function pit1(data)
         local player = Player:new(data.player);
-                if player:hasItem("paper", 3) then
-		player:removeItem("paper", 3);
+                if player:hasItem("paper", 2) then
+		player:removeItem("paper", 2);
         player:sendMessage("&7The pit gurgles at you... ");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 	spawnsound:playSound('LAVA', 100, 0.2);
