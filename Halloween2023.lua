@@ -120,6 +120,7 @@ function dracula1(data)
                 if player:hasItem("paper", 2) then
         player:sendMessage("(&6???&f) I remember you... ");
         player:sendMessage("(&6???&f) The pit will guide the way.");
+	spawnsound:playSound('VILLAGER_HAGGLE', 100, 0.5);
 	drac1:cloneChestToPlayer(player.name);
 	else
 	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
