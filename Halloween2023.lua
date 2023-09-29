@@ -70,7 +70,7 @@ registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
 
 function tree2(data)
         local player = Player:new(data.player);
-        player:sendMessage("&7Nothing seems to have happened, you keep looking around");
+        player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
 
 registerHook("REGION_LEAVE", "tree2", "spawn2-grave1");
