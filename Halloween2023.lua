@@ -131,7 +131,7 @@ function pit1(data)
         local player = Player:new(data.player);
                 if player:hasItem("paper", 3) then
 		player:removeItem("paper", 3);
-        player:sendMessage("The pit gurgles at you... ");
+        player:sendMessage("&7The pit gurgles at you... ");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 	spawnsound:playSound('LAVA', 100, 0.2);
 	player:teleport(tp1);
