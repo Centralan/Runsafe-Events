@@ -89,8 +89,6 @@ function knock1(data)
 end
 end
 
-registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
-
 function knock2(data)
         local player = Player:new(data.player);
         player:sendMessage("&7Nobody seems to be home.");
