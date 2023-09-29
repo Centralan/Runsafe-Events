@@ -12,6 +12,8 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 --Chests--
 ----------------
 local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
+local Knock2 = Location:new(world, -79.0, 65.0, -505.0);
+local Knock3 = Location:new(world, -79.0, 65.0, -507.0);
 
 --------
 -----AI---
@@ -92,9 +94,20 @@ registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
 function knock2(data)
         local player = Player:new(data.player);
         player:sendMessage("&7Nobody seems to be home.");
+        player:sendMessage("&7You find a note on the door, it seems hard to read.");
+        Knock2:cloneChestToPlayer(player.name);
+end
+
+function knock3(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7Nobody seems to be home.");
+        player:sendMessage("&7You find a note on the door, it seems hard to read.");
+        Knock3:cloneChestToPlayer(player.name);
 end
 
 registerHook("REGION_ENTER", "knock1", "spawn2-knock1");
 registerHook("REGION_ENTER", "knock1", "spawn2-knock2");
 registerHook("REGION_LEAVE", "knock2", "spawn2-knock1");
 registerHook("REGION_LEAVE", "knock2", "spawn2-knock2");
+registerHook("REGION_ENTER", "knock1", "spawn2-knock3");
+registerHook("REGION_LEAVE", "knock3", "spawn2-knock3");
