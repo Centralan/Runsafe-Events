@@ -39,7 +39,7 @@ end
 function welcome(data)
         local player = Player:new(data.player);
         player:sendMessage("A cold wind gives you a chill, you trip over some old bones.");
-	spawnsound:playSound('FIREWORK_LAUNCH', 100, 0.1);
+	spawnsound:playSound('HURT_FLESH', 100, 0.1);
 	spawn1:cloneChestToPlayer(player.name);
 end
 
