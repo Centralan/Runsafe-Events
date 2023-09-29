@@ -7,13 +7,15 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 -------------
 --teleports--
 -------------
-
+local tp1 = Location:new(world, 26.0, 86.0, -560.0);
+local tp2 = Location:new(world, -38.0, 41.0, -519.0);
 ----------------
 --Chests--
 ----------------
 local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
 local Knock2 = Location:new(world, -79.0, 65.0, -505.0);
 local Knock3 = Location:new(world, -79.0, 65.0, -507.0);
+local drac1 = Location:new(world, -79.0, 65.0, -509.0);
 
 --------
 -----AI---
@@ -109,3 +111,44 @@ registerHook("REGION_LEAVE", "knock2", "spawn2-knock1");
 registerHook("REGION_LEAVE", "knock2", "spawn2-knock2");
 registerHook("REGION_ENTER", "knock1", "spawn2-knock3");
 registerHook("REGION_LEAVE", "knock3", "spawn2-knock3");
+
+----------------------------------
+-----Step 3 / (Dracula Tree Intro)
+----------------------------------
+function dracula1(data)
+        local player = Player:new(data.player);
+                if player:hasItem("paper", 2) then
+        player:sendMessage("(&6???&f) I remember you... ");
+        player:sendMessage("(&6???&f) The pit will guide the way.);
+	drac1:cloneChestToPlayer(player.name);
+	else
+	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.);
+end
+
+function pit1(data)
+        local player = Player:new(data.player);
+                if player:hasItem("paper", 3) then
+		player:removeItem("paper", 3);
+        player:sendMessage("The pit gurgles at you... ");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+	spawnsound:playSound('LAVA', 100, 0.2);
+	player:teleport(tp1);
+end
+
+function scare1(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7You get a funny feeling.");
+        player:teleport(tp2)
+end
+
+function phase2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7You can start to see things, but have no idea where you are.");
+	player:sendMessage("&7You try and find a way out.");
+end
+
+registerHook("REGION_ENTER", "dracula1", "spawn2-tree2");
+registerHook("REGION_ENTER", "pit1", "spawn2-portal1");
+registerHook("REGION_ENTER", "scare1", "spawn2-scare1");
+registerHook("REGION_ENTER", "phase2", "spawn2-phase2");
+
