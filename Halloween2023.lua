@@ -17,6 +17,8 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 ----------
 
 local spook = '&f[&k?&r] &bDOG&f:'
+local Message = ''
+local spook1 = ''
 
 function h_broadcast(msg)
 	world:broadcast(msg);
@@ -33,4 +35,10 @@ end
 --------
 -----Spawn---
 ----------
+function welcome(data)
+        local player = Player:new(data.player);
+        h_whisper_good(spook1, player.name .. " a cold wind gives you a chill, you hear a wolf in the distance.");
+	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
+end
 
+registerHook("REGION_EXIT", "welcome", "spawn2-h2023_enter");
