@@ -119,10 +119,10 @@ function dracula1(data)
         local player = Player:new(data.player);
                 if player:hasItem("paper", 2) then
         player:sendMessage("(&6???&f) I remember you... ");
-        player:sendMessage("(&6???&f) The pit will guide the way.);
+        player:sendMessage("(&6???&f) The pit will guide the way.");
 	drac1:cloneChestToPlayer(player.name);
 	else
-	player:sendMessage("&7 The tree seems to have no reaction, maybe im missing something.");
+	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
 end
 
 function pit1(data)
