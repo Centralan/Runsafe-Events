@@ -74,3 +74,26 @@ function tree2(data)
 end
 
 registerHook("REGION_LEAVE", "tree2", "spawn2-grave1");
+
+-------------------
+-----Step 2 house---
+-------------------
+function knock1(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7You knock rather aggresively...");
+	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
+	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
+	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
+end
+end
+
+registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
+
+function knock2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7Nobody seems to be home.");
+
+registerHook("REGION_ENTER", "knock1", "spawn2-knock1");
+registerHook("REGION_ENTER", "knock1", "spawn2-knock1");
+registerHook("REGION_LEAVE", "knock2", "spawn2-grave1");
+registerHook("REGION_LEAVE", "knock2", "spawn2-knock2");
