@@ -47,7 +47,7 @@ end
 function welcome2(data)
         local player = Player:new(data.player);
         player:sendMessage("&7You hear a wolf in the distance, man it sounds hungry.");
-	player:sendMessage("&7Something uphead make a noise.");
+	player:sendMessage("&7Something up ahead make a noise.");
 	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
 end
 
