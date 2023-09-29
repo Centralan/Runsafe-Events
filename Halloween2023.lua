@@ -50,5 +50,5 @@ function welcome2(data)
 	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
 end
 
-registerHook("REGION_EXIT", "welcome", "spawn2-h2023_enter");
+registerHook("REGION_LEAVE", "welcome", "spawn2-h2023_enter");
 registerHook("REGION_ENTER", "welcome2", "spawn2-h2023_enter2");
