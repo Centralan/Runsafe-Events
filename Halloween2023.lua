@@ -38,9 +38,17 @@ end
 ----------
 function welcome(data)
         local player = Player:new(data.player);
-        player:sendMessage("A cold wind gives you a chill, you hear a wolf in the distance.");
-	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
+        player:sendMessage("A cold wind gives you a chill, you trip over some old bones.");
+	spawnsound:playSound('FIREWORK_LAUNCH', 100, 0.1);
 	spawn1:cloneChestToPlayer(player.name);
 end
 
+function welcome2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("You hear a wolf in the distance, man it sounds hungry.");
+	player:sendMessage("Something uphead make a noise.");
+	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
+end
+
 registerHook("REGION_EXIT", "welcome", "spawn2-h2023_enter");
+registerHook("REGION_ENTER", "welcome2", "spawn2-h2023_enter2");
