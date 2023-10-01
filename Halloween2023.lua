@@ -155,7 +155,7 @@ registerHook("REGION_ENTER", "scare1", "spawn2-scare1");
 registerHook("REGION_ENTER", "phase2", "spawn2-phase2");
 
 ---------------------
------unground sounds---
+-----unground ---
 ---------------------
 
 function piston_extend(data)
@@ -194,3 +194,11 @@ registerHook("REGION_ENTER", "enderdragon_growl", "spawn2-trap7");
 registerHook("REGION_ENTER", "piston_extend", "spawn2-trap8");
 registerHook("REGION_ENTER", "piston_retract", "spawn2-trap9");
 registerHook("REGION_ENTER", "horse_skeleton_death", "spawn2-trap10");
+
+function button_wrong(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+end
+
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -57, 41, -523);
