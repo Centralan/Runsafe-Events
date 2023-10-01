@@ -199,6 +199,7 @@ function button_wrong(data)
         local player = Player:new(data.player);
         player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+        spawnsound:playSound('EAT', 100, 0.5);
 end
 
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -57, 41, -523);
