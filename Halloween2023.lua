@@ -203,3 +203,13 @@ function button_wrong(data)
 end
 
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -57, 41, -523);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -67, 40, -511);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -67, 39, -534);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -87, 39, -519);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -54, 38, -535);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -32, 37, -516);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -13, 43, -514);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -18, 43, -530);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", 3, 43, -529);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -19, 41, -491);
+registerHook("INTERACT", "button_wrong", 77, "spawn2", -17, 39, -472);
