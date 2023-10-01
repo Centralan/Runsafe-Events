@@ -154,3 +154,43 @@ registerHook("REGION_ENTER", "pit1", "spawn2-portal1");
 registerHook("REGION_ENTER", "scare1", "spawn2-scare1");
 registerHook("REGION_ENTER", "phase2", "spawn2-phase2");
 
+---------------------
+-----unground sounds---
+---------------------
+
+function piston_extend(data)
+        local player = Player:new(data.player);
+        spawnsound:playSound('PISTON_EXTEND', 100, 0.5);
+end
+
+function piston_retract(data)
+        local player = Player:new(data.player);
+        spawnsound:playSound('PISTON_RETRACT', 100, 0.5);
+end
+
+function enderdragon_growl(data)
+        local player = Player:new(data.player);
+        spawnsound:playSound('ENDERDRAGON_GROWL', 100, 0.5);
+end
+
+function horse_skeleton_death(data)
+        local player = Player:new(data.player);
+        spawnsound:playSound('HORSE_SKELETON_DEATH', 100, 0.5);
+end
+
+function horse_skeleton_idle(data)
+        local player = Player:new(data.player);
+        spawnsound:playSound('HORSE_SKELETON_IDLE', 100, 0.5);
+end
+
+
+registerHook("REGION_ENTER", "piston_extend", "spawn2-trap1");
+registerHook("REGION_ENTER", "enderdragon_growl", "spawn2-trap2");
+registerHook("REGION_ENTER", "piston_retract", "spawn2-trap3");
+registerHook("REGION_ENTER", "horse_skeleton_death", "spawn2-trap4");
+registerHook("REGION_ENTER", "horse_skeleton_idle", "spawn2-trap5");
+registerHook("REGION_ENTER", "horse_skeleton_idle", "spawn2-trap6");
+registerHook("REGION_ENTER", "enderdragon_growl", "spawn2-trap7");
+registerHook("REGION_ENTER", "piston_extend", "spawn2-trap8");
+registerHook("REGION_ENTER", "piston_retract", "spawn2-trap9");
+registerHook("REGION_ENTER", "horse_skeleton_death", "spawn2-trap10");
