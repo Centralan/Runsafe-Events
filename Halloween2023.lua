@@ -11,6 +11,11 @@ local tp1 = Location:new(world, 26.0, 86.0, -560.0);
 local tp2 = Location:new(world, -38.0, 41.0, -519.0);
 local tp3 = Location:new(world, 119.0, 142.0, -384.0);
 local tpend = Location:new(world, -22.0, 123.0, -627.0);
+
+---------------------
+----timers-----------
+---------------------
+
 ----------------
 --Chests--
 ----------------
@@ -18,7 +23,79 @@ local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
 local Knock2 = Location:new(world, -79.0, 65.0, -505.0);
 local Knock3 = Location:new(world, -79.0, 65.0, -507.0);
 local drac1 = Location:new(world, -79.0, 65.0, -509.0);
+local candy1 = Location:new(world, -79.0, 65.0, -509.0);
 
+-----------------------
+--- CHEST HANDLING ----
+-----------------------
+
+-- Main data regarding lootable chests in the world.
+local lootChests = {
+	{
+		["Location"] = world.makeLoc(-48, 79, -507),
+		["Message"] = "&aReaching into the chest you some candy.",
+		["Func"] = function(player)
+			local chestLoc = world.makeLoc(-79.0, 65.0, -509.0);
+			candy1:cloneChestToPlayer(player.name);
+		end,
+	}
+};
+
+local function GenerateLocationString(location)
+	return "L" .. location.x .. location.y .. location.z;
+end
+
+local function Chest_IsDone(locString, player)
+	local chestData = GetPlayerProgressValue(player, "chests");
+	
+	if chestData == nil then
+		return false;
+	end
+	
+	if chestData[locString] ~= nil then
+		return true;
+	end
+	
+	return false;
+end
+
+local function Chest_MarkAsDone(locString, player)
+	local chestData = GetPlayerProgressValue(player, "chests");
+	if chestData == nil then
+		chestData = {};
+	end
+	
+	chestData[locString] = true;
+	SetPlayerProgressValue(player, "chests", chestData);
+end
+
+function h2023_1(data)
+	local location = world.makeLoc(data.x, data.y, data.z);
+	local locString = GenerateLocationString(location);
+	
+	for index, lootChest in pairs(lootChests) do
+		if lootChest.ID == locString then
+			local player = Player:new(data.player);
+			player:closeInventory();
+			if not Chest_IsDone(locString, player) then
+				lootChest.Func(player);
+				player:sendMessage(lootChest.Message);
+				Chest_MarkAsDone(locString, player);
+			else
+				player:sendMessage("&cYou've already looted this chest!");
+			end
+			break;
+		end
+	end
+end
+
+-- Register all the hooks we need for our chests.
+for index, chest in pairs(lootChests) do
+	local location = chest.Location;
+	chest.ID = GenerateLocationString(location);
+	
+	registerHook("INTERACT", "h2023_1", 54, world.name, location.x, location.y, location.z);
+end
 --------
 -----AI---
 ----------
