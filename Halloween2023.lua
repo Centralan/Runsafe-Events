@@ -9,6 +9,7 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 -------------
 local tp1 = Location:new(world, 26.0, 86.0, -560.0);
 local tp2 = Location:new(world, -38.0, 41.0, -519.0);
+local tp3 = Location:new(world, -22.0, 123.0, -627.0);
 ----------------
 --Chests--
 ----------------
