@@ -9,6 +9,7 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 -------------
 local tp1 = Location:new(world, 26.0, 86.0, -560.0);
 local tp2 = Location:new(world, -38.0, 41.0, -519.0);
+local tp3 = Location:new(world, -119.0, 142.0, -384.0);
 local tpend = Location:new(world, -22.0, 123.0, -627.0);
 ----------------
 --Chests--
@@ -203,6 +204,14 @@ function button_wrong(data)
         spawnsound:playSound('EAT', 100, 0.5);
 end
 
+function exit_cave(data)
+        local player = Player:new(data.player);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 6);
+        player:sendMessage("&7It suddenly gets cold outside.");
+        player:sendMessage("&7Great now where am I?");
+        player:teleport(tp3)
+end
+
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -57, 41, -523);
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -67, 40, -511);
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -67, 39, -534);
@@ -214,3 +223,4 @@ registerHook("INTERACT", "button_wrong", 77, "spawn2", -18, 43, -530);
 registerHook("INTERACT", "button_wrong", 77, "spawn2", 3, 43, -529);
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -19, 41, -491);
 registerHook("INTERACT", "button_wrong", 77, "spawn2", -17, 39, -472);
+registerHook("REGION_ENTER", "exit_cave", "spawn2-h2023_tp3");
