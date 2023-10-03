@@ -26,76 +26,35 @@ local drac1 = Location:new(world, -79.0, 65.0, -509.0);
 local candy1 = Location:new(world, -79.0, 65.0, -509.0);
 
 -----------------------
---- CHEST HANDLING ----
+--- Candy HANDLING ----
 -----------------------
+local candy1ChestPlayers = {};
+local candy1ChestResetTimer = Timer:new("candy1_reset_chest", 20 * 60 * 5);
+local candy1ChestResetTimerRunning = false;
+local candy1ChestOpen = Location:new(world, -79.0, 65.0, -509.0);
 
--- Main data regarding lootable chests in the world.
-local lootChests = {
-	{
-		["Location"] = world.makeLoc(-48, 79, -507),
-		["Message"] = "&aReaching into the chest you some candy.",
-		["Func"] = function(player)
-			local chestLoc = world.makeLoc(-79.0, 65.0, -509.0);
-			candy1:cloneChestToPlayer(player.name);
-		end,
-	}
-};
-
-local function GenerateLocationString(location)
-	return "L" .. location.x .. location.y .. location.z;
-end
-
-local function Chest_IsDone(locString, player)
-	local chestData = GetPlayerProgressValue(player, "chests");
-	
-	if chestData == nil then
-		return false;
-	end
-	
-	if chestData[locString] ~= nil then
-		return true;
-	end
-	
-	return false;
-end
-
-local function Chest_MarkAsDone(locString, player)
-	local chestData = GetPlayerProgressValue(player, "chests");
-	if chestData == nil then
-		chestData = {};
-	end
-	
-	chestData[locString] = true;
-	SetPlayerProgressValue(player, "chests", chestData);
-end
-
-function h2023_1(data)
-	local location = world.makeLoc(data.x, data.y, data.z);
-	local locString = GenerateLocationString(location);
-	
-	for index, lootChest in pairs(lootChests) do
-		if lootChest.ID == locString then
-			local player = Player:new(data.player);
-			player:closeInventory();
-			if not Chest_IsDone(locString, player) then
-				lootChest.Func(player);
-				player:sendMessage(lootChest.Message);
-				Chest_MarkAsDone(locString, player);
-			else
-				player:sendMessage("&cYou've already looted this chest!");
-			end
-			break;
+function candy1_chest(data)
+	local player = Player:new(data.player);
+	if not candy1ChestPlayers[player.name] then
+		candy1Chest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy1ChestPlayers[player.name] = true; 
+		
+		if not candy1ChestResetTimerRunning then
+			candy1ChestResetTimerRunning = true;
+			candy1ChestResetTimer:start();
 		end
 	end
 end
 
--- Register all the hooks we need for our chests.
-for index, chest in pairs(lootChests) do
-	local location = chest.Location;
-	chest.ID = GenerateLocationString(location);
-	
-	registerHook("INTERACT", "h2023_1", 54, world.name, location.x, location.y, location.z);
+function candy1_reset_chest()
+	candy1ChestPlayers = {};
+	candy1ChestResetTimerRunning = false;
 end
+
+registerHook("INTERACT", "candy1_chest", 54, spawn2, -46, 79, -505);
 --------
 -----AI---
 ----------
