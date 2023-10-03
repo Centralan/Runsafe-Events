@@ -22,7 +22,12 @@ local tpend = Location:new(world, -22.0, 123.0, -627.0);
 local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
 local Knock2 = Location:new(world, -79.0, 65.0, -505.0);
 local Knock3 = Location:new(world, -79.0, 65.0, -507.0);
-local drac1 = Location:new(world, -79.0, 65.0, -509.0);
+local graveloot = Location:new(world, -79.0, 65.0, -509.0);
+local graveloot2 = Location:new(world, -79.0, 65.0, -513.0);
+local graveloot3 = Location:new(world, -79.0, 65.0, -515.0);
+local graveloot4 = Location:new(world, -81.0, 65.0, -513.0);
+local graveloot5 = Location:new(world, -83.0, 65.0, -513.0);
+local graveloot6 = Location:new(world, -85.0, 65.0, -513.0);
 local candyI = Location:new(world, -79.0, 65.0, -511.0);
 local candy1 = Location:new(world, -77.0, 65.0, -503.0);
 local candy2 = Location:new(world, -77.0, 65.0, -505.0);
@@ -247,6 +252,24 @@ end
 
 registerHook("INTERACT", "candyI_chest", 54, "spawn2", -59, 75, -498);
 
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -30, 82, -498);
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -92, 79, -532);
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -97, 67, -468);
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -43, 82, -439);
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -11, 94, -489);
+
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -60, 81, -537);
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -210, 82, -456);
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -109, 75, -442);
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -105, 80, -512);
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -11, 94, -489);
+
+
+registerHook("INTERACT", "candy3_chest", 54, "spawn2", -64, 85, -537);
+registerHook("INTERACT", "candy3_chest", 54, "spawn2", -20, 79, -459);
+registerHook("INTERACT", "candy3_chest", 54, "spawn2", -96, 75, -439);
+registerHook("INTERACT", "candy3_chest", 54, "spawn2", -106, 82, -544);
+
 --------
 -----AI---
 ----------
@@ -296,6 +319,7 @@ function tree1(data)
 	if player:hasItem("bone", 1) then
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
+	graveloot:cloneChestToPlayer(player.name);
 	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
 end
 end
