@@ -54,7 +54,8 @@ function candy1_reset_chest()
 	candy1ChestResetTimerRunning = false;
 end
 
-registerHook("INTERACT", "candy1_chest", 54, spawn2, -46, 79, -505);
+registerHook("INTERACT", "candy1_chest", 54, "spawn2", -46, 79, -505);
+
 --------
 -----AI---
 ----------
