@@ -23,7 +23,14 @@ local spawn1 = Location:new(world, -79.0, 65.0, -503.0);
 local Knock2 = Location:new(world, -79.0, 65.0, -505.0);
 local Knock3 = Location:new(world, -79.0, 65.0, -507.0);
 local drac1 = Location:new(world, -79.0, 65.0, -509.0);
-local candy1 = Location:new(world, -79.0, 65.0, -509.0);
+local candyI = Location:new(world, -79.0, 65.0, -511.0);
+local candy1 = Location:new(world, -77.0, 65.0, -503.0);
+local candy2 = Location:new(world, -77.0, 65.0, -505.0);
+local candy3 = Location:new(world, -77.0, 65.0, -507.0);
+local candy4 = Location:new(world, -77.0, 65.0, -509.0);
+local candy5 = Location:new(world, -77.0, 65.0, -511.0);
+local candy6 = Location:new(world, -77.0, 65.0, -513.0);
+local candy7 = Location:new(world, -77.0, 65.0, -515.0);
 
 -----------------------
 --- Candy HANDLING ----
@@ -31,12 +38,12 @@ local candy1 = Location:new(world, -79.0, 65.0, -509.0);
 local candy1ChestPlayers = {};
 local candy1ChestResetTimer = Timer:new("candy1_reset_chest", 20 * 60 * 5);
 local candy1ChestResetTimerRunning = false;
-local candy1ChestOpen = Location:new(world, -79.0, 65.0, -509.0);
+local candy1ChestOpen = Location:new(world, -77.0, 65.0, -503.0);
 
 function candy1_chest(data)
 	local player = Player:new(data.player);
 	if not candy1ChestPlayers[player.name] then
-		candy1Chest:cloneChestToPlayer(player.name);
+		candy1:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		player:sendMessage('&7The chest smells sweet almost like candy.');
 		spawnsound:playSound('EAT', 1, 0.5);
@@ -54,7 +61,191 @@ function candy1_reset_chest()
 	candy1ChestResetTimerRunning = false;
 end
 
-registerHook("INTERACT", "candy1_chest", 54, "spawn2", -46, 79, -505);
+local candy2ChestPlayers = {};
+local candy2ChestResetTimer = Timer:new("candy2_reset_chest", 20 * 60 * 5);
+local candy2ChestResetTimerRunning = false;
+local candy2ChestOpen = Location:new(world, -79.0, 65.0, -509.0);
+
+function candy2_chest(data)
+	local player = Player:new(data.player);
+	if not candy2ChestPlayers[player.name] then
+		candy2:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy2ChestPlayers[player.name] = true; 
+		
+		if not candy2ChestResetTimerRunning then
+			candy2ChestResetTimerRunning = true;
+			candy2ChestResetTimer:start();
+		end
+	end
+end
+
+function candy2_reset_chest()
+	candy2ChestPlayers = {};
+	candy2ChestResetTimerRunning = false;
+end
+
+local candy3ChestPlayers = {};
+local candy3ChestResetTimer = Timer:new("candy3_reset_chest", 20 * 60 * 5);
+local candy3ChestResetTimerRunning = false;
+local candy3ChestOpen = Location:new(world, -77.0, 65.0, -507.0);
+
+function candy3_chest(data)
+	local player = Player:new(data.player);
+	if not candy3ChestPlayers[player.name] then
+		candy3:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy3ChestPlayers[player.name] = true; 
+		
+		if not candy3ChestResetTimerRunning then
+			candy3ChestResetTimerRunning = true;
+			candy3ChestResetTimer:start();
+		end
+	end
+end
+
+function candy3_reset_chest()
+	candy3ChestPlayers = {};
+	candy3ChestResetTimerRunning = false;
+end
+
+local candy4ChestPlayers = {};
+local candy4ChestResetTimer = Timer:new("candy4_reset_chest", 20 * 60 * 5);
+local candy4ChestResetTimerRunning = false;
+local candy4ChestOpen = Location:new(world, -77.0, 65.0, -509.0);
+
+function candy4_chest(data)
+	local player = Player:new(data.player);
+	if not candy4ChestPlayers[player.name] then
+		candy4:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy4ChestPlayers[player.name] = true; 
+		
+		if not candy4ChestResetTimerRunning then
+			candy4ChestResetTimerRunning = true;
+			candy4ChestResetTimer:start();
+		end
+	end
+end
+
+function candy4_reset_chest()
+	candy4ChestPlayers = {};
+	candy4ChestResetTimerRunning = false;
+end
+
+local candy5ChestPlayers = {};
+local candy5ChestResetTimer = Timer:new("candy5_reset_chest", 20 * 60 * 5);
+local candy5ChestResetTimerRunning = false;
+local candy5ChestOpen = Location:new(world, -77.0, 65.0, -511.0);
+
+function candy5_chest(data)
+	local player = Player:new(data.player);
+	if not candy5ChestPlayers[player.name] then
+		candy5:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy5ChestPlayers[player.name] = true; 
+		
+		if not candy5ChestResetTimerRunning then
+			candy5ChestResetTimerRunning = true;
+			candy5ChestResetTimer:start();
+		end
+	end
+end
+
+function candy5_reset_chest()
+	candy5ChestPlayers = {};
+	candy5ChestResetTimerRunning = false;
+end
+
+
+local candy6ChestPlayers = {};
+local candy6ChestResetTimer = Timer:new("candy6_reset_chest", 20 * 60 * 5);
+local candy6ChestResetTimerRunning = false;
+local candy6ChestOpen = Location:new(world, -77.0, 65.0, -513.0);
+
+function candy6_chest(data)
+	local player = Player:new(data.player);
+	if not candy6ChestPlayers[player.name] then
+		candy6:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy6ChestPlayers[player.name] = true; 
+		
+		if not candy6ChestResetTimerRunning then
+			candy6ChestResetTimerRunning = true;
+			candy6ChestResetTimer:start();
+		end
+	end
+end
+
+function candy6_reset_chest()
+	candy6ChestPlayers = {};
+	candy6ChestResetTimerRunning = false;
+end
+
+local candy7ChestPlayers = {};
+local candy7ChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
+local candy7ChestResetTimerRunning = false;
+local candy7ChestOpen = Location:new(world, -77.0, 65.0, -515.0);
+
+function candy7_chest(data)
+	local player = Player:new(data.player);
+	if not candy7ChestPlayers[player.name] then
+		candy7:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy7ChestPlayers[player.name] = true; 
+		
+		if not candy7ChestResetTimerRunning then
+			candy7ChestResetTimerRunning = true;
+			candy7ChestResetTimer:start();
+		end
+	end
+end
+
+function candy7_reset_chest()
+	candy7ChestPlayers = {};
+	candy7ChestResetTimerRunning = false;
+end
+
+local candyIChestPlayers = {};
+local candyIChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
+local candyIChestResetTimerRunning = false;
+local candyIChestOpen = Location:new(world, -79.0, 65.0, -511.0);
+
+function candyI_chest(data)
+	local player = Player:new(data.player);
+	if not candyIChestPlayers[player.name] then
+		candyI:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&fThe chest smells sweet almost like candy.');
+		player:sendMessage('&7Maybe more candy can be found, I should look everywhere.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candyIChestPlayers[player.name] = true; 
+		
+		if not candyIChestResetTimerRunning then
+			candyIChestResetTimerRunning = true;
+			candyIChestResetTimer:start();
+		end
+	end
+end
+
+function candyI_reset_chest()
+	candyIChestPlayers = {};
+	candyIChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "candyI_chest", 54, "spawn2", -59, 75, -498);
 
 --------
 -----AI---
