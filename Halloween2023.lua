@@ -7,15 +7,21 @@ local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
 -------------
 --teleports--
 -------------
+local enter = Location:new(world, -78.0, 75.0, -494.0);
 local tp1 = Location:new(world, 26.0, 86.0, -560.0);
 local tp2 = Location:new(world, -38.0, 41.0, -519.0);
 local tp3 = Location:new(world, 119.0, 142.0, -384.0);
 local tpend = Location:new(world, -22.0, 123.0, -627.0);
 
 ---------------------
-----timers-----------
+----Entrance-----------
 ---------------------
+function boat_enter(data)
+        local player = Player:new(data.player);
+        player:teleport(enter);
+end
 
+registerHook("INTERACT", "boat_enter", 143, "spawn2", -192, 71, -558);
 ----------------
 --Chests--
 ----------------
