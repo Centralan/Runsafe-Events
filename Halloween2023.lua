@@ -1176,6 +1176,8 @@ registerHook("INTERACT", "maze_reset2", 54, "spawn2", 59, 81, -454);
 -----Step 6 / Toweer
 ----------------------------------
 local tower1 = Location:new(world, 108.0, 80.0, -445.0);
+local keychest = Location:new(world, 106.0, 133.0, -471.0);
+
 
 function tower_door(data)
         local player = Player:new(data.player);
@@ -1184,3 +1186,11 @@ function tower_door(data)
 end
 
 registerHook("INTERACT", "tower_door", 431, "spawn2", 108, 80, -475);
+
+function tower_redstone(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7 Wait whats this?");
+	keychest:cloneChestToPlayer(player.name);
+end
+
+registerHook("INTERACT", "tower_redstone", 356, "spawn2", 108, 90, -470);
