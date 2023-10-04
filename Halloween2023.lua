@@ -42,6 +42,13 @@ local candy4 = Location:new(world, -77.0, 65.0, -509.0);
 local candy5 = Location:new(world, -77.0, 65.0, -511.0);
 local candy6 = Location:new(world, -77.0, 65.0, -513.0);
 local candy7 = Location:new(world, -77.0, 65.0, -515.0);
+local candy8 = Location:new(world, -74.0, 65.0, -515.0);
+local candy9 = Location:new(world, -72.0, 65.0, -515.0);
+local candy10 = Location:new(world, -70.0, 65.0, -515.0);
+local cand11 = Location:new(world, -68.0, 65.0, -515.0);
+local candy12 = Location:new(world, -66.0, 65.0, -515.0);
+local candy13 = Location:new(world, -64.0, 65.0, -515.0);
+local candy14 = Location:new(world, -62.0, 65.0, -515.0);
 
 -----------------------
 --- Candy HANDLING ----
