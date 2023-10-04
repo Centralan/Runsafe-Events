@@ -722,12 +722,32 @@ end
 --------
 -----Spawn---
 ----------
+
+local spawn1ChestPlayers = {};
+local spawn1ChestResetTimer = Timer:new("spawn1_reset_chest", 20 * 60 * 5);
+local spawn1ChestResetTimerRunning = false;
+local spawn1ChestOpen = Location:new(world, -61.0, 65.0, -513.0);;
+
 function welcome(data)
         local player = Player:new(data.player);
-        player:sendMessage("&7A cold wind gives you a chill, you trip over some old bones.");
-	spawnsound:playSound('SKELETON_HURT', 1, 0.1);
-	spawn1:cloneChestToPlayer(player.name);
-	player:sendEvent("achievement.halloween2023");
+        if not spawn1ChestPlayers[player.name] then
+                spawn1:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7A cold wind gives you a chill, you trip over some old bones.");
+                spawnsound:playSound('SKELETON_HURT', 1, 0.1);
+		player:sendEvent("achievement.halloween2023");
+                spawn1ChestPlayers[player.name] = true;
+
+                if not spawn1ChestResetTimerRunning then
+                        spawn1IChestResetTimerRunning = true;
+                        spawn1ChestResetTimer:start();
+                end
+        end
+end
+
+function spawn1_reset_chest()
+	spawn1ChestPlayers = {};
+	spawn1ChestResetTimerRunning = false;
 end
 
 function welcome2(data)
