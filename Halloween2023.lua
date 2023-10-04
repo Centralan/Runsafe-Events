@@ -1084,6 +1084,13 @@ end
 registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
 registerHook("REGION_ENTER", "cave_blind_remove", "spawn2-h2023_blind_remove");
 
+function cave_blind_remove2(data)
+        local player = Player:new(data.player);
+        EventEngine.player.removePotionEffects(player.name, 'BLINDNESS');
+end
+
+registerHook("REGION_LEAVE", "cave_blind_remove2", "spawn2-h2023_cave_main");
+
 function villager_enter(data)
         local player = Player:new(data.player);
         player:sendMessage("(&6Spencer&f) Good luck getting out you filthy peasant.");
