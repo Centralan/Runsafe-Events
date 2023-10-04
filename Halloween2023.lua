@@ -1075,4 +1075,4 @@ function cave_blind_remove(data)
 end
 
 registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
-egisterHook("REGION_ENTER", "cave_blind_remove", "spawn2-h2023_blind_remove");
+registerHook("REGION_ENTER", "cave_blind_remove", "spawn2-h2023_blind_remove");
