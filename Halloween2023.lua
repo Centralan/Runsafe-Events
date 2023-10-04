@@ -1026,3 +1026,47 @@ function villager_enter(data)
 end
 
 registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_vil_talk");
+
+function house_enderman(data)
+        local player = Player:new(data.player);
+	spawnsound:playSound('ENDERMAN_SCREAM ', 100, 0.5);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+registerHook("INTERACT", "house_enderman", 143, "spawn2", 155, 134, -412);
+registerHook("INTERACT", "house_enderman", 143, "spawn2", 149, 134, -407);
+
+function house_donkey(data)
+        local player = Player:new(data.player);
+	spawnsound:playSound('DONKEY_DEATH ', 100, 2.6);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+registerHook("INTERACT", "house_donkey", 143, "spawn2", 155, 134, -408);
+registerHook("INTERACT", "house_donkey", 143, "spawn2", 147, 134, -410);
+
+function house_furnace(data)
+        local player = Player:new(data.player);
+	spawnsound:playSound(' GHAST_SCREAM ', 100, 0.5;
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+registerHook("INTERACT", "house_furnace", 61, "spawn2", 148, 137, -405);
+registerHook("INTERACT", "house_furnace", 61, "spawn2", 148, 138, -405);
+
+
+function house_zombie(data)
+        local player = Player:new(data.player);
+	spawnsound:playSound('HORSE_ZOMBIE_DEATH', 100, 0.7;
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+registerHook("INTERACT", "house_zombie", 143, "spawn2", 148, 140, -411);
+registerHook("INTERACT", "house_zombie", 143, "spawn2", 152, 140, -413);
+
+function cave_blind(data)
+        local player = Player:new(data.player);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 600);
+end
+
+registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
