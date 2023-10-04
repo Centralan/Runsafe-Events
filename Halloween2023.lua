@@ -312,9 +312,9 @@ registerHook("REGION_LEAVE", "welcome", "spawn2-h2023_enter");
 registerHook("REGION_ENTER", "welcome2", "spawn2-h2023_enter2");
 
 -------------------
------Step 1 Tree---
+-----Grave Loot---
 -------------------
-function tree1(data)
+function grave1(data)
         local player = Player:new(data.player);
 	if player:hasItem("bone", 1) then
 		player:removeItem("bone", 1);
@@ -326,6 +326,7 @@ function tree1(data)
 end
 end
 
+registerHook("REGION_ENTER", "grave1", "spawn2-grave1");
 
 -------------------
 -----Step 2 house---
