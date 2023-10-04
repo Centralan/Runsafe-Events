@@ -204,6 +204,24 @@ function candy14_reset_chest()
 	candy14ChestResetTimerRunning = false;
 end
 
+function candyI_chest(data)
+        local player = Player:new(data.player);
+        if not candyIChestPlayers[player.name] then
+                candyI:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage('&7The chest smells sweet almost like candy.');
+                player:sendMessage('&7I wonder if I can find more.');
+                spawnsound:playSound('EAT', 1, 0.5);
+                candyIChestPlayers[player.name] = true;
+
+                if not candyIChestResetTimerRunning then
+                        candyIChestResetTimerRunning = true;
+                        candyIChestResetTimer:start();
+                end
+        end
+end
+
+
 function candy1_chest(data)
 	local player = Player:new(data.player);
 	if not candy1ChestPlayers[player.name] then
