@@ -1079,9 +1079,10 @@ registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
 registerHook("REGION_ENTER", "cave_blind_remove", "spawn2-h2023_blind_remove");
 
 function villager_enter(data)
+        local player = Player:new(data.player);
         player:sendMessage("(&6Spencer&f) Good luck getting out you filthy peasant.");
         player:sendMessage("&7Spencer must have placed a curse on me.");
 	spawnsound:playSound('VILLAGER_HAGGLE', 100, 1.5);
 end
 
-registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_message");
+registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_cave_message");
