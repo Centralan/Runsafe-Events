@@ -1216,25 +1216,34 @@ end
 registerHook("INTERACT", "tower_redstone", 356, "spawn2", 108, 90, -470);
 
 ----------------------------------
------Step 7 / Castle
-----------------------------------
+-------Step 7 / Castle
+------------------------------------
 local gatesound = Location:new(world, 99.0, 89.0, -520.0);
-local gateY = Location:new(world, 100.0, 89.0, -526.0);
+local gateY = Location:new(world, 100.0, 86.0, -530.0);
 local gateN = Location:new(world, 99.0, 89.0, -520.0);
 
 function castle_gate(data)
         local player = Player:new(data.player);
                 if player:hasItem("369", 1) then
-		if player:hasItem("91", 1) then
-		player:removeItem("369", 1)
-		player:removeItem("91", 1)
+                if player:hasItem("91", 1) then
+                player:removeItem("369", 1)
+                player:removeItem("91", 1)
         player:sendMessage("(&6???&f) Ah you again");
         player:sendMessage("(&6???&f) I wish you the best of luck.");
-	gatesound:playSound('VILLAGER_HAGGLE', 1, 0.5);
-	player:teleport(gateY)
-	else
-	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
-	player:teleport(gateN)
+        gatesound:playSound('VILLAGER_HAGGLE', 5, 0.5);
+        player:teleport(gateY)
 end
 end
 end
+
+function castle_gate2(data)
+        local player = Player:new(data.player);
+           if not  player:hasItem("369", 1) then
+           if not player:hasItem("91", 1) then
+           player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
+        player:teleport(gateN)
+end
+end
+end
+registerHook("REGION_ENTER", "castle_gate", "spawn2-h2023_gate");
+registerHook("REGION_ENTER", "castle_gate2", "spawn2-h2023_gate2");
