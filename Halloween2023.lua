@@ -3,6 +3,18 @@
 ---------------
 local world = World:new('spawn2');
 local spawnsound = Location:new(world, -81.0, 76.0, -494.0);
+local knock1sound = Location:new(world, -55.0, 81.0, -537.0);
+local knock2sound = Location:new(world, -22.0, 78.0, -455.0);
+local grave1sound = Location:new(world, -42.0, 79.0, -501.0);
+local grave2sound = Location:new(world, -21.0, 77.0, -550.0);
+local grave3sound = Location:new(world, -54.0, 71.0, -456.0);
+local grave4sound = Location:new(world, 180.0, 101.0, -402.0);
+local grave5sound = Location:new(world, 59.0, 81.0, -436.0);
+local grave6sound = Location:new(world, -54.0, 71.0, -456.0);
+local tree1sound = Location:new(world, -17.0, 110.0, -534.0);
+local cave1sound = Location:new(world, -38.0, 35.0, -519.0);
+local spencer1sound = Location:new(world, 151.0, 136.0, -408.0);
+local spencer2sound = Location:new(world, 167.0, 115.0, -418.0);
 
 -------------
 --teleports--
@@ -713,7 +725,7 @@ end
 function welcome(data)
         local player = Player:new(data.player);
         player:sendMessage("&7A cold wind gives you a chill, you trip over some old bones.");
-	spawnsound:playSound('SKELETON_HURT', 100, 0.1);
+	spawnsound:playSound('SKELETON_HURT', 1, 0.1);
 	spawn1:cloneChestToPlayer(player.name);
 	player:sendEvent("achievement.halloween2023");
 end
@@ -722,7 +734,7 @@ function welcome2(data)
         local player = Player:new(data.player);
         player:sendMessage("&7You hear a wolf in the distance, man it sounds hungry.");
 	player:sendMessage("&7Something up ahead make a noise.");
-	spawnsound:playSound('WOLF_HOWL', 100, 0.8);
+	spawnsound:playSound('WOLF_HOWL', 1, 0.8);
 end
 
 registerHook("REGION_LEAVE", "welcome", "spawn2-h2023_enter");
@@ -742,7 +754,7 @@ function grave1(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave1sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave1ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -766,7 +778,7 @@ function grave2(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot2:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave2sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave2ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -790,7 +802,7 @@ function grave3(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot3:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave3sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave3ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -814,7 +826,7 @@ function grave4(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot4:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave4sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave4ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -838,7 +850,7 @@ function grave5(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot5:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave5sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave5ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -862,7 +874,7 @@ function grave6(data)
 		player:removeItem("bone", 1);
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot6:cloneChestToPlayer(player.name);
-	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave6sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave6ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
@@ -882,9 +894,9 @@ registerHook("REGION_ENTER", "grave6", "spawn2-grave6");
 function knock1(data)
         local player = Player:new(data.player);
         player:sendMessage("&7You knock rather aggresively...");
-	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
-	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
-	spawnsound:playSound('ZOMBIE_WOOD', 100, 5);
+	knock1:playSound('ZOMBIE_WOOD', 1, 5);
+	knock1:playSound('ZOMBIE_WOOD', 1, 5);
+	knock2:playSound('ZOMBIE_WOOD', 1, 5);
 end
 end
 
@@ -917,7 +929,7 @@ function dracula1(data)
                 if player:hasItem("paper", 2) then
         player:sendMessage("(&6???&f) I remember you... ");
         player:sendMessage("(&6???&f) The pit will guide the way.");
-	spawnsound:playSound('VILLAGER_HAGGLE', 100, 0.5);
+	tree1:playSound('VILLAGER_HAGGLE', 1, 0.5);
 	else
 	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
 end
@@ -929,7 +941,7 @@ function pit1(data)
 		player:removeItem("paper", 2);
         player:sendMessage("&7The pit gurgles at you... ");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
-	spawnsound:playSound('LAVA', 100, 0.2);
+	tree1:playSound('LAVA', 10, 0.2);
 	player:teleport(tp1);
 end
 end
@@ -957,27 +969,27 @@ registerHook("REGION_ENTER", "phase2", "spawn2-phase2");
 
 function piston_extend(data)
         local player = Player:new(data.player);
-        spawnsound:playSound('PISTON_EXTEND', 100, 0.5);
+        cave1:playSound('PISTON_EXTEND', 10, 0.5);
 end
 
 function piston_retract(data)
         local player = Player:new(data.player);
-        spawnsound:playSound('PISTON_RETRACT', 100, 0.5);
+        cave1:playSound('PISTON_RETRACT', 10, 0.5);
 end
 
 function enderdragon_growl(data)
         local player = Player:new(data.player);
-        spawnsound:playSound('ENDERDRAGON_GROWL', 100, 0.5);
+       cave1:playSound('ENDERDRAGON_GROWL', 10, 0.5);
 end
 
 function horse_skeleton_death(data)
         local player = Player:new(data.player);
-        spawnsound:playSound('HORSE_SKELETON_DEATH', 100, 0.5);
+        cave1:playSound('HORSE_SKELETON_DEATH', 10, 0.5);
 end
 
 function horse_skeleton_idle(data)
         local player = Player:new(data.player);
-        spawnsound:playSound('HORSE_SKELETON_IDLE', 100, 0.5);
+        cave1:playSound('HORSE_SKELETON_IDLE', 10, 0.5);
 end
 
 
@@ -996,7 +1008,7 @@ function button_wrong(data)
         local player = Player:new(data.player);
         player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
-        spawnsound:playSound('EAT', 100, 0.5);
+        cave1sound:playSound('EAT', 10, 0.5);
 end
 
 function exit_cave(data)
@@ -1028,14 +1040,14 @@ function villager_enter(data)
         player:sendMessage("(&6Spencer&f) What are you doing get out of my house!! ");
         player:sendMessage("(&6Spencer&f) I don't have the candy you seek now scram!");
         player:sendMessage("&7You hear some weird noises coming from the basement....");
-	spawnsound:playSound('VILLAGER_HAGGLE', 100, 1.5);
+	spencer1sound:playSound('VILLAGER_HAGGLE', 1, 1.5);
 end
 
 registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_vil_talk");
 
 function house_enderman(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('ENDERMAN_SCREAM', 100, 0.5);
+	spencer1:playSound('ENDERMAN_SCREAM', 1, 0.5);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1044,7 +1056,7 @@ registerHook("INTERACT", "house_enderman", 143, "spawn2", 149, 134, -407);
 
 function house_donkey(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('DONKEY_DEATH', 100, 2.6);
+	spencer1sound:playSound('DONKEY_DEATH', 1, 2.6);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1053,7 +1065,7 @@ registerHook("INTERACT", "house_donkey", 143, "spawn2", 147, 134, -410);
 
 function house_furnace(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('GHAST_SCREAM', 100, 0.5);
+	spencer1sound:playSound('GHAST_SCREAM', 1, 0.5);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1063,7 +1075,7 @@ registerHook("INTERACT", "house_furnace", 61, "spawn2", 148, 138, -405);
 
 function house_zombie(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('HORSE_ZOMBIE_DEATH', 100, 0.7);
+	spencer1:playSound('HORSE_ZOMBIE_DEATH', 1, 0.7);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1100,7 +1112,14 @@ function villager_enter(data)
         local player = Player:new(data.player);
         player:sendMessage("(&6Spencer&f) Good luck getting out you filthy peasant.");
         player:sendMessage("&7Spencer must have placed a curse on me.");
-	spawnsound:playSound('VILLAGER_HAGGLE', 100, 1.5);
+	spencer2sound:playSound('VILLAGER_HAGGLE', 1, 1.5);
 end
 
 registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_cave_message");
+
+----------------------------------
+-----Step 5 / Maze
+----------------------------------
+local tp3 = Location:new(world, 119.0, 142.0, -384.0);
+local tpend = Location:new(world, -22.0, 123.0, -627.0);
+
