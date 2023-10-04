@@ -332,6 +332,7 @@ function grave1(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot:cloneChestToPlayer(player.name);
 	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave1ChestPlayers[player.name] = true; 
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
