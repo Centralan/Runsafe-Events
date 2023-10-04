@@ -1068,8 +1068,8 @@ registerHook("INTERACT", "house_zombie", 143, "spawn2", 152, 140, -413);
 function cave_blind(data)
         local player = Player:new(data.player);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 1600);
-        if player:hasItem("milk_bucket", 1) then
-        player:removeItem("milk_bucket", 1)
+        if player:hasItem("335", 1) then
+        player:removeItem("335", 1)
         bucket:cloneChestToPlayer(player.name);
 	player:sendMessage("(&6Spencer&f) I thought of that you cheater! Keep your bucket.");
 end
