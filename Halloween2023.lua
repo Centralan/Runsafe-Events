@@ -1216,6 +1216,113 @@ end
 registerHook("INTERACT", "tower_redstone", 356, "spawn2", 108, 90, -470);
 
 ----------------------------------
+-------Step 8 / pumpkin
+------------------------------------
+local pump = Location:new(world, 39.0, 52.0, -480.0);
+local pumpR = Location:new(world, 48.0, 38.0, -480.0);
+local pumpB = Location:new(world, 48.0, 38.0, -482.0);
+local pumpE = Location:new(world, 39.0, 76.0, -493.0);
+
+function pump_enter(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7 This pumpkin smells funny.");
+	EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+	player:teleport(pump)
+	pumpB:cloneChestToPlayer(player.name);
+	ParenaPlayers[player.name] = true;
+        PplayerCount = PplayerCount + 1;
+
+registerHook("REGION_ENTER", "pump_enter", "spawn2-h2023_pump");
+
+local ParenaPlayers = {};
+local PplayerCount = 0;
+
+local entityList = {};
+
+local function PspawnMob(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+	table.insert(entityList, entity);
+end
+
+local function purgeEntityListP()
+	for index, value in pairs(entityList) do
+		entityList[index] = nil;
+	end
+end
+
+function check_alive_statsP()
+	for key, value in pairs(entityList) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+local pR1Done = false;
+local pRoundRunning = false;
+local pR1 = Timer:new("p_end_r1", 1);
+
+local pS1 = Location:new(world, 52.0, 50.0, -477.0);
+local pS2 = Location:new(world, 51.0, 52.0, -487.0);
+local pS3 = Location:new(world, 53.0, 48.0, -487.0);
+local pS4 = Location:new(world, 53.0, 45.0, -482.0);
+local pS5 = Location:new(world, 45.0, 45.0, -488.0);
+local pS6 = Location:new(world, 42.0, 52.0, -487.0);
+local pS7 = Location:new(world, 44.0, 45.0, -476.0);
+local pS8 = Location:new(world, 41.0, 51.0, -475.0);
+
+function p_start_r1(data)
+        for playerName, value in pairs(ParenaPlayers) do
+         local player = Player:new(data.player);
+      if not pR1Done then
+      if not pRoundRunning then  
+         pRoundRunning = true;
+         pR1:startRepeating()
+	player:sendMessage("&7 EEK BATS!");			
+	PspawnMob(nS1, "BAT");
+	PspawnMob(nS2, "BAT");
+	PspawnMob(nS3, "BAT");
+	PspawnMob(nS4, "BAT");
+	PspawnMob(nS5, "BAT");
+	PspawnMob(nS6, "BAT");
+	PspawnMob(nS7, "BAT");
+	PspawnMob(nS8, "BAT");
+	PspawnMob(nS1, "BAT");
+	PspawnMob(nS2, "BAT");
+	PspawnMob(nS3, "BAT");
+	PspawnMob(nS4, "BAT");
+	PspawnMob(nS5, "BAT");
+	PspawnMob(nS6, "BAT");
+	PspawnMob(nS7, "BAT");
+	PspawnMob(nS8, "BAT");
+
+function p_end_r1()
+	if check_alive_statsP() then
+           pR1:cancel()
+           pRoundRunning = false;
+           pR1Done = true;
+for playerName, value in pairs(ParenaPlayers) do
+local player = Player:new(playerName);
+	   player:teleport(pumpE);
+           player:sendMessage("&7 Glad thats over.");
+	   pumpR:cloneChestToPlayer(player.name);
+	end
+	end
+end 
+
+	function pump_leave(data)
+        local player = Player:new(data.player);
+          ParenaPlayers[player.name] = nil;
+          PplayerCount = PplayerCount - 1;
+end				
+
+registerHook("REGION_ENTER", "p_start_r1", "spawn2_h2023_pump_main")
+registerHook("REGION_LEAVE", "pump_leave", "spawn2_h2023_pump_main")
+	
+----------------------------------
 -------Step 7 / Castle
 ------------------------------------
 local gatesound = Location:new(world, 99.0, 89.0, -520.0);
