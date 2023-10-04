@@ -1084,4 +1084,4 @@ function villager_enter(data)
 	spawnsound:playSound('VILLAGER_HAGGLE', 100, 1.5);
 end
 
-registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
+registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_message");
