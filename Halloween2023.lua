@@ -680,6 +680,11 @@ registerHook("INTERACT", "candy13_chest", 54, "spawn2", -96, 75, -439);
 registerHook("INTERACT", "candy14_chest", 54, "spawn2", -106, 82, -544);
 registerHook("INTERACT", "candy15_chest", 54, "spawn2", 157, 142, -409);
 registerHook("INTERACT", "candy16_chest", 54, "spawn2", 149, 132, -407);
+--17 maze
+--18 maze
+--19 patch
+--20 tower
+
 
 
 --------
