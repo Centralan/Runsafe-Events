@@ -57,6 +57,7 @@ local candy19 = Location:new(world, -67.0, 65.0, -513.0);
 local candy20 = Location:new(world, -65.0, 65.0, -513.0);
 local candy21 = Location:new(world, -63.0, 65.0, -513.0);
 local candy22 = Location:new(world, -61.0, 65.0, -513.0);
+local bucket = Location:new(world, 154.0, 156.0, -408.0);
 
 -----------------------
 --- Candy HANDLING ----
@@ -1066,7 +1067,12 @@ registerHook("INTERACT", "house_zombie", 143, "spawn2", 152, 140, -413);
 
 function cave_blind(data)
         local player = Player:new(data.player);
-        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 600);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 1600);
+        if player:hasItem("milk_bucket", 1) then
+        player:removeItem("milk_bucket", 1)
+        bucket:cloneChestToPlayer(player.name);
+	player:sendMessage("(&6Spencer&f) I thought of that you cheater! Keep your bucket.");
+end
 end
 
 function cave_blind_remove(data)
