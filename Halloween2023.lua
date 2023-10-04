@@ -1071,8 +1071,9 @@ end
 
 function cave_blind_remove(data)
         local player = Player:new(data.player);
-        EventEngine.player.removePotionEffect(player.name, 'BLINDNESS');
+        EventEngine.player.removePotionEffects(player.name, 'BLINDNESS');
 end
+
 
 registerHook("REGION_ENTER", "cave_blind", "spawn2-h2023_cave_blind");
 registerHook("REGION_ENTER", "cave_blind_remove", "spawn2-h2023_blind_remove");
