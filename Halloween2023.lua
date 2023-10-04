@@ -1171,3 +1171,16 @@ registerHook("INTERACT", "maze_reset2", 54, "spawn2", 48, 81, -443);
 registerHook("INTERACT", "maze_reset2", 54, "spawn2", 51, 81, -452);
 registerHook("INTERACT", "maze_reset2", 54, "spawn2", 52, 81, -453);
 registerHook("INTERACT", "maze_reset2", 54, "spawn2", 59, 81, -454);
+
+----------------------------------
+-----Step 6 / Toweer
+----------------------------------
+local tower1 = Location:new(world, 108.0, 80.0, -445.0);
+
+function tower_door(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7 This tower seems empty, I wonder what I can find.");
+	tower1:playSound('DOOR_OPEN', 1, 0.5);
+end
+
+registerHook("INTERACT", "tower_door", 431, "spawn2", 108, 80, -475);
