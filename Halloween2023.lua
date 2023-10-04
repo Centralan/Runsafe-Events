@@ -1187,10 +1187,30 @@ end
 
 registerHook("INTERACT", "tower_door", 431, "spawn2", 108, 80, -475);
 
+local keychestChestPlayers = {};
+local keychestChestResetTimer = Timer:new("keychest_reset_chest", 20 * 60 * 5);
+local keychestChestResetTimerRunning = false;
+local keychestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
 function tower_redstone(data)
-        local player = Player:new(data.player);
-        player:sendMessage("&7 Wait whats this?");
-	keychest:cloneChestToPlayer(player.name);
+	local player = Player:new(data.player);
+	if not keychestChestPlayers[player.name] then
+		keychest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage("&7 Something fell off the top of the anvil.");
+		spawnsound:playSound('WOOD_CLICK', 3, 0.5);
+		keychestChestPlayers[player.name] = true; 
+		
+		if not keychestChestResetTimerRunning then
+			keychestChestResetTimerRunning = true;
+			keychestChestResetTimer:start();
+		end
+	end
+end
+
+function keychest_reset_chest()
+	keychestChestPlayers = {};
+	keychestChestResetTimerRunning = false;
 end
 
 registerHook("INTERACT", "tower_redstone", 356, "spawn2", 108, 90, -470);
