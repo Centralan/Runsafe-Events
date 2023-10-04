@@ -1047,7 +1047,7 @@ registerHook("INTERACT", "house_donkey", 143, "spawn2", 147, 134, -410);
 
 function house_furnace(data)
         local player = Player:new(data.player);
-	spawnsound:playSound(' GHAST_SCREAM ', 100, 0.5;
+	spawnsound:playSound(' GHAST_SCREAM ', 100, 0.5);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1057,7 +1057,7 @@ registerHook("INTERACT", "house_furnace", 61, "spawn2", 148, 138, -405);
 
 function house_zombie(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('HORSE_ZOMBIE_DEATH', 100, 0.7;
+	spawnsound:playSound('HORSE_ZOMBIE_DEATH', 100, 0.7);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
