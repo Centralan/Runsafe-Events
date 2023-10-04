@@ -321,17 +321,11 @@ function tree1(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot:cloneChestToPlayer(player.name);
 	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
 end
 
-registerHook("REGION_ENTER", "tree1", "spawn2-grave1");
-
-function tree2(data)
-        local player = Player:new(data.player);
-        player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
-end
-
-registerHook("REGION_LEAVE", "tree2", "spawn2-grave1");
 
 -------------------
 -----Step 2 house---
