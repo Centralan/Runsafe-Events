@@ -1029,7 +1029,7 @@ registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_vil_talk");
 
 function house_enderman(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('ENDERMAN_SCREAM ', 100, 0.5);
+	spawnsound:playSound('ENDERMAN_SCREAM', 100, 0.5);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1038,7 +1038,7 @@ registerHook("INTERACT", "house_enderman", 143, "spawn2", 149, 134, -407);
 
 function house_donkey(data)
         local player = Player:new(data.player);
-	spawnsound:playSound('DONKEY_DEATH ', 100, 2.6);
+	spawnsound:playSound('DONKEY_DEATH', 100, 2.6);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
@@ -1047,7 +1047,7 @@ registerHook("INTERACT", "house_donkey", 143, "spawn2", 147, 134, -410);
 
 function house_furnace(data)
         local player = Player:new(data.player);
-	spawnsound:playSound(' GHAST_SCREAM ', 100, 0.5);
+	spawnsound:playSound('GHAST_SCREAM', 100, 0.5);
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
 end
 
