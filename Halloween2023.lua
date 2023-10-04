@@ -320,6 +320,11 @@ registerHook("REGION_ENTER", "welcome2", "spawn2-h2023_enter2");
 -------------------
 -----Grave Loot---
 -------------------
+
+local grave1ChestPlayers = {};
+local grave1ChestResetTimer = Timer:new("grave1_reset_chest", 20 * 60 * 5);
+local grave1ChestResetTimerRunning = false;
+
 function grave1(data)
         local player = Player:new(data.player);
 	if player:hasItem("bone", 1) then
@@ -330,6 +335,11 @@ function grave1(data)
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
+end
+
+function grave1_reset_chest()
+	grave1ChestPlayers = {};
+	grave1ChestResetTimerRunning = false;
 end
 
 registerHook("REGION_ENTER", "grave1", "spawn2-grave1");
