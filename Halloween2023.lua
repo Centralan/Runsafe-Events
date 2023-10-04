@@ -296,7 +296,7 @@ end
 function welcome(data)
         local player = Player:new(data.player);
         player:sendMessage("&7A cold wind gives you a chill, you trip over some old bones.");
-	spawnsound:playSound('HURT_FLESH', 100, 0.1);
+	spawnsound:playSound('SKELETON_HURT', 100, 0.1);
 	spawn1:cloneChestToPlayer(player.name);
 	player:sendEvent("achievement.halloween2023");
 end
