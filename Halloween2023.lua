@@ -1214,3 +1214,27 @@ function keychest_reset_chest()
 end
 
 registerHook("INTERACT", "tower_redstone", 356, "spawn2", 108, 90, -470);
+
+----------------------------------
+-----Step 7 / Castle
+----------------------------------
+local gatesound = Location:new(world, 99.0, 89.0, -520.0);
+local gateY = Location:new(world, 100.0, 89.0, -526.0);
+local gateN = Location:new(world, 99.0, 89.0, -520.0);
+
+function castle_gate(data)
+        local player = Player:new(data.player);
+                if player:hasItem("369", 1) then
+		if player:hasItem("91", 1) then
+		player:removeItem("369", 1)
+		player:removeItem("91", 1)
+        player:sendMessage("(&6???&f) Ah you again");
+        player:sendMessage("(&6???&f) I wish you the best of luck.");
+	gatesound:playSound('VILLAGER_HAGGLE', 1, 0.5);
+	player:teleport(gateY)
+	else
+	player:sendMessage("&7 The tree seems to have no reaction, maybe I'm missing something.");
+	player:teleport(gateN)
+end
+end
+end
