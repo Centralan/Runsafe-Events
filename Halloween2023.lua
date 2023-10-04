@@ -46,10 +46,156 @@ local candy7 = Location:new(world, -77.0, 65.0, -515.0);
 -----------------------
 --- Candy HANDLING ----
 -----------------------
+local candyIChestPlayers = {};
+local candyIChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
+local candyIChestResetTimerRunning = false;
+local candyIChestOpen = Location:new(world, -79.0, 65.0, -511.0);
+
 local candy1ChestPlayers = {};
 local candy1ChestResetTimer = Timer:new("candy1_reset_chest", 20 * 60 * 5);
 local candy1ChestResetTimerRunning = false;
 local candy1ChestOpen = Location:new(world, -77.0, 65.0, -503.0);
+
+
+local candy2ChestPlayers = {};
+local candy2ChestResetTimer = Timer:new("candy2_reset_chest", 20 * 60 * 5);
+local candy2ChestResetTimerRunning = false;
+local candy2ChestOpen = Location:new(world, -79.0, 65.0, -509.0);
+
+local candy3ChestPlayers = {};
+local candy3ChestResetTimer = Timer:new("candy3_reset_chest", 20 * 60 * 5);
+local candy3ChestResetTimerRunning = false;
+local candy3ChestOpen = Location:new(world, -77.0, 65.0, -507.0);
+
+local candy4ChestPlayers = {};
+local candy4ChestResetTimer = Timer:new("candy4_reset_chest", 20 * 60 * 5);
+local candy4ChestResetTimerRunning = false;
+local candy4ChestOpen = Location:new(world, -77.0, 65.0, -509.0);
+
+local candy5ChestPlayers = {};
+local candy5ChestResetTimer = Timer:new("candy5_reset_chest", 20 * 60 * 5);
+local candy5ChestResetTimerRunning = false;
+local candy5ChestOpen = Location:new(world, -77.0, 65.0, -511.0);
+
+local candy6ChestPlayers = {};
+local candy6ChestResetTimer = Timer:new("candy6_reset_chest", 20 * 60 * 5);
+local candy6ChestResetTimerRunning = false;
+local candy6ChestOpen = Location:new(world, -77.0, 65.0, -513.0);
+
+local candy7ChestPlayers = {};
+local candy7ChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
+local candy7ChestResetTimerRunning = false;
+local candy7ChestOpen = Location:new(world, -77.0, 65.0, -515.0);
+
+local candy8ChestPlayers = {};
+local candy8ChestResetTimer = Timer:new("candy8_reset_chest", 20 * 60 * 5);
+local candy8ChestResetTimerRunning = false;
+local candy8ChestOpen = Location:new(world, -74.0, 65.0, -515.0);
+
+local candy9ChestPlayers = {};
+local candy9ChestResetTimer = Timer:new("candy9_reset_chest", 20 * 60 * 5);
+local candy9ChestResetTimerRunning = false;
+local candy9ChestOpen = Location:new(world, -72.0, 65.0, -515.0);
+
+local candy10ChestPlayers = {};
+local candy10ChestResetTimer = Timer:new("candy10_reset_chest", 20 * 60 * 5);
+local candy10ChestResetTimerRunning = false;
+local candy10ChestOpen = Location:new(world, -70.0, 65.0, -515.0);
+
+local candy11ChestPlayers = {};
+local candy11ChestResetTimer = Timer:new("candy11_reset_chest", 20 * 60 * 5);
+local candy11ChestResetTimerRunning = false;
+local candy11ChestOpen = Location:new(world, -68.0, 65.0, -515.0);
+
+local candy12ChestPlayers = {};
+local candy12ChestResetTimer = Timer:new("candy12_reset_chest", 20 * 60 * 5);
+local candy12ChestResetTimerRunning = false;
+local candy12ChestOpen = Location:new(world, -66.0, 65.0, -515.0);
+
+local candy13ChestPlayers = {};
+local candy13ChestResetTimer = Timer:new("candy13_reset_chest", 20 * 60 * 5);
+local candy13ChestResetTimerRunning = false;
+local candy13ChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+local candy14ChestPlayers = {};
+local candy14ChestResetTimer = Timer:new("candy14_reset_chest", 20 * 60 * 5);
+local candy14ChestResetTimerRunning = false;
+local candy14ChestOpen = Location:new(world, -62.0, 65.0, -515.0);
+
+function candyI_reset_chest()
+	candyIChestPlayers = {};
+	candyIChestResetTimerRunning = false;
+end
+
+function candy1_reset_chest()
+	candy1ChestPlayers = {};
+	candy1ChestResetTimerRunning = false;
+end
+
+function candy2_reset_chest()
+	candy2ChestPlayers = {};
+	candy2ChestResetTimerRunning = false;
+end
+
+function candy3_reset_chest()
+	candy3ChestPlayers = {};
+	candy3ChestResetTimerRunning = false;
+end
+
+function candy4_reset_chest()
+	candy4ChestPlayers = {};
+	candy4ChestResetTimerRunning = false;
+end
+
+function candy5_reset_chest()
+	candy5ChestPlayers = {};
+	candyIChestResetTimerRunning = false;
+end
+
+function candy6_reset_chest()
+	candy6ChestPlayers = {};
+	candy6ChestResetTimerRunning = false;
+end
+
+function candy7_reset_chest()
+	candy7ChestPlayers = {};
+	candy7ChestResetTimerRunning = false;
+end
+
+function candy8_reset_chest()
+	candy8ChestPlayers = {};
+	candy8ChestResetTimerRunning = false;
+end
+
+function candy9_reset_chest()
+	candy9ChestPlayers = {};
+	candy9ChestResetTimerRunning = false;
+end
+
+function candy10_reset_chest()
+	candy10ChestPlayers = {};
+	candy10ChestResetTimerRunning = false;
+end
+
+function candy11_reset_chest()
+	candy11ChestPlayers = {};
+	candy11ChestResetTimerRunning = false;
+end
+
+function candy12_reset_chest()
+	candy12ChestPlayers = {};
+	candy12ChestResetTimerRunning = false;
+end
+
+function candy13_reset_chest()
+	candy13ChestPlayers = {};
+	candy13ChestResetTimerRunning = false;
+end
+
+function candy14_reset_chest()
+	candy14ChestPlayers = {};
+	candy14ChestResetTimerRunning = false;
+end
 
 function candy1_chest(data)
 	local player = Player:new(data.player);
@@ -67,16 +213,6 @@ function candy1_chest(data)
 	end
 end
 
-function candy1_reset_chest()
-	candy1ChestPlayers = {};
-	candy1ChestResetTimerRunning = false;
-end
-
-local candy2ChestPlayers = {};
-local candy2ChestResetTimer = Timer:new("candy2_reset_chest", 20 * 60 * 5);
-local candy2ChestResetTimerRunning = false;
-local candy2ChestOpen = Location:new(world, -79.0, 65.0, -509.0);
-
 function candy2_chest(data)
 	local player = Player:new(data.player);
 	if not candy2ChestPlayers[player.name] then
@@ -92,16 +228,6 @@ function candy2_chest(data)
 		end
 	end
 end
-
-function candy2_reset_chest()
-	candy2ChestPlayers = {};
-	candy2ChestResetTimerRunning = false;
-end
-
-local candy3ChestPlayers = {};
-local candy3ChestResetTimer = Timer:new("candy3_reset_chest", 20 * 60 * 5);
-local candy3ChestResetTimerRunning = false;
-local candy3ChestOpen = Location:new(world, -77.0, 65.0, -507.0);
 
 function candy3_chest(data)
 	local player = Player:new(data.player);
@@ -119,16 +245,6 @@ function candy3_chest(data)
 	end
 end
 
-function candy3_reset_chest()
-	candy3ChestPlayers = {};
-	candy3ChestResetTimerRunning = false;
-end
-
-local candy4ChestPlayers = {};
-local candy4ChestResetTimer = Timer:new("candy4_reset_chest", 20 * 60 * 5);
-local candy4ChestResetTimerRunning = false;
-local candy4ChestOpen = Location:new(world, -77.0, 65.0, -509.0);
-
 function candy4_chest(data)
 	local player = Player:new(data.player);
 	if not candy4ChestPlayers[player.name] then
@@ -144,16 +260,6 @@ function candy4_chest(data)
 		end
 	end
 end
-
-function candy4_reset_chest()
-	candy4ChestPlayers = {};
-	candy4ChestResetTimerRunning = false;
-end
-
-local candy5ChestPlayers = {};
-local candy5ChestResetTimer = Timer:new("candy5_reset_chest", 20 * 60 * 5);
-local candy5ChestResetTimerRunning = false;
-local candy5ChestOpen = Location:new(world, -77.0, 65.0, -511.0);
 
 function candy5_chest(data)
 	local player = Player:new(data.player);
@@ -171,17 +277,6 @@ function candy5_chest(data)
 	end
 end
 
-function candy5_reset_chest()
-	candy5ChestPlayers = {};
-	candy5ChestResetTimerRunning = false;
-end
-
-
-local candy6ChestPlayers = {};
-local candy6ChestResetTimer = Timer:new("candy6_reset_chest", 20 * 60 * 5);
-local candy6ChestResetTimerRunning = false;
-local candy6ChestOpen = Location:new(world, -77.0, 65.0, -513.0);
-
 function candy6_chest(data)
 	local player = Player:new(data.player);
 	if not candy6ChestPlayers[player.name] then
@@ -197,16 +292,6 @@ function candy6_chest(data)
 		end
 	end
 end
-
-function candy6_reset_chest()
-	candy6ChestPlayers = {};
-	candy6ChestResetTimerRunning = false;
-end
-
-local candy7ChestPlayers = {};
-local candy7ChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
-local candy7ChestResetTimerRunning = false;
-local candy7ChestOpen = Location:new(world, -77.0, 65.0, -515.0);
 
 function candy7_chest(data)
 	local player = Player:new(data.player);
@@ -224,57 +309,133 @@ function candy7_chest(data)
 	end
 end
 
-function candy7_reset_chest()
-	candy7ChestPlayers = {};
-	candy7ChestResetTimerRunning = false;
-end
-
-local candyIChestPlayers = {};
-local candyIChestResetTimer = Timer:new("candy7_reset_chest", 20 * 60 * 5);
-local candyIChestResetTimerRunning = false;
-local candyIChestOpen = Location:new(world, -79.0, 65.0, -511.0);
-
-function candyI_chest(data)
+function candy8_chest(data)
 	local player = Player:new(data.player);
-	if not candyIChestPlayers[player.name] then
-		candyI:cloneChestToPlayer(player.name);
+	if not candy8ChestPlayers[player.name] then
+		candy8:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		player:sendMessage('&fThe chest smells sweet almost like candy.');
-		player:sendMessage('&7Maybe more candy can be found, I should look everywhere.');
+		player:sendMessage('&7The chest smells sweet almost like candy.');
 		spawnsound:playSound('EAT', 1, 0.5);
-		candyIChestPlayers[player.name] = true; 
+		candy8ChestPlayers[player.name] = true; 
 		
-		if not candyIChestResetTimerRunning then
-			candyIChestResetTimerRunning = true;
-			candyIChestResetTimer:start();
+		if not candy8ChestResetTimerRunning then
+			candy8ChestResetTimerRunning = true;
+			candy8ChestResetTimer:start();
 		end
 	end
 end
 
-function candyI_reset_chest()
-	candyIChestPlayers = {};
-	candyIChestResetTimerRunning = false;
+function candy9_chest(data)
+	local player = Player:new(data.player);
+	if not candy9ChestPlayers[player.name] then
+		candy9:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy9ChestPlayers[player.name] = true; 
+		
+		if not candy9ChestResetTimerRunning then
+			candy9ChestResetTimerRunning = true;
+			candy9ChestResetTimer:start();
+		end
+	end
+end
+
+function candy10_chest(data)
+	local player = Player:new(data.player);
+	if not candy10ChestPlayers[player.name] then
+		candy10:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy10ChestPlayers[player.name] = true; 
+		
+		if not candy10ChestResetTimerRunning then
+			candy10ChestResetTimerRunning = true;
+			candy10ChestResetTimer:start();
+		end
+	end
+end
+
+function candy11_chest(data)
+	local player = Player:new(data.player);
+	if not candy11ChestPlayers[player.name] then
+		candy11:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy11ChestPlayers[player.name] = true; 
+		
+		if not candy11ChestResetTimerRunning then
+			candy11ChestResetTimerRunning = true;
+			candy11ChestResetTimer:start();
+		end
+	end
+end
+
+function candy12_chest(data)
+	local player = Player:new(data.player);
+	if not candy12ChestPlayers[player.name] then
+		candy12:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy12ChestPlayers[player.name] = true; 
+		
+		if not candy12ChestResetTimerRunning then
+			candy12ChestResetTimerRunning = true;
+			candy12ChestResetTimer:start();
+		end
+	end
+end
+
+function candy13_chest(data)
+	local player = Player:new(data.player);
+	if not candy13ChestPlayers[player.name] then
+		candy13:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy13ChestPlayers[player.name] = true; 
+		
+		if not candy13ChestResetTimerRunning then
+			candy13ChestResetTimerRunning = true;
+			candy13ChestResetTimer:start();
+		end
+	end
+end
+
+function candy14_chest(data)
+	local player = Player:new(data.player);
+	if not candy14ChestPlayers[player.name] then
+		candy14:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&7The chest smells sweet almost like candy.');
+		spawnsound:playSound('EAT', 1, 0.5);
+		candy14ChestPlayers[player.name] = true; 
+		
+		if not candy14ChestResetTimerRunning then
+			candy14ChestResetTimerRunning = true;
+			candy14ChestResetTimer:start();
+		end
+	end
 end
 
 registerHook("INTERACT", "candyI_chest", 54, "spawn2", -59, 75, -498);
-
 registerHook("INTERACT", "candy1_chest", 54, "spawn2", -30, 82, -498);
-registerHook("INTERACT", "candy1_chest", 54, "spawn2", -92, 79, -532);
-registerHook("INTERACT", "candy1_chest", 54, "spawn2", -97, 67, -468);
-registerHook("INTERACT", "candy1_chest", 54, "spawn2", -43, 82, -439);
-registerHook("INTERACT", "candy1_chest", 54, "spawn2", -11, 94, -489);
-
-registerHook("INTERACT", "candy2_chest", 54, "spawn2", -60, 81, -537);
-registerHook("INTERACT", "candy2_chest", 54, "spawn2", -210, 82, -456);
-registerHook("INTERACT", "candy2_chest", 54, "spawn2", -109, 75, -442);
-registerHook("INTERACT", "candy2_chest", 54, "spawn2", -105, 80, -512);
-registerHook("INTERACT", "candy2_chest", 54, "spawn2", -11, 94, -489);
-
-
-registerHook("INTERACT", "candy3_chest", 54, "spawn2", -64, 85, -537);
-registerHook("INTERACT", "candy3_chest", 54, "spawn2", -20, 79, -459);
-registerHook("INTERACT", "candy3_chest", 54, "spawn2", -96, 75, -439);
-registerHook("INTERACT", "candy3_chest", 54, "spawn2", -106, 82, -544);
+registerHook("INTERACT", "candy2_chest", 54, "spawn2", -92, 79, -532);
+registerHook("INTERACT", "candy3_chest", 54, "spawn2", -97, 67, -468);
+registerHook("INTERACT", "candy4_chest", 54, "spawn2", -43, 82, -439);
+registerHook("INTERACT", "candy5_chest", 54, "spawn2", -11, 94, -489);
+registerHook("INTERACT", "candy6_chest", 54, "spawn2", -60, 81, -537);
+registerHook("INTERACT", "candy7_chest", 54, "spawn2", -210, 82, -456);
+registerHook("INTERACT", "candy8_chest", 54, "spawn2", -109, 75, -442);
+registerHook("INTERACT", "candy9_chest", 54, "spawn2", -105, 80, -512);
+registerHook("INTERACT", "candy10_chest", 54, "spawn2", -11, 94, -489);
+registerHook("INTERACT", "candy11_chest", 54, "spawn2", -64, 85, -537);
+registerHook("INTERACT", "candy12_chest", 54, "spawn2", -20, 79, -459);
+registerHook("INTERACT", "candy13_chest", 54, "spawn2", -96, 75, -439);
+registerHook("INTERACT", "candy14_chest", 54, "spawn2", -106, 82, -544);
 
 --------
 -----AI---
