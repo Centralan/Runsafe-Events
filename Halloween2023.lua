@@ -315,7 +315,9 @@ function candyI_chest(data)
                 player:sendMessage('&7I wonder if I can find more.');
                 spawnsound:playSound('EAT', 1, 0.5);
                 candyIChestPlayers[player.name] = true;
-
+	if candyIChestPlayers[player.name] then
+	   player:sendMessage('&7The chest seems empty.');
+            player:closeInventory();
                 if not candyIChestResetTimerRunning then
                         candyIChestResetTimerRunning = true;
                         candyIChestResetTimer:start();
@@ -692,10 +694,10 @@ registerHook("INTERACT", "candy13_chest", 54, "spawn2", -96, 75, -439);
 registerHook("INTERACT", "candy14_chest", 54, "spawn2", -106, 82, -544);
 registerHook("INTERACT", "candy15_chest", 54, "spawn2", 157, 142, -409);
 registerHook("INTERACT", "candy16_chest", 54, "spawn2", 149, 132, -407);
---17 maze
---18 maze
---19 patch
---20 tower
+registerHook("INTERACT", "candy17_chest", 54, "spawn2", 73, 81, -442);
+registerHook("INTERACT", "candy18_chest", 54, "spawn2", 46, 81, -450);
+registerHook("INTERACT", "candy19_chest", 54, "spawn2", 37, 75, -487);
+registerHook("INTERACT", "candy20_chest", 54, "spawn2", 109, 120, -471);
 
 
 
@@ -1140,6 +1142,32 @@ registerHook("REGION_ENTER", "villager_enter", "spawn2-h2023_cave_message");
 ----------------------------------
 -----Step 5 / Maze
 ----------------------------------
-local tp3 = Location:new(world, 119.0, 142.0, -384.0);
-local tpend = Location:new(world, -22.0, 123.0, -627.0);
+local mazesound = Location:new(world, 61.0, 85.0, -446.0);
+local maze1 = Location:new(world, 78.0, 81.0, -447.0);
+local maze2 = Location:new(world, 44.0, 81.0, -447.0);
 
+function maze_reset1(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) That chest was empty tree again.");
+	mazesound:playSound('ANVIL_LAND', 1, 0.5);
+        player:teleport(maze1)
+end
+
+function maze_reset2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) That chest was empty tree again.");
+	mazesound:playSound('ANVIL_LAND', 1, 0.5);
+        player:teleport(maze2)
+end
+
+registerHook("INTERACT", "maze_reset1", 54, "spawn2", 63, 81, -445);
+registerHook("INTERACT", "maze_reset1", 54, "spawn2", 66, 81, -445);
+registerHook("INTERACT", "maze_reset1", 54, "spawn2", 72, 81, -448);
+registerHook("INTERACT", "maze_reset1", 54, "spawn2", 69, 81, -452);
+registerHook("INTERACT", "maze_reset1", 54, "spawn2", 71, 81, -452);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 61, 81, -443);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 54, 81, -441);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 48, 81, -443);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 51, 81, -452);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 52, 81, -453);
+registerHook("INTERACT", "maze_reset2", 54, "spawn2", 59, 81, -454);
