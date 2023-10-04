@@ -345,6 +345,126 @@ end
 
 registerHook("REGION_ENTER", "grave1", "spawn2-grave1");
 
+local grave2ChestPlayers = {};
+local grave2ChestResetTimer = Timer:new("grave2_reset_chest", 20 * 60 * 5);
+local grave2ChestResetTimerRunning = false;
+
+function grave2(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("&7The grave reacts to your presence.");
+	graveloot2:cloneChestToPlayer(player.name);
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave2ChestPlayers[player.name] = true; 
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+end
+end
+
+function grave2_reset_chest()
+	grave2ChestPlayers = {};
+	grave2ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "grave2", "spawn2-grave2");
+
+local grave3ChestPlayers = {};
+local grave3ChestResetTimer = Timer:new("grave3_reset_chest", 20 * 60 * 5);
+local grave3ChestResetTimerRunning = false;
+
+function grave3(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("&7The grave reacts to your presence.");
+	graveloot3:cloneChestToPlayer(player.name);
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave3ChestPlayers[player.name] = true; 
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+end
+end
+
+function grave3_reset_chest()
+	grave3ChestPlayers = {};
+	grave3ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "grave3", "spawn2-grave3");
+
+local grave4ChestPlayers = {};
+local grave4ChestResetTimer = Timer:new("grave4_reset_chest", 20 * 60 * 5);
+local grave4ChestResetTimerRunning = false;
+
+function grave4(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("&7The grave reacts to your presence.");
+	graveloot4:cloneChestToPlayer(player.name);
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave4ChestPlayers[player.name] = true; 
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+end
+end
+
+function grave4_reset_chest()
+	grave4ChestPlayers = {};
+	grave4ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "grave4", "spawn2-grave4");
+
+local grave5ChestPlayers = {};
+local grave5ChestResetTimer = Timer:new("grave5_reset_chest", 20 * 60 * 5);
+local grave5ChestResetTimerRunning = false;
+
+function grave5(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("&7The grave reacts to your presence.");
+	graveloot5:cloneChestToPlayer(player.name);
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave5ChestPlayers[player.name] = true; 
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+end
+end
+
+function grave5_reset_chest()
+	grave5ChestPlayers = {};
+	grave5ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "grave5", "spawn2-grave5");
+
+local grave5ChestPlayers = {};
+local grave5ChestResetTimer = Timer:new("grave6_reset_chest", 20 * 60 * 5);
+local grave5ChestResetTimerRunning = false;
+
+function grave6(data)
+        local player = Player:new(data.player);
+	if player:hasItem("bone", 1) then
+		player:removeItem("bone", 1);
+        player:sendMessage("&7The grave reacts to your presence.");
+	graveloot6:cloneChestToPlayer(player.name);
+	spawnsound:playSound('SKELETON_IDLE', 100, 0.1);
+	grave6ChestPlayers[player.name] = true; 
+	else
+	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
+end
+end
+
+function grave6_reset_chest()
+	grave6ChestPlayers = {};
+	grave6ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "grave6", "spawn2-grave6");
+
 -------------------
 -----Step 2 house---
 -------------------
