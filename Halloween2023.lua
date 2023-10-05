@@ -915,9 +915,14 @@ function grave6_reset_chest()
 end
 
 registerHook("REGION_ENTER", "grave6", "spawn2-grave6");
+	
+function grave_ach(data)
+        grave_ach2({world:getPlayers()});
+end
 
-function grave_ach()
-        if player:hasPermission("runsafe.warp.use.grave1") then
+function grave_ach2(players)
+        local player = Player:new(playerName);
+        if players:hasPermission("runsafe.warp.use.grave1") then
         if player:hasPermission("runsafe.warp.use.grave2") then
         if player:hasPermission("runsafe.warp.use.grave3") then
         if player:hasPermission("runsafe.warp.use.grave4") then
@@ -932,7 +937,10 @@ end
 end
 end
 
-registerHook("BLOCK_GAINS_CURRENT", "grave_ach", "spawn2", -77.0, 65.0, -518.0);
+registerHook("REGION_LEAVE", "grave_ach2", "spawn2-h2023_main");
+registerHook("REGION_ENTER", "grave_ach2", "spawn2-h2023_main");
+--registerHook("BLOCK_GAINS_CURRENT", "grave_ach", "spawn2", -77.0, 65.0, -518.0);
+
 
 
 -------------------
