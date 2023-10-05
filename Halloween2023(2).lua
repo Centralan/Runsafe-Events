@@ -526,6 +526,8 @@ local t1 = Location:new(world, 100.0, 81.0, -542.0);
 local t2 = Location:new(world, 100.0, 74.0, -575.0);
 local t3 = Location:new(world, 100.0, 73.0, -604.0);
 local t4 = Location:new(world, 100.0, 70.0, -632.0);
+local t5s = Location:new(world, 100.0, 70.0, -685.0);
+local t5t = Location:new(world, 100.0, 73.0, -665.0);
 
 function soon1(data)
         local player = Player:new(data.player);
@@ -567,3 +569,15 @@ function soon4(data)
 end
 
 registerHook("REGION_ENTER", "soon4", "spawn2-h2023_t4");
+
+function soon5(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) Try and find me...");
+	player:sendMessage("(&6???&f) You'll be free to leave once you do.");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+	t5s:playSound('VILLAGER_HAGGLE', 1, 1.5);
+	player:teleport(t5t)
+end
+
+registerHook("REGION_ENTER", "soon5", "spawn2-h2023_t5");
