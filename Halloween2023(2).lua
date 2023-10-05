@@ -522,12 +522,14 @@ registerHook("REGION_ENTER", "wmessage", "spawn2-h2023_2_message");
 -----------------------
 -------tunnel--------
 -----------------------
+local t1 = Location:new(world, 100.0, 81.0, -542.0);
 
 function soon1(data)
         local player = Player:new(data.player);
         player:sendMessage("(&6???&f) I shall see you soon...");
         EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
-	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+	t1:playSound('VILLAGER_HAGGLE', 1, 1.5);
 end
 
 registerHook("REGION_ENTER", "soon1", "spawn2-h2023_slow1");
