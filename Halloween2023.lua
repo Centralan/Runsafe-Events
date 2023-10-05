@@ -917,16 +917,23 @@ end
 registerHook("REGION_ENTER", "grave6", "spawn2-grave6");
 
 function grave_ach()
-	if player:hasPermission("runsafe.warp.use.grave1");
-	if player:hasPermission("runsafe.warp.use.grave2");
-	if player:hasPermission("runsafe.warp.use.grave3");
-	if player:hasPermission("runsafe.warp.use.grave4");
-	if player:hasPermission("runsafe.warp.use.grave5");
-	if player:hasPermission("runsafe.warp.use.grave6");
-	then player:sendEvent("achievement.topexcavator");
+        if player:hasPermission("runsafe.warp.use.grave1") then
+        if player:hasPermission("runsafe.warp.use.grave2") then
+        if player:hasPermission("runsafe.warp.use.grave3") then
+        if player:hasPermission("runsafe.warp.use.grave4") then
+        if player:hasPermission("runsafe.warp.use.grave5") then
+        if player:hasPermission("runsafe.warp.use.grave6") then
+        player:sendEvent("achievement.topexcavator");
 end
-registerHook("REGION_ENTER", "grave_ach", "spawn2-h2023_main");
-registerHook("REGIon_LEAVE", "grave_ach", "spawn2-h2023_main");
+end
+end
+end
+end
+end
+end
+
+registerHook("BLOCK_GAINS_CURRENT", "grave_ach", "spawn2", -77.0, 65.0, -518.0);
+
 
 -------------------
 -----Step 2 house---
