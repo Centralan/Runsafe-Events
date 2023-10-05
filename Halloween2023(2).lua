@@ -489,9 +489,9 @@ registerHook("INTERACT", "candy24_chest", 54, "spawn2", 63, 76, -518);
 registerHook("INTERACT", "candy25_chest", 54, "spawn2", 60, 84, -520);
 registerHook("INTERACT", "candy26_chest", 54, "spawn2", 75, 81, -490);
 registerHook("INTERACT", "candy27_chest", 54, "spawn2", 104, 75, -589);
-registerHook("INTERACT", "candy28_chest", 54, "spawn2", 45, 78, -478);
-registerHook("INTERACT", "candy29_chest", 54, "spawn2", 45, 78, -478);
-registerHook("INTERACT", "candy30_chest", 54, "spawn2", 45, 78, -478);
+registerHook("INTERACT", "candy28_chest", 54, "spawn2", 92, 73, -684);
+registerHook("INTERACT", "candy29_chest", 54, "spawn2", 135, 73, -699);
+registerHook("INTERACT", "candy30_chest", 54, "spawn2", 105, 84, -667);
 
 -----------------------
 -------windmill--------
@@ -581,3 +581,75 @@ function soon5(data)
 end
 
 registerHook("REGION_ENTER", "soon5", "spawn2-h2023_t5");
+
+-----------------------
+-------villagers--------
+-----------------------
+
+local tproof = Location:new(world, 100.0, 104.0, -675.0);
+
+function v1(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) They got the keys we should hide.");
+end
+
+registerHook("REGION_ENTER", "soon4", "spawn2-h2023_v1");
+
+function v2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) Please don't eat the cake.");
+end
+
+registerHook("REGION_ENTER", "v2", "spawn2-h2023_v2");
+
+function v3(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) This stock seems to be doing well.");
+end
+
+registerHook("REGION_ENTER", "v3", "spawn2-h2023_v3");
+
+function v4(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) Rumor has it they nuke any village they find.");
+end
+
+registerHook("REGION_ENTER", "v4", "spawn2-h2023_v4");
+
+function v5(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) Please don't take the loot we have.");
+end
+
+registerHook("REGION_ENTER", "v5", "spawn2-h2023_v5");
+
+function v6(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) I bet they're looking for &6???&f.");
+end
+
+registerHook("REGION_ENTER", "v6", "spawn2-h2023_v6");
+
+function v7(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) DO YOU MIND???");
+end
+
+registerHook("REGION_ENTER", "v7", "spawn2-h2023_v7");
+
+function v8(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Villagers&f) Hopefully they don't get to the roof");
+end
+
+registerHook("REGION_ENTER", "v8", "spawn2-h2023_v8");
+
+function vtp(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6Dester&f) ah you finally made it. This is the end for you");
+	player:teleport(tproof)
+	EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 4);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+end
+
+registerHook("REGION_ENTER", "vtp", "spawn2-h2023_vtp");
