@@ -487,7 +487,7 @@ end
 registerHook("INTERACT", "candy23_chest", 54, "spawn2", 106, 90, -466);
 registerHook("INTERACT", "candy24_chest", 54, "spawn2", 63, 76, -518);
 registerHook("INTERACT", "candy25_chest", 54, "spawn2", 60, 84, -520);
-registerHook("INTERACT", "candy26_chest", 54, "spawn2", 45, 78, -478);
+registerHook("INTERACT", "candy26_chest", 54, "spawn2", 75, 81, -490);
 registerHook("INTERACT", "candy27_chest", 54, "spawn2", 45, 78, -478);
 registerHook("INTERACT", "candy28_chest", 54, "spawn2", 45, 78, -478);
 registerHook("INTERACT", "candy29_chest", 54, "spawn2", 45, 78, -478);
@@ -518,3 +518,16 @@ function wmessage(data)
 end
 
 registerHook("REGION_ENTER", "wmessage", "spawn2-h2023_2_message");
+
+-----------------------
+-------tunnel--------
+-----------------------
+
+function soon1(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) I shall see you soon...");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 10);
+end
+
+registerHook("REGION_ENTER", "soon1", "spawn2-h2023_slow1");
