@@ -504,11 +504,17 @@ function knock5(data)
 	windmill:playSound('ZOMBIE_WOOD', 1, 5);
 end
 
-registerHook("REGION_ENTER", "knock5", "spawn2-knock5");
+function knock6(data)
+        local player = Player:new(data.player);
+        player:sendMessage("&7Nobody seems to be home.");
+end
+
+registerHook("REGION_ENTER", "knock5", "spawn2-h2023_knock5");
+registerHook("REGION_LEAVE", "knock6", "spawn2-h2023_knock5");
 
 function wmessage(data)
         local player = Player:new(data.player);
         player:sendMessage("&7YMan this place really seems familiar. I must have seen it somewhere.");
 end
 
-registerHook("REGION_ENTER", "knock5", "spawn2-h2023_2_message");
+registerHook("REGION_ENTER", "wmessage", "spawn2-h2023_2_message");
