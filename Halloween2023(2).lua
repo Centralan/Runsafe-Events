@@ -488,7 +488,7 @@ registerHook("INTERACT", "candy23_chest", 54, "spawn2", 106, 90, -466);
 registerHook("INTERACT", "candy24_chest", 54, "spawn2", 63, 76, -518);
 registerHook("INTERACT", "candy25_chest", 54, "spawn2", 60, 84, -520);
 registerHook("INTERACT", "candy26_chest", 54, "spawn2", 75, 81, -490);
-registerHook("INTERACT", "candy27_chest", 54, "spawn2", 45, 78, -478);
+registerHook("INTERACT", "candy27_chest", 54, "spawn2", 104, 75, -589);
 registerHook("INTERACT", "candy28_chest", 54, "spawn2", 45, 78, -478);
 registerHook("INTERACT", "candy29_chest", 54, "spawn2", 45, 78, -478);
 registerHook("INTERACT", "candy30_chest", 54, "spawn2", 45, 78, -478);
@@ -523,6 +523,9 @@ registerHook("REGION_ENTER", "wmessage", "spawn2-h2023_2_message");
 -------tunnel--------
 -----------------------
 local t1 = Location:new(world, 100.0, 81.0, -542.0);
+local t2 = Location:new(world, 100.0, 74.0, -575.0);
+local t3 = Location:new(world, 100.0, 73.0, -604.0);
+local t4 = Location:new(world, 100.0, 70.0, -632.0);
 
 function soon1(data)
         local player = Player:new(data.player);
@@ -533,3 +536,34 @@ function soon1(data)
 end
 
 registerHook("REGION_ENTER", "soon1", "spawn2-h2023_slow1");
+
+function soon2(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) You have caused my kind to much grief over the years.");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+	t2:playSound('VILLAGER_HAGGLE', 1, 1.5);
+end
+
+registerHook("REGION_ENTER", "soon2", "spawn2-h2023_t2");
+
+function soon3(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) You've stolen so much, and now you found our candy.");
+	player:sendMessage("(&6???&f) At what point is enough for your kind?");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+	t3:playSound('VILLAGER_HAGGLE', 1, 1.5);
+end
+
+registerHook("REGION_ENTER", "soon3", "spawn2-h2023_t3");
+
+function soon4(data)
+        local player = Player:new(data.player);
+        player:sendMessage("(&6???&f) This ends here...");
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 10);
+	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
+	t4:playSound('VILLAGER_HAGGLE', 1, 1.5);
+end
+
+registerHook("REGION_ENTER", "soon4", "spawn2-h2023_t4");
