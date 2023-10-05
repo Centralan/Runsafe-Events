@@ -698,6 +698,8 @@ registerHook("INTERACT", "candy17_chest", 54, "spawn2", 73, 81, -442);
 registerHook("INTERACT", "candy18_chest", 54, "spawn2", 46, 81, -450);
 registerHook("INTERACT", "candy19_chest", 54, "spawn2", 37, 75, -487);
 registerHook("INTERACT", "candy20_chest", 54, "spawn2", 109, 120, -471);
+registerHook("INTERACT", "candy21_chest", 54, "spawn2", 67, 79, -490);
+registerHook("INTERACT", "candy22_chest", 54, "spawn2", 45, 78, -478);
 
 
 
