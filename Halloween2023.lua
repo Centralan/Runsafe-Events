@@ -777,7 +777,8 @@ function grave1(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot:cloneChestToPlayer(player.name);
 	grave1sound:playSound('SKELETON_IDLE', 1, 0.1);
-	grave1ChestPlayers[player.name] = true; 
+	grave1ChestPlayers[player.name] = true;
+	player:addPermission("runsafe.warp.use.grave1");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -802,6 +803,7 @@ function grave2(data)
 	graveloot2:cloneChestToPlayer(player.name);
 	grave2sound:playSound('SKELETON_IDLE', 1, 0.1);
 	grave2ChestPlayers[player.name] = true; 
+	player:addPermission("runsafe.warp.use.grave2");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -825,7 +827,8 @@ function grave3(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot3:cloneChestToPlayer(player.name);
 	grave3sound:playSound('SKELETON_IDLE', 1, 0.1);
-	grave3ChestPlayers[player.name] = true; 
+	grave3ChestPlayers[player.name] = true;
+	player:addPermission("runsafe.warp.use.grave3");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -849,7 +852,8 @@ function grave4(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot4:cloneChestToPlayer(player.name);
 	grave4sound:playSound('SKELETON_IDLE', 1, 0.1);
-	grave4ChestPlayers[player.name] = true; 
+	grave4ChestPlayers[player.name] = true;
+	player:addPermission("runsafe.warp.use.grave4");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -873,7 +877,8 @@ function grave5(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot5:cloneChestToPlayer(player.name);
 	grave5sound:playSound('SKELETON_IDLE', 1, 0.1);
-	grave5ChestPlayers[player.name] = true; 
+	grave5ChestPlayers[player.name] = true;
+	player:addPermission("runsafe.warp.use.grave5");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -897,7 +902,8 @@ function grave6(data)
         player:sendMessage("&7The grave reacts to your presence.");
 	graveloot6:cloneChestToPlayer(player.name);
 	grave6sound:playSound('SKELETON_IDLE', 1, 0.1);
-	grave6ChestPlayers[player.name] = true; 
+	grave6ChestPlayers[player.name] = true;
+	player:addPermission("runsafe.warp.use.grave6");
 	else
 	player:sendMessage("&7Nothing seems to have happened, you keep looking around.");
 end
@@ -909,6 +915,18 @@ function grave6_reset_chest()
 end
 
 registerHook("REGION_ENTER", "grave6", "spawn2-grave6");
+
+function grave_ach()
+	if player:hasPermission("runsafe.warp.use.grave1");
+	if player:hasPermission("runsafe.warp.use.grave2");
+	if player:hasPermission("runsafe.warp.use.grave3");
+	if player:hasPermission("runsafe.warp.use.grave4");
+	if player:hasPermission("runsafe.warp.use.grave5");
+	if player:hasPermission("runsafe.warp.use.grave6");
+	then player:sendEvent("achievement.topexcavator");
+end
+registerHook("REGION_ENTER", "grave_ach", "spawn2-h2023_main");
+registerHook("REGIon_LEAVE", "grave_ach", "spawn2-h2023_main");
 
 -------------------
 -----Step 2 house---
