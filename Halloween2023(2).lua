@@ -110,3 +110,155 @@ function pump_exit(data)
           PplayerCount = PplayerCount - 1;
 end
 registerHook("REGION_LEAVE", "pump_exit", "spawn2-h2023_pump_main");
+
+---------------------
+---Bones--------
+----------------
+
+local b1sound = Location:new(world, -14.0, 81.0, -569.0);
+local b2sound = Location:new(world, -102.0, 67.0, -432.0);
+local b3sound = Location:new(world, 157.0, 136.0, -421.0);
+local b4sound = Location:new(world, 37.0, 82.0, -428.0);
+local b5sound = Location:new(world, 116.0, 86.0, -511.0);
+
+local b1 = Location:new(world, -81.0, 65.0, -503.0);
+local b2 = Location:new(world, -83.0, 65.0, -503.0);
+local b3 = Location:new(world, -85.0, 65.0, -503.0);
+local b4 = Location:new(world, -81.0, 65.0, -505.0);
+local b5 = Location:new(world, -83.0, 65.0, -505.0);
+
+
+local b1ChestPlayers = {};
+local b1ChestResetTimer = Timer:new("b1_reset_chest", 20 * 60 * 5);
+local b1ChestResetTimerRunning = false;
+local b1ChestOpen = Location:new(world, -61.0, 65.0, -513.0);
+
+local b2ChestPlayers = {};
+local b2ChestResetTimer = Timer:new("b2_reset_chest", 20 * 60 * 5);
+local b2ChestResetTimerRunning = false;
+local b2ChestOpen = Location:new(world, -61.0, 65.0, -513.0);
+
+local b3ChestPlayers = {};
+local b3ChestResetTimer = Timer:new("b3_reset_chest", 20 * 60 * 5);
+local b3ChestResetTimerRunning = false;
+local b3ChestOpen = Location:new(world, -61.0, 65.0, -513.0);
+
+local b4ChestPlayers = {};
+local b4ChestResetTimer = Timer:new("b4_reset_chest", 20 * 60 * 5);
+local b4ChestResetTimerRunning = false;
+local b4ChestOpen = Location:new(world, -61.0, 65.0, -513.0);
+
+local b5ChestPlayers = {};
+local b5ChestResetTimer = Timer:new("b5_reset_chest", 20 * 60 * 5);
+local b5ChestResetTimerRunning = false;
+local b5ChestOpen = Location:new(world, -61.0, 65.0, -513.0);
+
+function b1(data)
+        local player = Player:new(data.player);
+        if not b1ChestPlayers[player.name] then
+                b1:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7You trip over some old bones.");
+                b1sound:playSound('SKELETON_HURT', 1, 0.1);
+                b1ChestPlayers[player.name] = true;
+
+                if not b1ChestResetTimerRunning then
+                        b1IChestResetTimerRunning = true;
+                        b1ChestResetTimer:start();
+                end
+        end
+end
+
+function b1_reset_chest()
+	b1ChestPlayers = {};
+	b1ChestResetTimerRunning = false;
+end
+
+function b2(data)
+        local player = Player:new(data.player);
+        if not b2ChestPlayers[player.name] then
+                b2:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7You trip over some old bones.");
+                b2sound:playSound('SKELETON_HURT', 1, 0.1);
+                b2ChestPlayers[player.name] = true;
+
+                if not b2ChestResetTimerRunning then
+                        b2IChestResetTimerRunning = true;
+                        b2ChestResetTimer:start();
+                end
+        end
+end
+
+function b2_reset_chest()
+	b2ChestPlayers = {};
+	b2ChestResetTimerRunning = false;
+end
+
+function b3(data)
+        local player = Player:new(data.player);
+        if not b3ChestPlayers[player.name] then
+                b3:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7You trip over some old bones.");
+                b3sound:playSound('SKELETON_HURT', 1, 0.1);
+                b3ChestPlayers[player.name] = true;
+
+                if not b3ChestResetTimerRunning then
+                        b3IChestResetTimerRunning = true;
+                        b3ChestResetTimer:start();
+                end
+        end
+end
+
+function b3_reset_chest()
+	b3ChestPlayers = {};
+	b3ChestResetTimerRunning = false;
+end
+
+function b4(data)
+        local player = Player:new(data.player);
+        if not b4ChestPlayers[player.name] then
+                b4:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7You trip over some old bones.");
+                b4sound:playSound('SKELETON_HURT', 1, 0.1);
+                b4ChestPlayers[player.name] = true;
+
+                if not b4ChestResetTimerRunning then
+                        b4IChestResetTimerRunning = true;
+                        b4ChestResetTimer:start();
+                end
+        end
+end
+
+function b4_reset_chest()
+	b4ChestPlayers = {};
+	b4ChestResetTimerRunning = false;
+end
+function b5(data)
+        local player = Player:new(data.player);
+        if not b5ChestPlayers[player.name] then
+                b5:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                player:sendMessage("&7You trip over some old bones.");
+                b5sound:playSound('SKELETON_HURT', 1, 0.1);
+                b5ChestPlayers[player.name] = true;
+
+                if not b5ChestResetTimerRunning then
+                        b5IChestResetTimerRunning = true;
+                        b5ChestResetTimer:start();
+                end
+        end
+end
+
+function b5_reset_chest()
+	b5ChestPlayers = {};
+	b5ChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "b1", "spawn2-h2023_b1");
+registerHook("REGION_ENTER", "b2", "spawn2-h2023_b2");
+registerHook("REGION_ENTER", "b3", "spawn2-h2023_b3");
+registerHook("REGION_ENTER", "b4", "spawn2-h2023_b4");
+registerHook("REGION_ENTER", "b5", "spawn2-h2023_b5");
