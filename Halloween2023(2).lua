@@ -644,16 +644,6 @@ end
 
 registerHook("REGION_ENTER", "v8", "spawn2-h2023_v8");
 
-function vtp(data)
-        local player = Player:new(data.player);
-        player:sendMessage("(&6Dexter&f) ah you finally made it. This is the end for you");
-	player:teleport(tproof)
-	EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 4);
-	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
-end
-
-registerHook("REGION_ENTER", "vtp", "spawn2-h2023_vtp");
-
 ---------------
 ---fight-------
 ---------------
@@ -661,6 +651,7 @@ registerHook("REGION_ENTER", "vtp", "spawn2-h2023_vtp");
 local gear = Location:new(world, 270.0, 155.0, -566.0);
 local gear2 = Location:new(world, 270.0, 155.0, -566.0);
 local roofE = Location:new(world, -78.0, 75.0, -494.0);
+local roofD = Location:new(world, 100.0, 85.0, -668.0);
 
 local RarenaPlayers = {};
 local RplayerCount = 0;
@@ -707,17 +698,30 @@ local rS11 = Location:new(world, 266.0, 141.0, -555.0);
 local rS12 = Location:new(world, 283.0, 141.0, -555.0);
 local rS13 = Location:new(world, 277.0, 140.0, -558.0);
 
-function r_enter(data)
+function vtp(data)
+        if RplayerCount < 1 then
         local player = Player:new(data.player);
+        player:sendMessage("(&6Dexter&f) ah you finally made it. This is the end for you");
+        player:teleport(tproof)
+        tproof:playSound('VILLAGER_HAGGLE', 3, 1.5);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 4);
+        EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
         gear:cloneChestToPlayer(player.name);
         RarenaPlayers[player.name] = true;
         RplayerCount = PplayerCount + 1;
+else
+local player = Player:new(data.player);
+          player:sendMessage("&cSomeone is already on the roof, try again once their done", player);
+          player:teleport(roofD);
+end
 end
 
-registerHook("REGION_ENTER", "r_enter", "spawn2-h2023_vtp");
+registerHook("REGION_ENTER", "vtp", "spawn2-h2023_vtp");
+
 
 
 function r_start_r1(data)
+	if RplayerCount < 1 then
         for playerName, value in pairs(ParenaPlayers) do
          local player = Player:new(data.player);
       if not pRoundRunning then
@@ -737,6 +741,9 @@ function r_start_r1(data)
 	RspawnMob(rs11, "BLAZE");
 	RspawnMob(rS12, "BLAZE");
 	RspawnMob(rS13, "VILLAGER");
+else
+         local player = Player:new(data.player);
+          player:sendMessage("&cSomeone is already on the roof, try again once their done", player);
 end
 end
 end
