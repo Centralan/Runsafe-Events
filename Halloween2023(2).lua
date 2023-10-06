@@ -646,10 +646,120 @@ registerHook("REGION_ENTER", "v8", "spawn2-h2023_v8");
 
 function vtp(data)
         local player = Player:new(data.player);
-        player:sendMessage("(&6Dester&f) ah you finally made it. This is the end for you");
+        player:sendMessage("(&6Dexter&f) ah you finally made it. This is the end for you");
 	player:teleport(tproof)
 	EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 4);
 	EventEngine.player.addPotionEffect(player.name, 'SLOW', 10, 4);
 end
 
 registerHook("REGION_ENTER", "vtp", "spawn2-h2023_vtp");
+
+---------------
+---fight-------
+---------------
+
+local gear = Location:new(world, 270.0, 155.0, -566.0);
+local gear2 = Location:new(world, 270.0, 155.0, -566.0);
+local roofE = Location:new(world, -78.0, 75.0, -494.0);
+
+local RarenaPlayers = {};
+local RplayerCount = 0;
+
+local entityList = {};
+
+local function RspawnMob(position, mobType)
+        local entity = Entity:new(position);
+        entity:spawn(mobType);
+        table.insert(entityList, entity);
+end
+
+local function purgeEntityListR()
+        for index, value in pairs(entityList) do
+                entityList[index] = nil;
+        end
+end
+
+function check_alive_statsR()
+        for key, value in pairs(entityList) do
+                if value:isAlive() then
+                        return false;
+                end
+        end
+
+        return true;
+end
+
+local RRoundRunning = false;
+local RLRoundRunning = false;
+local RR1 = Timer:new("r_end_r1", 1);
+
+local rS1 = Location:new(world, 265.0, 134.0, -555.0);
+local rS2 = Location:new(world, 286.0, 134.0, -555.0);
+local rS3 = Location:new(world, 275.0, 134.0, -559.0);
+local rS4 = Location:new(world, 279.0, 134.0, -461.0);
+local rS5 = Location:new(world, 275.0, 134.0, -570.0);
+local rS6 = Location:new(world, 280.0, 134.0, -570.0);
+local rS7 = Location:new(world, 294.0, 134.0, -573.0);
+local rS8 = Location:new(world, 305.0, 134.0, -573.0);
+local rS9 = Location:new(world, 260.0, 134.0, -573.0);
+local rS10 = Location:new(world, 246.0, 134.0, -573.0);
+local rS11 = Location:new(world, 266.0, 141.0, -555.0);
+local rS12 = Location:new(world, 283.0, 141.0, -555.0);
+local rS13 = Location:new(world, 277.0, 140.0, -558.0);
+
+function r_enter(data)
+        local player = Player:new(data.player);
+        gear:cloneChestToPlayer(player.name);
+        RarenaPlayers[player.name] = true;
+        RplayerCount = PplayerCount + 1;
+end
+
+registerHook("REGION_ENTER", "r_enter", "spawn2-h2023_vtp");
+
+
+function r_start_r1(data)
+        for playerName, value in pairs(ParenaPlayers) do
+         local player = Player:new(data.player);
+      if not pRoundRunning then
+         pRoundRunning = true;
+         pR1:startRepeating()
+        player:sendMessage("&7 Lets end this.");
+        RspawnMob(rS1, "WITCH");
+        RspawnMob(rS7, "WITCH");
+        RspawnMob(rS2, "SLIME");
+        RspawnMob(rS4, "SLIME");
+        RspawnMob(rS5, "ZOMBIE");
+        RspawnMob(rS3, "ZOMBIE");
+        RspawnMob(rS6, "SLIME");
+        RspawnMob(rS8, "SLIME");
+	RspawnMob(rS9, "ZOMBIE");
+	RspawnMob(rS10, "ZOMBIE");
+	RspawnMob(rs11, "BLAZE");
+	RspawnMob(rS12, "BLAZE");
+	RspawnMob(rS13, "VILLAGER");
+end
+end
+end
+
+function r_end_r1()
+        if check_alive_statsR() then
+           rR1:cancel()
+           rRoundRunning = false;
+for playerName, value in pairs(RarenaPlayers) do
+local player = Player:new(playerName);
+           player:teleport(roofE);
+         player:sendMessage("&7Dexter and his army has fallen for now...");
+           pumpR:cloneChestToPlayer(player.name);
+	   player:sendEvent("achievement.masterspook");
+        end
+        end
+end
+
+registerHook("REGION_ENTER", "r_start_r1", "spawn2-h2023_roof");
+
+function roof_exit(data)
+        local player = Player:new(data.player);
+          RarenaPlayers[player.name] = nil;
+          RplayerCount = RplayerCount - 1;
+end
+registerHook("REGION_LEAVE", "roof_exit", "spawn2-h2023_roof");
