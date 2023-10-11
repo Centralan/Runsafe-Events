@@ -16,6 +16,7 @@ tunnelrespawn:setYaw(-179.55);
 tunnelrespawn:setPitch(5.55);
 
 --sounds
+local pe = Location:new(world, 1.2, 215.0, -22.0);
 local p4 = Location:new(world, 1.5, 167.0, -538.0);
 local p5 = Location:new(world, 1.0, 167.0, -673.0);
 
@@ -82,7 +83,7 @@ registerHook("REGION_ENTER", "tunnel_tp_enter", "survival3-tunnel_e");
 function tunnel_e_message(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4&n Yo&ku&r&4&nr &kf&r&4&nate i&ks&r&4&n se&kal&r&4&ned, yo&ku&r&4&n can n&ke&r&4&nver &kes&r&4&ncape");
-
+        pe:playSound('ENDERMAN_IDLE', 1, 0.5);
 end
 
 registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
