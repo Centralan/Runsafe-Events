@@ -182,7 +182,7 @@ function maze_6(data)
 
 end
 
-
+--Bad Warps
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze1");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze2");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze3");
@@ -195,7 +195,11 @@ registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze11");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze13");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze14");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze15");
+registerHook("REGION_ENTER", "maze_5", "tunnel2-maze18");
+registerHook("REGION_ENTER", "maze_5", "tunnel2-maze19");
+registerHook("REGION_ENTER", "maze_5", "tunnel2-maze20");
 
+--Good Warps
 registerHook("REGION_ENTER", "maze_2", "tunnel2-maze4");
 registerHook("REGION_ENTER", "maze_3", "tunnel2-maze8");
 registerHook("REGION_ENTER", "maze_4", "tunnel2-maze12");
