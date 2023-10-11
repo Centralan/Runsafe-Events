@@ -125,16 +125,26 @@ maze1:setYaw(89.4);
 maze1:setPitch(6.2);
 
 local maze2 = Location:new(world, -7.592, 165.0, -152.355);
-maze1:setYaw(91.1);
-maze1:setPitch(9.5);
+maze2:setYaw(91.1);
+maze2:setPitch(9.5);
 
 local maze3 = Location:new(world, -7.592, 162.0, -152.355);
-maze1:setYaw(91.1);
-maze1:setPitch(9.5);
+maze3:setYaw(91.1);
+maze3:setPitch(9.5);
 
 local maze4 = Location:new(world, -7.592, 159.0, -152.355);
-maze1:setYaw(91.1);
-maze1:setPitch(9.5);
+maze4:setYaw(91.1);
+maze4:setPitch(9.5);
+
+
+local maze5 = Location:new(world, -7.592, 154.0, -152.355);
+maze5:setYaw(91.1);
+maze5:setPitch(9.5);
+
+local maze6 = Location:new(world, -21.700, 154.0, -159.300);
+maze6:setYaw(-179.1);
+maze6:setPitch(7.8);
+
 
 function maze_enter(data)
 	local p = Player:new(data["player"]);
@@ -160,6 +170,18 @@ function maze_4(data)
 
 end
 
+function maze_5(data)
+	local p = Player:new(data["player"]);
+	p:teleport(maze5);
+
+end
+
+function maze_6(data)
+	local p = Player:new(data["player"]);
+	p:teleport(maze6);
+
+end
+
 
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze1");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze2");
@@ -177,6 +199,9 @@ registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze15");
 registerHook("REGION_ENTER", "maze_2", "tunnel2-maze4");
 registerHook("REGION_ENTER", "maze_3", "tunnel2-maze8");
 registerHook("REGION_ENTER", "maze_4", "tunnel2-maze12");
+registerHook("REGION_ENTER", "maze_5", "tunnel2-maze16");
+registerHook("REGION_ENTER", "maze_6", "tunnel2-maze17");
+
 
 ------------------
 --End----------
