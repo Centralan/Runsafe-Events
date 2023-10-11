@@ -15,8 +15,6 @@ local tunnelrespawn = Location:new(world, 1.0, 168.0, -22.0);
 local endloot = Location:new(world2, -1581.0, 44.0, -365.0);
 
 --misc
-local tunnelPlayers = {};
-local tplayerCount = 0;
 
 ----------------
 --ai------------
@@ -43,14 +41,12 @@ end
 ------------------
 
 function respawn_tunnel(data)
-         for playerName, value in pairs(tunnelPlayers) do
              local player = Player:new(data.player);
              player:setHealth(20);
              player:teleport(tunnelrespawn);
 
       end
    end
-end
 
 registerHook("PLAYER_DEATH", "respawn_tunnel", "tunnel2");
 
@@ -62,11 +58,9 @@ registerHook("PLAYER_DEATH", "respawn_tunnel", "tunnel2");
 function tunnel_start(data)
 	local p = Player:new(data["player"]);
 	p:removePotionEffects();
-	tunnelPlayers[player.name] = true;
-        tplayerCount = tplayerCount + 1;
 end
 
-registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_1");
+registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
 
 ------------------
 --Part1----------
