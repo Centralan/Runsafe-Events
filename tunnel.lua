@@ -16,6 +16,8 @@ tunnelrespawn:setYaw(-179.55);
 tunnelrespawn:setPitch(5.55);
 
 --sounds
+local p4 = Location:new(world, 1.5, 167.0, -538.0);
+local p5 = Location:new(world, 1.0, 167.0, -673.0);
 
 --chests
 local endloot = Location:new(world2, -1581.0, 44.0, -365.0);
@@ -107,10 +109,11 @@ registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
 function tunnel3_message2(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fYou should not be here... you cannot be me...");
+        p4:playSound('HORSE_SKELETON_HIT', 1, 0.5);
 
 end
 
-registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-tunnel3_message2");
+registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-t3_message2");
 
 ------------------
 --Maze----------
@@ -123,10 +126,10 @@ registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-tunnel3_message2");
 function tunnel3_message3(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
-
+        p5:playSound('ZOMBIE_PIG_DEATH', 1, 0.5);
 end
 
-registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-tunnel3_message3");
+registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-t3_message3");
 
 function tunnel3_endloot(data)
         local player = Player:new(data.player);
