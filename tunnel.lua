@@ -66,6 +66,8 @@ function tunnel_start(data)
         tplayerCount = tplayerCount + 1;
 end
 
+registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_1");
+
 ------------------
 --Part1----------
 ------------------
