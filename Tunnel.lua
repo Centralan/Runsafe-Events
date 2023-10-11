@@ -120,6 +120,18 @@ registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-t3_message2");
 --Maze----------
 ------------------
 
+local maze1 = Location:new(world, -4.311, 168.0, -152.448);
+maze1:setYaw(88.0);
+maze1:setPitch(6.0);
+
+function maze_enter(data)
+	local p = Player:new(data["player"]);
+	p:teleport(maze1);
+
+end
+
+registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze1");
+
 ------------------
 --End----------
 ------------------
