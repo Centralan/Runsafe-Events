@@ -8,6 +8,12 @@ local world2 = World:new('spawn2');
 
 --tps
 local tunnelrespawn = Location:new(world, 1.0, 168.0, -22.0);
+tunnelrespawn:setYaw(-179.55);
+tunnelrespawn:setPitch(5.55);
+
+local tunnelenter = Location:new(world, 1.0, 240.0, -22.0);
+tunnelrespawn:setYaw(-179.55);
+tunnelrespawn:setPitch(5.55);
 
 --sounds
 
@@ -44,6 +50,7 @@ function respawn_tunnel(data)
              local player = Player:new(data.player);
              player:setHealth(20);
              player:teleport(tunnelrespawn);
+	     player:sendMessage("&7You feel a little more crazy...");
 
       end
    end
@@ -61,6 +68,25 @@ function tunnel_start(data)
 end
 
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
+
+function tunnel_tp_enter(data)
+	local p = Player:new(data["player"]);
+	player:teleport(tunnelenter);
+
+end
+
+registerHook("REGION_ENTER", "tunnel_tp_enter", "survival3-tunnel_e");
+
+function tunnel_e_message(data)
+	local p = Player:new(data["player"]);
+	p:sendMessage("&4&n Yo&ku&r&4&nr &kf&r&4&nate i&ks&r&4&n se&kal&r&4&ned, yo&ku&r&4&n can n&ke&r&4&nver &kes&r&4&ncape");
+
+end
+
+registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
+
+
+
 
 ------------------
 --Part1----------
