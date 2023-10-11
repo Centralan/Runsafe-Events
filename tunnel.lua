@@ -104,6 +104,14 @@ registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
 --Part4----------
 ------------------
 
+function tunnel3_message2(data)
+	local p = Player:new(data["player"]);
+	p:sendMessage("&4(???)&fYou should not be here... you cannot be me...");
+
+end
+
+registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-tunnel3_message2");
+
 ------------------
 --Maze----------
 ------------------
@@ -111,6 +119,14 @@ registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
 ------------------
 --End----------
 ------------------
+
+function tunnel3_message3(data)
+	local p = Player:new(data["player"]);
+	p:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
+
+end
+
+registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-tunnel3_message3");
 
 function tunnel3_endloot(data)
         local player = Player:new(data.player);
