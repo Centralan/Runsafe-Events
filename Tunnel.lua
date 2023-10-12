@@ -103,6 +103,48 @@ registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
 --Part3----------
 ------------------
 
+function plate_1(data)
+        local p = Player:new(data["player"]);
+        p :setHealth(0);
+end
+
+function plate_2(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+function plate_3(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
+end
+
+function plate_4(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'WITHER', 10, 10);
+end
+
+function plate_5(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'SLOW', 1, 10);
+end
+
+function plate_6(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 100, 10);
+end
+
+registerHook("INTERACT", "plate_1", 70, "tunnel2", -1.0, 168.0, -137.0);
+registerHook("INTERACT", "plate_2", 70, "tunnel2", 2.0, 168.0, -136.0);
+registerHook("INTERACT", "plate_3", 70, "tunnel2", 3.0, 168.0, -134.0);
+registerHook("INTERACT", "plate_4", 70, "tunnel2", -1.0, 168.0, -134.0);
+registerHook("INTERACT", "plate_6", 70, "tunnel2", 1.0, 168.0, -135.0);
+registerHook("INTERACT", "tunnel_tp_enter", 70, "tunnel2", 3.0, 168.0, -141.0);
+registerHook("INTERACT", "plate_3", 70, "tunnel2", 0.0, 168.0, -141.0);
+registerHook("INTERACT", "plate_5", 70, "tunnel2", 0.0, 168.0, -139.0);
+registerHook("INTERACT", "plate_4", 70, "tunnel2", 1.0, 168.0, -139.0);
+
+  
+
 ------------------
 --Part4----------
 ------------------
