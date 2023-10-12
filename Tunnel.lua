@@ -142,9 +142,8 @@ registerHook("INTERACT", "tunnel_tp_enter", 70, "tunnel2", 3.0, 168.0, -141.0);
 registerHook("INTERACT", "plate_3", 70, "tunnel2", 0.0, 168.0, -141.0);
 registerHook("INTERACT", "plate_5", 70, "tunnel2", 0.0, 168.0, -139.0);
 registerHook("INTERACT", "plate_4", 70, "tunnel2", 1.0, 168.0, -139.0);
-
+registerHook("INTERACT", "plate_6", 70, "tunnel2", 3.0, 168.0, -136.0);
   
-
 ------------------
 --Part4----------
 ------------------
