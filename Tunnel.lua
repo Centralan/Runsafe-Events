@@ -83,6 +83,7 @@ registerHook("REGION_ENTER", "tunnel_tp_enter", "survival3-tunnel_e");
 function tunnel_e_message(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4&n Yo&ku&r&4&nr &kf&r&4&nate i&ks&r&4&n se&kal&r&4&ned, yo&ku&r&4&n can n&ke&r&4&nver &kes&r&4&ncape");
+        p:sendEvent("achievement.wrongofpassage");
         pe:playSound('ENDERMAN_IDLE', 1, 0.5);
 end
 
@@ -223,6 +224,12 @@ function maze_6(data)
 
 end
 
+function maze_cheeve(data)
+	local p = Player:new(data["player"]);
+	p:sendEvent("achievement.wrongturn");
+
+end
+
 --Bad Warps
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze1");
 registerHook("REGION_ENTER", "maze_enter", "tunnel2-maze2");
@@ -247,6 +254,9 @@ registerHook("REGION_ENTER", "maze_4", "tunnel2-maze12");
 registerHook("REGION_ENTER", "maze_5", "tunnel2-maze16");
 registerHook("REGION_ENTER", "maze_6", "tunnel2-maze17");
 
+--Cheeve
+registerHook("REGION_ENTER", "maze_cheeve", "tunnel2-maze_cheeve");
+
 
 ------------------
 --End----------
@@ -255,6 +265,7 @@ registerHook("REGION_ENTER", "maze_6", "tunnel2-maze17");
 function tunnel3_message3(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
+        p:sendEvent("achievement.legacyofpain");
         p5:playSound('ZOMBIE_PIG_DEATH', 1, 0.5);
 end
 
