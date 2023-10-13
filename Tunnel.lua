@@ -12,13 +12,32 @@ tunnelrespawn:setYaw(-179.55);
 tunnelrespawn:setPitch(5.55);
 
 local tunnelenter = Location:new(world, 1.0, 240.0, -22.0);
-tunnelrespawn:setYaw(-179.55);
-tunnelrespawn:setPitch(5.55);
+tunnelenter:setYaw(-179.55);
+tunnelenter:setPitch(5.55);
+
+local tunnelreset1 = Location:new(world, 1.407, 168.0, -289.634);
+tunnelreset1:setYaw(179.4);
+tunnelreset1:setPitch(3.8);
+
+local tunnelreset2 = Location:new(world, -06.99, 168.0, -303.667);
+tunne2reset1:setYaw(179.4);
+tunne2reset1:setPitch(9.2);
 
 --sounds
 local pe = Location:new(world, 1.2, 215.0, -22.0);
 local p4 = Location:new(world, 1.5, 167.0, -538.0);
 local p5 = Location:new(world, 1.0, 167.0, -673.0);
+local p6 = Location:new(world, 1.3, 168.0, -295.0);
+local p7 = Location:new(world, 1.3, 168.0, -267.0);
+local p8 = Location:new(world, 1.3, 168.0, -224.0);
+local p9 = Location:new(world, -0.7, 168.0, -223.0);
+local p9 = Location:new(world, -0.7, 168.0, -266.0);
+local p10 = Location:new(world, -0.7, 168.0, -310.0);
+local p11 = Location:new(world, 3.6, 168.0, -234.0);
+local p12 = Location:new(world, 3.6, 168.0, -310.0);
+local p12 = Location:new(world, 3.6, 168.0, -367.0);
+
+
 
 --chests
 local endloot = Location:new(world2, -1581.0, 44.0, -365.0);
@@ -158,6 +177,42 @@ end
 
 registerHook("REGION_LEAVE", "tunnel3_message2", "tunnel2-t3_message2");
 
+function tunnel_reset1(data)
+	local player = Player:new(data["player"]);
+	player:teleport(tunnelreset1);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+        EventEngine.player.addPotionEffect(player.name, 'SLOW', 1, 1);
+        p6:playSound('AMBIENCE_CAVE', 1, 0.5);
+
+end
+
+function tunnel_reset2(data)
+	local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+        EventEngine.player.addPotionEffect(player.name, 'SLOW', 1, 1);
+        p7:playSound('AMBIENCE_CAVE', 1, 0.5);
+
+end
+
+
+
+function tunnel_reset3(data)
+	local player = Player:new(data["player"]);
+	player:teleport(tunnelreset2);
+        EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 2);
+        EventEngine.player.addPotionEffect(player.name, 'SLOW', 1, 1);
+        p10:playSound('AMBIENCE_CAVE', 1, 0.5);
+
+end
+
+registerHook("REGION_ENTER", "tunnel_reset1", "tunnel2-t3_reset1");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset2");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset3");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset4");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset5");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset8");
+registerHook("REGION_ENTER", "tunnel_reset2", "tunnel2-t3_reset9");
+registerHook("REGION_ENTER", "tunnel_reset3", "tunnel2-t3_reset6");
 ------------------
 --Maze----------
 ------------------
