@@ -43,7 +43,7 @@ local p12 = Location:new(world, 3.6, 168.0, -367.0);
 local endloot = Location:new(world2, -1581.0, 44.0, -365.0);
 
 --misc
-local TunnelTimer = false;
+local Tunneltimer = false;
 
 ----------------
 --ai------------
@@ -105,7 +105,6 @@ function tunnel_e_message(data)
 	p:sendMessage("&4&n Yo&ku&r&4&nr &kf&r&4&nate i&ks&r&4&n se&kal&r&4&ned, yo&ku&r&4&n can n&ke&r&4&nver &kes&r&4&ncape");
         p:sendEvent("achievement.wrongofpassage");
         pe:playSound('ENDERMAN_IDLE', 1, 0.5);
-        Tunneltimer = true;
 end
 
 registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
@@ -319,17 +318,47 @@ registerHook("REGION_ENTER", "maze_cheeve", "tunnel2-maze_cheeve");
 --End----------
 ------------------
 
-local sign = Location:new(world, 5.0, 170.0, -679.0);
+local sign = Location:new(world, -2.0, 170.0, -678.0);
+local book = Location:new(world, 3.0, 163.0, -681.0);
+
+local bookChestPlayers = {};
+local bookChestResetTimer = Timer:new("book_reset_chest", 200 * 600 * 50);
+local bookChestResetTimerRunning = false;
+local bookChestOpen = Location:new(world, 3.0, 163.0, -681.0);
+
+function book_reset_chest()
+	 bookChestPlayers = {};
+	 bookChestResetTimerRunning = false;
+end
 
 function tunnel3_message3(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
         p:sendEvent("achievement.legacyofpain");
         p5:playSound('ZOMBIE_PIG_DEATH', 1, 0.5);
-        sign:setSign('Tunnel Survivor:', player.name, 'Time', TunnelTime);
+        sign:setSign('Recent Survivor:', p.name, 'Time:', 'n/a');
 end
 
 registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-t3_message3");
+
+function book_1(data)
+        local player = Player:new(data.player);
+        if not  bookChestPlayers[player.name] then
+                book:cloneChestToPlayer(player.name);
+                player:closeInventory();
+                bookChestPlayers[player.name] = true;
+		player:sendMessage("&f Sign the book and leave it in the hopper to get your name on the wall.");
+	        player:sendMessage("&f You'll get your rewards once you leave the tunnel.");
+
+                if not bookChestResetTimerRunning then
+                        bookChestResetTimerRunning = true;
+                        bookChestResetTimer:start();
+                end
+        end
+end
+
+registerHook("INTERACT", "book_1", 77, "tunnel2", -2.0, 169.0, -677.0);
+registerHook("INTERACT", "book_1", 77, "tunnel2", -2.0, 169.0, -679.0);
 
 function tunnel3_endloot(data)
         local player = Player:new(data.player);
