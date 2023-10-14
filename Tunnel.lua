@@ -332,4 +332,28 @@ function tunnel3_endloot(data)
               player:closeInventory();
   
 registerHook("REGION_LEAVE", "tunnel3_endloot", "tunnel-tunnel3_test");
+
+function cheeve1(data)
+	local p = Player:new(data["player"]);
+        p:sendEvent("achievement.wrongofpassage");
+	p:sendMessage("&7Wrong Of Passage Cheeve Granted - Debug");
+end
+
+function cheeve2(data)
+	local p = Player:new(data["player"]);
+        p:sendEvent("achievement.wrongturn");
+	p:sendMessage("&7Wrong Turn Cheeve Granted - Debug");
+end
+
+function cheeve3(data)
+	local p = Player:new(data["player"]);
+         p:sendEvent("achievement.legacyofpain");
+         p:sendMessage("&7Legacy of Pain Cheeve Granted - Debug");
+end
+
+
+
+registerHook("INTERACT", "cheeve1", 143, "tunnel2", 4.0, 175.0, 2.0);
+registerHook("INTERACT", "cheeve2", 143, "tunnel2", 4.0, 175.0, 4.0);
+registerHook("INTERACT", "cheeve3", 143, "tunnel2", 4.0, 175.0, 6.0);
   
