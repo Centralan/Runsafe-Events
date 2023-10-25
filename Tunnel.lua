@@ -104,7 +104,7 @@ function tunnel_e_message(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4&n Yo&ku&r&4&nr &kf&r&4&nate i&ks&r&4&n se&kal&r&4&ned, yo&ku&r&4&n can n&ke&r&4&nver &kes&r&4&ncape");
         p:sendEvent("achievement.wrongofpassage");
-        pe:playSound('ENDERMAN_IDLE', 1, 0.5);
+        pe:playSound('ENTITY_ENDERMEN_AMBIENT', 1, 0.5);
 end
 
 registerHook("REGION_ENTER", "tunnel_e_message", "tunnel2-tunnel3_e_message");
@@ -172,7 +172,7 @@ registerHook("INTERACT", "plate_6", 70, "tunnel2", 3.0, 168.0, -136.0);
 function tunnel3_message2(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fYou should not be here... you cannot be me...");
-        p4:playSound('HORSE_SKELETON_HIT', 1, 0.5);
+        p4:playSound('ENTITY_SKELETON_HORSE_HURT', 1, 0.5);
 
 end
 
@@ -335,7 +335,7 @@ function tunnel3_message3(data)
 	local p = Player:new(data["player"]);
 	p:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
         p:sendEvent("achievement.legacyofpain");
-        p5:playSound('ZOMBIE_PIG_DEATH', 1, 0.5);
+        p5:playSound('ENTITY_ZOMBIE_PIG_DEATH', 1, 0.5);
         sign:setSign('Recent Survivor:', p.name, 'Time:', 'n/a');
 end
 
