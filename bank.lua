@@ -108,6 +108,4 @@ function bank1_button6() bank1_shiftButtons(6); end
 function bank1_button7() bank1_shiftButtons(7); end
 function bank1_button8() bank1_shiftButtons(8); end
 function bank1_button9() bank1_shiftButtons(9); end
-908);
-bank1_gateTriggerBlock:setBlock(0, 0); -- Reset incase we got stuck at some point.
 
