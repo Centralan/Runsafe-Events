@@ -101,7 +101,7 @@ function bank1_closeGate()
 	bank1_setGate(101);
 end
 
-registerHook("REGION_ENTER", "bank1_closeGate", "survival3-bank_close1);
+registerHook("REGION_ENTER", "bank1_closeGate", "survival3"-bank_close1);
 
 function bank1_button1() bank1_shiftButtons(1); end
 function bank1_button2() bank1_shiftButtons(2); end
