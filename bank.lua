@@ -100,6 +100,7 @@ function bank1_closeGate()
 	bank1_gateTriggerBlock:setBlock(0, 0);
 	bank1_setGate(101);
 end
+
 registerHook("REGION_ENTER", "bank1_closeGate", "survival3-bank_close1);
 
 function bank1_button1() bank1_shiftButtons(1); end
@@ -115,8 +116,8 @@ function bank1_button9() bank1_shiftButtons(9); end
 local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Space'};
 local bank2_input = {};
 local bank2_answer = {'X', 'U', 'O', 'R', 'Space', 'A', 'L'};
-local bank2_strikeLocation = Location:new("spawn", 399, 62, -881);
-local bank2_complete_location = Location:new("spawn", 399, 55, -878);
+local bank2_strikeLocation = Location:new("survival3", 19479, 54, -20759);
+local bank2_complete_location = Location:new("survival3", 19482, 54, -20759);
 
 function bank2_shiftButtons(data, current)
 	if #bank2_input == 10 then
@@ -199,14 +200,10 @@ function bank2_buttonZ(data) bank2_shiftButtons(data, 'Z'); end
 function bank2_buttonSpace(data) bank2_shiftButtons(data, 'Space'); end
 
 for i = 1, #alphabet do
-	registerHook("INTERACT", "bank2_button" .. alphabet[i], 77, "spawn", 413 - i, 63, -879);
+	registerHook("INTERACT", "bank2_button" .. alphabet[i], 143, "survival3", 19481 - i, 56, -20759);
 end
 
-registerHook("INTERACT", "bank2_reset", 77, "spawn", 412, 63, -880);
-registerHook("INTERACT", "bank2_reset", 77, "spawn", 386, 63, -881);
-
-registerHook("REGION_ENTER", "bankEntry1", "spawn-bank1");
-registerHook("REGION_ENTER", "bankEntry2", "spawn-bank2");
+registerHook("INTERACT", "bank2_reset", 143, "survival3", 19481, 55, -20759);
 
 for index, location in ipairs(bank1_buttonSourceLocations) do
 	registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, location.z);
