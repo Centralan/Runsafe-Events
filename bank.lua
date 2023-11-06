@@ -67,41 +67,58 @@ function bank1_checkCombo()
 	if pressedButtons[1] == 5 and pressedButtons[2] == 8 and pressedButtons[3] == 3 and pressedButtons[4] == 1 then
 		pressedButtons = {};
 		bank1_openGate();
-		bankGuardian:speak("Input code correct. Level 1 clearance granted.");
+		bankGuardian:speak("Input code correct. Level 2 clearance granted.");
 		return true;
 	end
 	return false;
 end
 
-local bank1_gateTriggerBlock = Location:new("spawn", 396, 67, -908);
-bank1_gateTriggerBlock:setBlock(0, 0); -- Reset incase we got stuck at some point.
+local world = "survival3";
+local bankcurrent = 1;
+local bankmaxData = 1;
+local bankblocks = {
+        Location:new(world, 19469, 64, -20756),
+        Location:new(world, 19469, 64, -20757),
+        Location:new(world, 19469, 64, -20758),
+        Location:new(world, 19469, 63, -20756),
+        Location:new(world, 19469, 63, -20757),
+        Location:new(world, 19469, 63, -20758),
+        Location:new(world, 19469, 62, -20756),
+        Location:new(world, 19469, 62, -20757),
+        Location:new(world, 19469, 62, -20758),
 
-local bank1_gateBlocks = {};
-for x = 19469, 19469 do
-	for z = -20756, -20758 do
-		for y = 64, 62 do
-			table.insert(bank1_gateBlocks, Location:new("survival3", x, y, z));
-		end
-	end
+};
+
+function bank_gate(data)
+        if bankcurrent == bankmaxData then
+                bankcurrent = 1;
+        else
+                bankcurrent = bankcurrent + 1;
+        end
+        bank_setAir();
 end
 
-function bank1_setGate(blockID)
-	for i = 1, #bank1_gateBlocks do
-		bank1_gateBlocks[i]:setBlock(blockID, 0);
-	end
+function bank_setAir()
+        for index, key in ipairs(bankblocks) do
+                key:setBlock(0, bankcurrent);
+        end
 end
 
-function bank1_openGate()
-	bank1_gateTriggerBlock:setBlock(152, 0);
-	bank1_setGate(0);
+function bank_setbars()
+        for index, key in ipairs(bankblocks) do
+                key:setBlock(98, bankcurrent);
+        end
 end
 
-function bank1_closeGate()
-	bank1_gateTriggerBlock:setBlock(0, 0);
-	bank1_setGate(101);
+function bank1_troll()
+	    bankGuardian:speak("Input code correct. Level 2 clearance granted.");
+	    for index, key in ipairs(bankblocks) do
+                key:setBlock(0, bankcurrent);
+end
 end
 
-registerHook("REGION_ENTER", "bank1_closeGate", "survival3-bank_close1");
+registerHook("INTERACT", "bank1_troll", 77, "survival3", 19474, 66, -20757);
+registerHook("REGION_ENTER", "bank_setbars", "survival3-bank_close1");
 
 function bank1_button1() bank1_shiftButtons(1); end
 function bank1_button2() bank1_shiftButtons(2); end
@@ -116,8 +133,25 @@ function bank1_button9() bank1_shiftButtons(9); end
 local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Space'};
 local bank2_input = {};
 local bank2_answer = {'X', 'U', 'O', 'R', 'Space', 'A', 'L'};
-local bank2_strikeLocation = Location:new("survival3", 19479, 54, -20759);
+local bank2_strikeLocation1 = Location:new("survival3", 19479, 54, -20759);
+local bank2_strikeLocation2 = Location:new("survival3", 19482, 54, -20759);
 local bank2_complete_location = Location:new("survival3", 19482, 54, -20759);
+
+
+function bank2_troll()
+            bankGuardian:speak("Incorrect Input. Exterminating intruder. Input reset.");
+                        bank2_strikeLocation1:lightningStrike();
+                        bank2_strikeLocation2:lightningStrike();
+                        player:kill();
+end
+
+registerHook("INTERACT", "bank2_troll", 143, "survival3", 19481, 56, -20759);
+
+function bank3_troll()
+            bankGuardian:speak("Input reset.");
+end
+
+registerHook("INTERACT", "bank2_troll", 143, "survival3", 19481, 55, -20759);
 
 function bank2_shiftButtons(data, current)
 	if #bank2_input == 10 then
@@ -153,7 +187,7 @@ function bank2_checkInput(data)
 	local player = Player:new(data["player"]);
 	if bank2_checkInput_2() then
 		player:teleport(bank2_complete_location);
-		bankGuardian:speak("Correct input code entered. Access to level 2 granted.");
+		bankGuardian:speak("Correct input code entered. Access to level 3 granted.");
 		bank2_reset();
 	end
 end
@@ -208,3 +242,13 @@ registerHook("INTERACT", "bank2_reset", 143, "survival3", 19481, 55, -20759);
 for index, location in ipairs(bank1_buttonSourceLocations) do
 	registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, location.z);
 end
+
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20763);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20764);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20765);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20766);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20767);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20768);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20769);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20770);
+registerHook("INTERACT", "bank1_button" .. index, 143, "survival3", 19470, 63, -20771);
