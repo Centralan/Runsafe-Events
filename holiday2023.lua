@@ -11,7 +11,7 @@ function spawn_whisper(npc, msg, player)
 	p:sendMessage('&f&c' .. npc .. '&f' .. msg);
 end
 
-local sp = AI:new("SPENCER", "AI", "survival3");
+local xmas = AI:new("SPENCER", "ADMIN", "survival3");
 
 
 -------------------
