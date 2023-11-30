@@ -57,6 +57,12 @@ function find_trees(data)
 	end
 end
 
+function frame_reset_chest()
+	framechestChestPlayers = {};
+	framechestChestResetTimerRunning = false;
+end
+
+
 registerHook("REGION_ENTER", "find_trees", "survival3-hunt_1");
 
 
@@ -89,7 +95,7 @@ function beans_snow(data)
 	end
 end
 
-function beanschest_reset_chest()
+function beans_reset_chest()
 	beanschestChestPlayers = {};
 	beanschestChestResetTimerRunning = false;
 end
@@ -127,7 +133,7 @@ function space_crash(data)
 	end
 end
 
-function flowerchest_reset_chest()
+function flower_reset_chest()
 	flowerchestChestPlayers = {};
 	flowerchestChestResetTimerRunning = false;
 end
@@ -164,7 +170,7 @@ function cpu_core(data)
 	end
 end
 
-function beaconchest_reset_chest()
+function beacon_reset_chest()
 	beaconchestChestPlayers = {};
 	beaconchestChestResetTimerRunning = false;
 end
