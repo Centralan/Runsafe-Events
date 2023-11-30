@@ -24,6 +24,7 @@ local xmas = AI:new("DOG", "AI", "survival3");
 --runsafe.event.trees
 --runsafe.event.emerald
 --runsafe.event.flower
+--runsafe.event.beacon
 
 ---------------
 --Task 1 --
@@ -115,6 +116,7 @@ function space_crash(data)
 		xmas:speak( player.name .. " has completed the (classifed) objective.");
                 player:sendMessage('&7Seems whatever caused this metor to crash left a ... flower?');
 		player:sendMessage('&7The flower has a strange glow to it. I wonder where it came from?');
+		player:sendMessage('&9[?] &bSP&4E&bNCE&4R&f: &kbto wpt mt&f.');
                 player:addPermission("runsafe.event.flower");
 		flowerchestChestPlayers[player.name] = true; 
 		
@@ -131,4 +133,41 @@ function flowerchest_reset_chest()
 end
 
 registerHook("INTERACT", "space_crash", 77, "survival3", 37043, 33, -22481);
+
+---------------
+--Task 4 --
+---------------
+--warp hunt4
+--20758,-21037
+
+local beaconchest = Location:new(world, 20746.0, 85.0, -21014.0);
+local beaconchestChestPlayers = {};
+local beaconchestChestResetTimer = Timer:new("beacon_reset_chest", 200 * 600 * 50);
+local beaconchestChestResetTimerRunning = false;
+local beaconchestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+function cpu_core(data)
+	local player = Player:new(data.player);
+	if not beaconchestChestPlayers[player.name] then
+		beaconchest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7Who knew Runsafe ran on beacons.');
+		player:sendMessage('&9[?] &bS&4P&bENC&4ER&f: Hey &kthat &fbel&kon&fgs &kto m&fe.');
+                player:addPermission("runsafe.event.beacon");
+		beaconchestChestPlayers[player.name] = true; 
+		
+		if not beaconchestChestResetTimerRunning then
+			beaconchestChestResetTimerRunning = true;
+			beaconchestChestResetTimer:start();
+		end
+	end
+end
+
+function beaconchest_reset_chest()
+	beaconchestChestPlayers = {};
+	beaconchestChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "cpu_core", 146, "survival3", 20737, 70, -21070);
 
