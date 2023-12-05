@@ -3,6 +3,7 @@
 ---------------
 local world = World:new('survival3');
 local world2 = World:new('survival3_nether');
+local world3 = World:new('azuren');
 
 ---------------------------
 ----------messaging--------
@@ -14,6 +15,7 @@ end
 
 local xmas = AI:new("DOG", "AI", "survival3");
 local xmas2 = AI:new("DOG", "AI", "survival3_nether");
+local xmas3 = AI:new("DOG", "AI", "azuren");
 
 -------------------
 --Intro Book ------
@@ -47,7 +49,7 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 
 --runsafe.event.sky
 --runsafe.event.skally
-
+--runsafe.event.az
 ---------------
 --Portal --
 ---------------
@@ -63,6 +65,9 @@ function end_event(data)
            if player:hasPermission("runsafe.event.feather") then
            if player:hasPermission("runsafe.event.dog") then
 	   if player:hasPermission("runsafe.event.city") then
+	   if player:hasPermission("runsafe.event.sky") then
+	   if player:hasPermission("runsafe.event.skally") then
+	   if player:hasPermission("runsafe.event.az") then
 		player:teleport(event_tp_end);
 		event_tp_sound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
 		xmas:speak( player.name .. " has completed the Holiday 2023 Event.");
@@ -73,7 +78,10 @@ function end_event(data)
 		player:removePermission("runsafe.event.feather");
 		player:removePermission("runsafe.event.dog");
 		player:removePermission("runsafe.event.city");
-								
+		player:removePermission("runsafe.event.sky");
+		player:removePermission("runsafe.event.skally");
+		player:removePermission("runsafe.event.az");
+											
 		else
 								
 		player:sendMessage('&cYou are not yet worthy.');						
@@ -417,3 +425,38 @@ function skally_reset_chest()
 end
 
 registerHook("INTERACT", "skally_nether", 143, "survival3_nether", -21.0, 66.0, 211.0);
+
+---------------
+--Task 10 --
+---------------
+--warp hunt10(hunt10_1)
+
+local azchest = Location:new(world3, 10001.0, 63.0, 10003.0);
+local azchestChestPlayers = {};
+local azchestChestResetTimer = Timer:new("az_reset_chest", 200 * 600 * 50);
+local azchestChestResetTimerRunning = false;
+local azchestChestOpen = Location:new(world3, -64.0, 65.0, -515.0);
+
+function az_tower(data)
+	local player = Player:new(data.player);
+	if not azchestChestPlayers[player.name] then
+		azchest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas3:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7What even is the Azuren?');
+                player:addPermission("runsafe.event.az");
+		azchestChestPlayers[player.name] = true; 
+		
+		if not azchestChestResetTimerRunning then
+			azchestChestResetTimerRunning = true;
+			azchestChestResetTimer:start();
+		end
+	end
+end
+
+function az_reset_chest()
+	azchestChestPlayers = {};
+	azchestChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
