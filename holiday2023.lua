@@ -17,6 +17,21 @@ local xmas = AI:new("DOG", "AI", "survival3");
 -------------------
 --Intro Book ------
 -------------------
+local event_start_book = Location:new(world, 19536.0, 69.0, -20813.0);
+local event_start_sound = Location:new(world, 19536.0, 69.0, -20813.0);
+
+function event_start(data)
+        local player = Player:new(data.player);
+	  player:sendMessage('&cSoon');	
+	  event_start_sound:playSound('ENTITY_VILLAGER_NO', 1, 0.2);
+	  event_start_book:cloneChestToPlayer(player.name);
+	  player:closeInventory();
+	  player:sendMessage('&aLet the hunt begin.');
+	  event_start_sound:playSound('ENTITY_VEX_CHARGE', 1, 0.2);
+end
+	
+registerHook("INTERACT", "event_start", 143, "survival3", 19536, 70, -20810);
+registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 
 -------------------
 --Event Perms ------
@@ -33,7 +48,8 @@ local xmas = AI:new("DOG", "AI", "survival3");
 --Portal --
 ---------------
 local event_tp_end = Location:new(world, 19488.537, 19.0, -20834.0);
-
+local event_tp_sound = Location:new(world, 19488.0, 18.0, -20835.0);
+	
 function end_event(data)
           local player = Player:new(data.player);
 	   if player:hasPermission("runsafe.event.trees") then
@@ -44,6 +60,7 @@ function end_event(data)
            if player:hasPermission("runsafe.event.dog") then
 	   if player:hasPermission("runsafe.event.city") then
 		player:teleport(event_tp_end);
+		event_tp_sound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
 		xmas:speak( player.name .. " has completed the Holiday 2023 Event.");
                 player:removePermission("runsafe.event.trees");
 		player:removePermission("runsafe.event.emerald");
