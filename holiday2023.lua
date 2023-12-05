@@ -2,6 +2,7 @@
 --Worlds / sound--
 ---------------
 local world = World:new('survival3');
+local world2 = World:new('survival3_nether');
 
 ---------------------------
 ----------messaging--------
@@ -12,7 +13,7 @@ function spawn_whisper(npc, msg, player)
 end
 
 local xmas = AI:new("DOG", "AI", "survival3");
-
+local xmas2 = AI:new("DOG", "AI", "survival3_nether");
 
 -------------------
 --Intro Book ------
@@ -43,6 +44,9 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 --runsafe.event.feather
 --runsafe.event.dog
 --runsafe.event.city
+
+--runsafe.event.sky
+--runsafe.event.skally
 
 ---------------
 --Portal --
@@ -327,7 +331,7 @@ function pleco_city(data)
 		xmas:speak( player.name .. " has completed the (classifed) objective.");
                 player:sendMessage('&7Man this city is almost majestic looking, it might even be the best.');
                 player:addPermission("runsafe.event.city");
-		pleconchestChestPlayers[player.name] = true; 
+		plecochestChestPlayers[player.name] = true; 
 		
 		if not plecochestChestResetTimerRunning then
 			plecochestChestResetTimerRunning = true;
@@ -342,3 +346,74 @@ function pleco_reset_chest()
 end
 
 registerHook("INTERACT", "pleco_city", 143, "creative", -1167.0, 249.0, -1406.0);
+
+---------------
+--Task 8 --
+---------------
+--skylimit
+
+local skychest = Location:new(world, 19534.0, 69.0, -20762.0);
+local skychestChestPlayers = {};
+local skychestChestResetTimer = Timer:new("sky_reset_chest", 200 * 600 * 50);
+local skychestChestResetTimerRunning = false;
+local skychestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+function sky_limit(data)
+	local player = Player:new(data.player);
+	if not skychestChestPlayers[player.name] then
+		skychest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7Thats a long way down.');
+                player:addPermission("runsafe.event.sky");
+		skychestChestPlayers[player.name] = true; 
+		
+		if not skychestChestResetTimerRunning then
+			skychestChestResetTimerRunning = true;
+			skychestChestResetTimer:start();
+		end
+	end
+end
+
+function sky_reset_chest()
+	skychestChestPlayers = {};
+	skychestChestResetTimerRunning = false;
+end
+
+registerHook("REGION_ENTER", "sky_limit", "survival3-hunt8");
+
+---------------
+--Task 9 --
+---------------
+--warp hunt9(hunt9_1)
+--skally
+
+local skallychest = Location:new(world2, -21.0, 66.0, -209.0);
+local skallychestChestPlayers = {};
+local skallychestChestResetTimer = Timer:new("skally_reset_chest", 200 * 600 * 50);
+local skallychestChestResetTimerRunning = false;
+local skallychestChestOpen = Location:new(world2, -64.0, 65.0, -515.0);
+
+function skally_nether(data)
+	local player = Player:new(data.player);
+	if not skallychestChestPlayers[player.name] then
+		skallychest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas2:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7I wonder who Skalamander was?');
+                player:addPermission("runsafe.event.skally");
+		skallychestChestPlayers[player.name] = true; 
+		
+		if not skallyychestChestResetTimerRunning then
+			skallychestChestResetTimerRunning = true;
+			skallychestChestResetTimer:start();
+		end
+	end
+end
+
+function skally_reset_chest()
+	skallychestChestPlayers = {};
+	skallychestChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "skally_nether", 143, "survival3_nether", -21.0, 66.0, 211.0);
