@@ -27,6 +27,45 @@ local xmas = AI:new("DOG", "AI", "survival3");
 --runsafe.event.beacon
 --runsafe.event.feather
 --runsafe.event.dog
+--runsafe.event.city
+
+---------------
+--Portal --
+---------------
+local event_tp_end = Location:new(world, 19488.537, 19.0, -20834.0);
+
+function end_event(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.trees") then
+           if player:hasPermission("runsafe.event.emerald") then
+           if player:hasPermission("runsafe.event.flower") then
+           if player:hasPermission("runsafe.event.beacon") then
+           if player:hasPermission("runsafe.event.feather") then
+           if player:hasPermission("runsafe.event.dog") then
+	   if player:hasPermission("runsafe.event.city") then
+		player:teleport(event_tp_end);
+		xmas:speak( player.name .. " has completed the Holiday 2023 Event.");
+                player:removePermission("runsafe.event.trees");
+		player:removePermission("runsafe.event.emerald");
+		player:removePermission("runsafe.event.flower");
+		player:removePermission("runsafe.event.beacon");
+		player:removePermission("runsafe.event.feather");
+		player:removePermission("runsafe.event.dog");
+		player:removePermission("runsafe.event.city");
+								
+		else
+								
+		player:sendMessage('&cYou are not yet worthy.');						
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+registerHook("REGION_ENTER", "end_event", "survival3-hunt_tp");
 
 ---------------
 --Task 1 --
@@ -218,7 +257,7 @@ registerHook("INTERACT", "feather_reef", 143, "survival3", 19881.0, 65.0, -22489
 ---------------
 --Task 6 --
 ---------------
---warp hunt5
+--warp hunt6
 --spawn
 
 local dragonchest = Location:new(world, 19473.0, 70.0, -20817.0);
@@ -251,3 +290,38 @@ end
 
 registerHook("INTERACT", "dragon_spawn", 143, "survival3", 19473.0, 73.0, -20817.0);
 
+---------------
+--Task 7 --
+---------------
+--warp hunt7
+--pleco_city
+
+local plecochest = Location:new(world, 19478.0, 70.0, -20817.0);
+local plecochestChestPlayers = {};
+local plecochestChestResetTimer = Timer:new("pleco_reset_chest", 200 * 600 * 50);
+local plecochestChestResetTimerRunning = false;
+local plecochestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+function pleco_city(data)
+	local player = Player:new(data.player);
+	if not plecochestChestPlayers[player.name] then
+		plecochest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7Man this city is almost majestic looking, it might even be the best.');
+                player:addPermission("runsafe.event.city");
+		pleconchestChestPlayers[player.name] = true; 
+		
+		if not plecochestChestResetTimerRunning then
+			plecochestChestResetTimerRunning = true;
+			plecochestChestResetTimer:start();
+		end
+	end
+end
+
+function pleco_reset_chest()
+	plecochestChestPlayers = {};
+	plecochestChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "pleco_city", 143, "creative", -1167.0, 249.0, -1406.0);
