@@ -25,6 +25,8 @@ local xmas = AI:new("DOG", "AI", "survival3");
 --runsafe.event.emerald
 --runsafe.event.flower
 --runsafe.event.beacon
+--runsafe.event.feather
+--runsafe.event.dog
 
 ---------------
 --Task 1 --
@@ -176,4 +178,76 @@ function beacon_reset_chest()
 end
 
 registerHook("INTERACT", "cpu_core", 146, "survival3", 20737, 70, -21070);
+
+---------------
+--Task 5 --
+---------------
+--warp hunt5
+--19883, 22488
+
+local featherchest = Location:new(world, 19882.0, 62.0, -22489.0);
+local featherchestChestPlayers = {};
+local featherchestChestResetTimer = Timer:new("feather_reset_chest", 200 * 600 * 50);
+local featherchestChestResetTimerRunning = false;
+local featherchestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+function feather_reef(data)
+	local player = Player:new(data.player);
+	if not featherchestChestPlayers[player.name] then
+		featherchest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7I wonder what this feather was used for...');
+                player:addPermission("runsafe.event.feather");
+		featherchestChestPlayers[player.name] = true; 
+		
+		if not featherchestChestResetTimerRunning then
+			featherchestChestResetTimerRunning = true;
+			featherchestChestResetTimer:start();
+		end
+	end
+end
+
+function feather_reset_chest()
+	featherchestChestPlayers = {};
+	featherchestChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "feather_reef", 143, "survival3", 19881.0, 65.0, -22489);
+
+---------------
+--Task 6 --
+---------------
+--warp hunt5
+--spawn
+
+local dragonchest = Location:new(world, 19473.0, 70.0, -20817.0);
+local dragonchestChestPlayers = {};
+local dragonchestChestResetTimer = Timer:new("dragon_reset_chest", 200 * 600 * 50);
+local dragonchestChestResetTimerRunning = false;
+local dragonchestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
+
+function dragon_spawn(data)
+	local player = Player:new(data.player);
+	if not dragonchestChestPlayers[player.name] then
+		dragonchest:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		xmas:speak( player.name .. " has completed the (classifed) objective.");
+                player:sendMessage('&7Did DOG experience memory loss?');
+                player:addPermission("runsafe.event.dog");
+		dragonchestChestPlayers[player.name] = true; 
+		
+		if not dragonchestChestResetTimerRunning then
+			dragonchestChestResetTimerRunning = true;
+			dragonchestChestResetTimer:start();
+		end
+	end
+end
+
+function dragon_reset_chest()
+	dragonchestChestPlayers = {};
+	dragonchestChestResetTimerRunning = false;
+end
+
+registerHook("INTERACT", "dragon_spawn", 143, "survival3", 19473.0, 73.0, -20817.0);
 
