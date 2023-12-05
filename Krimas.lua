@@ -25,7 +25,7 @@ local event_start_sound = Location:new(world, 19536.0, 69.0, -20813.0);
 
 function event_start(data)
         local player = Player:new(data.player);
-	  player:sendMessage('&cSoon');	
+	  player:sendMessage('&cKrimasSoon');	
 	  event_start_sound:playSound('ENTITY_VILLAGER_NO', 1, 0.2);
 	  event_start_book:cloneChestToPlayer(player.name);
 	  player:closeInventory();
