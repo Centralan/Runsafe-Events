@@ -66,7 +66,8 @@ function event_start(data)
 	  event_start_sound:playSound('ENTITY_VILLAGER_NO', 1, 0.2);
 	  event_start_book:cloneChestToPlayer(player.name);
 	  player:closeInventory();
-	  player:sendMessage('&aLet the hunt begin.');
+	  player:sendMessage('&aLet the trials begin.');
+	  player:sendEvent("achievement.krimas");
 	  event_start_sound:playSound('ENTITY_VEX_CHARGE', 1, 0.2);
 end
 	
@@ -113,6 +114,7 @@ function end_event(data)
 		xmas4:speak( player.name .. " has crossed to the wonderland.");
 		player:sendMessage('&aYou have received a checkpoint! You can return here with /krimas until you comeplete this part of the event.');
 		player:addPermission("runsafe.warp.use.krimas");
+		player:sendEvent("achievement.trialsofkrimas");
                 player:removePermission("runsafe.event.trees");
 		player:removePermission("runsafe.event.emerald");
 		player:removePermission("runsafe.event.flower");
