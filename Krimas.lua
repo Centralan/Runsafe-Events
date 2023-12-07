@@ -4,6 +4,7 @@
 local world = World:new('survival3');
 local world2 = World:new('survival3_nether');
 local world3 = World:new('azuren');
+local world4 = World:new('project33');
 
 ---------------------------
 ----------messaging--------
@@ -46,15 +47,18 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 --runsafe.event.feather
 --runsafe.event.dog
 --runsafe.event.city
-
 --runsafe.event.sky
 --runsafe.event.skally
 --runsafe.event.az
+
 ---------------
 --Portal --
 ---------------
-local event_tp_end = Location:new(world, 19488.537, 19.0, -20834.0);
-local event_tp_sound = Location:new(world, 19488.0, 18.0, -20835.0);
+local event_tp_p33 = Location:new(world4, -1633.404, 65.0, -1340.674);
+event_tp_p33:setYaw(0.0);
+event_tp_p33:setPitch(2.9);
+
+local event_tp_sound = Location:new(world4, -1633.404, 65.0, -1340.674);
 	
 function end_event(data)
           local player = Player:new(data.player);
@@ -68,9 +72,11 @@ function end_event(data)
 	   if player:hasPermission("runsafe.event.sky") then
 	   if player:hasPermission("runsafe.event.skally") then
 	   if player:hasPermission("runsafe.event.az") then
-		player:teleport(event_tp_end);
+		player:teleport(event_tp_p33);
 		event_tp_sound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
-		xmas:speak( player.name .. " has completed the Holiday 2023 Event.");
+		xmas:speak( player.name .. " has gone to the wonderland.");
+		player:sendMessage('&aYou have received a checkpoint! You can return here with /krimas until you comeplete this part of the event.');
+		player:addPermission("runsafe.warp.use.krimas");
                 player:removePermission("runsafe.event.trees");
 		player:removePermission("runsafe.event.emerald");
 		player:removePermission("runsafe.event.flower");
