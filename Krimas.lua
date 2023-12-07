@@ -6,6 +6,41 @@ local world2 = World:new('survival3_nether');
 local world3 = World:new('azuren');
 local world4 = World:new('project33');
 
+-----------------------------------------
+------------Chat Commands--------------
+-----------------------------------------
+
+local function hasPrefix(subject, prefix)
+	return string.sub(subject, 1, string.len(prefix)) == prefix;
+end
+
+local function splitPlayerName(message, len)
+	return string.sub(message, len, string.len(message));
+end
+
+function krimas_perms(data)
+	if data.player == "Centralan" or data.player == "Zozael" or data.player == "RainbowDeborah" then
+		local player = Player:new(data.player);
+		local message = data.message;
+		if hasPrefix(message, "#kperms") then
+			local playerName = splitPlayerName(message, 16);
+			   player:addPermission("runsafe.event.trees");
+			   player:addPermission("runsafe.event.emerald");
+			   player:addPermission("runsafe.event.flower");
+			   player:addPermission("runsafe.event.beacon");
+			   player:addPermission("runsafe.event.feather");
+			   player:addPermission("runsafe.event.dog");
+			   player:addPermission("runsafe.event.city");
+			   player:addPermission("runsafe.event.sky");
+			   player:addPermission("runsafe.event.skally");
+			   player:addPermission("runsafe.event.az");
+			   player:sendMessage("&5Server: &6Event Perms granted x10");
+			end
+		end
+	end
+
+registerHook("CHAT_MESSAGE", "krimas_perms", "survival3");
+
 ---------------------------
 ----------messaging--------
 ---------------------------
@@ -17,6 +52,7 @@ end
 local xmas = AI:new("DOG", "AI", "survival3");
 local xmas2 = AI:new("DOG", "AI", "survival3_nether");
 local xmas3 = AI:new("DOG", "AI", "azuren");
+local xmas4 = AI:new("DOG", "AI", "project33");
 
 -------------------
 --Intro Book ------
@@ -74,7 +110,7 @@ function end_event(data)
 	   if player:hasPermission("runsafe.event.az") then
 		player:teleport(event_tp_p33);
 		event_tp_sound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
-		xmas:speak( player.name .. " has gone to the wonderland.");
+		xmas4:speak( player.name .. " has crossed to the wonderland.");
 		player:sendMessage('&aYou have received a checkpoint! You can return here with /krimas until you comeplete this part of the event.');
 		player:addPermission("runsafe.warp.use.krimas");
                 player:removePermission("runsafe.event.trees");
