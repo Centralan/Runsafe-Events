@@ -504,3 +504,568 @@ function az_reset_chest()
 end
 
 registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
+
+
+---------------
+--Gift Handling--
+---------------
+			
+local gift1 = Location:new(world4, -1625, 64, -1192);
+local gift1s = Location:new(world4, -1633.0, 65.0, -1336.0);
+local gift1ChestPlayers = {};
+local gift1ChestResetTimer = Timer:new("gift1_reset_chest", 20 * 60 * 5);
+local gift1ChestResetTimerRunning = false;
+local gift1ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift1_chest(data)
+	local player = Player:new(data.player);
+	if not gift1ChestPlayers[player.name] then
+		gift1:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift1s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift1");
+		gift1ChestPlayers[player.name] = true; 
+		
+		if not gift1ChestResetTimerRunning then
+			gift1ChestResetTimerRunning = true;
+			gift1ChestResetTimer:start();
+		end
+	end
+end
+
+function gift1_reset_chest()
+	gift1ChestPlayers = {};
+	gift1ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift1_chest", 397, "project33", -1633.0, 65.0, -1336.0);
+
+local gift2 = Location:new(world4, -1625, 64, -1190);
+local gift2s = Location:new(world4, -1594.0, 66.0, -1288.0);
+local gift2ChestPlayers = {};
+local gift2ChestResetTimer = Timer:new("gift2_reset_chest", 20 * 60 * 5);
+local gift2ChestResetTimerRunning = false;
+local gift2ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift2_chest(data)
+	local player = Player:new(data.player);
+	if not gift2ChestPlayers[player.name] then
+		gift2:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift2s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift2");
+		gift2ChestPlayers[player.name] = true; 
+		
+		if not gift2ChestResetTimerRunning then
+			gift2ChestResetTimerRunning = true;
+			gift2ChestResetTimer:start();
+		end
+	end
+end
+
+function gift2_reset_chest()
+	gift2ChestPlayers = {};
+	gift2ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift2_chest", 397, "project33", -1594.0, 66.0, -1288.0);
+
+local gift3 = Location:new(world4, -1625, 64, -1188);
+local gift3s = Location:new(world4, -1708.0, 68.0, -1283.0);
+local gift3ChestPlayers = {};
+local gift3ChestResetTimer = Timer:new("gift3_reset_chest", 20 * 60 * 5);
+local gift3ChestResetTimerRunning = false;
+local gift3ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift3_chest(data)
+	local player = Player:new(data.player);
+	if not gift3ChestPlayers[player.name] then
+		gift3:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift3s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift3");
+		gift3ChestPlayers[player.name] = true; 
+		
+		if not gift3ChestResetTimerRunning then
+			gift3ChestResetTimerRunning = true;
+			gift3ChestResetTimer:start();
+		end
+	end
+end
+
+function gift3_reset_chest()
+	gift3ChestPlayers = {};
+	gift3ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift3_chest", 397, "project33", -1708.0, 68.0, -1283.0);
+
+local gift4 = Location:new(world4, -1625, 64, -1186);
+local gift4s = Location:new(world4, -1617.0, 70.0, -1267.0);
+local gift4ChestPlayers = {};
+local gift4ChestResetTimer = Timer:new("gift4_reset_chest", 20 * 60 * 5);
+local gift4ChestResetTimerRunning = false;
+local gift4ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift4_chest(data)
+	local player = Player:new(data.player);
+	if not gift4ChestPlayers[player.name] then
+		gift4:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift4s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift4");
+		gift4ChestPlayers[player.name] = true; 
+		
+		if not gift4ChestResetTimerRunning then
+			gift4ChestResetTimerRunning = true;
+			gift4ChestResetTimer:start();
+		end
+	end
+end
+
+function gift4_reset_chest()
+	gift4ChestPlayers = {};
+	gift4ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift4_chest", 397, "project33", -1617.0, 70.0, -1267.0);
+
+local gift5 = Location:new(world4, -1625, 64, -1184);
+local gift5s = Location:new(world4, -1602.0, 62.0, -1236.0);
+local gift5ChestPlayers = {};
+local gift5ChestResetTimer = Timer:new("gift5_reset_chest", 20 * 60 * 5);
+local gift5ChestResetTimerRunning = false;
+local gift5ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift5_chest(data)
+	local player = Player:new(data.player);
+	if not gift5ChestPlayers[player.name] then
+		gift5:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift5s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift5");
+		gift5ChestPlayers[player.name] = true; 
+		
+		if not gift5ChestResetTimerRunning then
+			gift5ChestResetTimerRunning = true;
+			gift5ChestResetTimer:start();
+		end
+	end
+end
+
+function gift5_reset_chest()
+	gift5ChestPlayers = {};
+	gift5ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift5_chest", 397, "project33", -1602.0, 62.0, -1236.0);
+
+local gift6 = Location:new(world4, -1625, 64, -1182);
+local gift6s = Location:new(world4, -1642.0, 72.0, -1214.0);
+local gift6ChestPlayers = {};
+local gift6ChestResetTimer = Timer:new("gift6_reset_chest", 20 * 60 * 5);
+local gift6ChestResetTimerRunning = false;
+local gift6ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift6_chest(data)
+	local player = Player:new(data.player);
+	if not gift6ChestPlayers[player.name] then
+		gift6:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift6s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift6");
+		gift6ChestPlayers[player.name] = true; 
+		
+		if not gift6ChestResetTimerRunning then
+			gift6ChestResetTimerRunning = true;
+			gift6ChestResetTimer:start();
+		end
+	end
+end
+
+function gift6_reset_chest()
+	gift6ChestPlayers = {};
+	gift6ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift6_chest", 397, "project33", -1642.0, 72.0, -1214.0);
+
+local gift7 = Location:new(world4, -1625, 64, -1180);
+local gift7s = Location:new(world4, -1596.0, 66.0, -1147.0);
+local gift7ChestPlayers = {};
+local gift7ChestResetTimer = Timer:new("gift7_reset_chest", 20 * 60 * 5);
+local gift7ChestResetTimerRunning = false;
+local gift7ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift7_chest(data)
+	local player = Player:new(data.player);
+	if not gift7ChestPlayers[player.name] then
+		gift7:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift7s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift7");
+		gift7ChestPlayers[player.name] = true; 
+		
+		if not gift7ChestResetTimerRunning then
+			gift7ChestResetTimerRunning = true;
+			gift7ChestResetTimer:start();
+		end
+	end
+end
+
+function gift7_reset_chest()
+	gift7ChestPlayers = {};
+	gift7ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift7_chest", 397, "project33", -1596.0, 66.0, -1147.0);
+
+local gift8 = Location:new(world4, -1625, 64, -1178);
+local gift8s = Location:new(world4, -1609.0, 65.0, -1134.0);
+local gift8ChestPlayers = {};
+local gift8ChestResetTimer = Timer:new("gift8_reset_chest", 20 * 60 * 5);
+local gift8ChestResetTimerRunning = false;
+local gift8ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift8_chest(data)
+	local player = Player:new(data.player);
+	if not gift8ChestPlayers[player.name] then
+		gift8:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift8s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift8");
+		gift8ChestPlayers[player.name] = true; 
+		
+		if not gift8ChestResetTimerRunning then
+			gift8ChestResetTimerRunning = true;
+			gift8ChestResetTimer:start();
+		end
+	end
+end
+
+function gift8_reset_chest()
+	gift8ChestPlayers = {};
+	gift8ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift8_chest", 397, "project33", -1609.0, 65.0, -1134.0);
+
+local gift9 = Location:new(world4, -1625, 64, -1176);
+local gift9s = Location:new(world4, -1621.0, 66.0, -1144.0);
+local gift9ChestPlayers = {};
+local gift9ChestResetTimer = Timer:new("gift9_reset_chest", 20 * 60 * 5);
+local gift9ChestResetTimerRunning = false;
+local gift9ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift9_chest(data)
+	local player = Player:new(data.player);
+	if not gift9ChestPlayers[player.name] then
+		gift9:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift9s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift9");
+		gift9ChestPlayers[player.name] = true; 
+		
+		if not gift9ChestResetTimerRunning then
+			gift9ChestResetTimerRunning = true;
+			gift9ChestResetTimer:start();
+		end
+	end
+end
+
+function gift9_reset_chest()
+	gift9ChestPlayers = {};
+	gift9ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift9_chest", 397, "project33", -1621.0, 66.0, -1144.0);
+
+local gift10 = Location:new(world4, -1625, 64, -1174);
+local gift10s = Location:new(world4, -1648.0, 68.0, -1179.0);
+local gift10ChestPlayers = {};
+local gift10ChestResetTimer = Timer:new("gift10_reset_chest", 20 * 60 * 5);
+local gift10ChestResetTimerRunning = false;
+local gift10ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift10_chest(data)
+	local player = Player:new(data.player);
+	if not gift10ChestPlayers[player.name] then
+		gift10:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift10s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift10");
+		gift10ChestPlayers[player.name] = true; 
+		
+		if not gift10ChestResetTimerRunning then
+			gift10ChestResetTimerRunning = true;
+			gift10ChestResetTimer:start();
+		end
+	end
+end
+
+function gift10_reset_chest()
+	gift10ChestPlayers = {};
+	gift10ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift10_chest", 397, "project33", -1648.0, 68.0, -1179.0);
+
+local gift11 = Location:new(world4, -1625, 64, -1172);
+local gift11s = Location:new(world4, -1742.0, 75.0, -1276.0);
+local gift11ChestPlayers = {};
+local gift11ChestResetTimer = Timer:new("gift11_reset_chest", 20 * 60 * 5);
+local gift11ChestResetTimerRunning = false;
+local gift11ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift11_chest(data)
+	local player = Player:new(data.player);
+	if not gift11ChestPlayers[player.name] then
+		gift11:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift11s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift11");
+		gift11ChestPlayers[player.name] = true; 
+		
+		if not gift11ChestResetTimerRunning then
+			gift11ChestResetTimerRunning = true;
+			gift11ChestResetTimer:start();
+		end
+	end
+end
+
+function gift11_reset_chest()
+	gift11ChestPlayers = {};
+	gift11ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift11_chest", 397, "project33", -1742.0, 75.0, -1276.0);
+
+local gift12 = Location:new(world4, -1625, 64, -1170);
+local gift12s = Location:new(world4, -1732.0, 92.0, -1239.0);
+local gift12ChestPlayers = {};
+local gift12ChestResetTimer = Timer:new("gift12_reset_chest", 20 * 60 * 5);
+local gift12ChestResetTimerRunning = false;
+local gift12ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift12_chest(data)
+	local player = Player:new(data.player);
+	if not gift12ChestPlayers[player.name] then
+		gift12:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift12s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift12");
+		gift12ChestPlayers[player.name] = true; 
+		
+		if not gift12ChestResetTimerRunning then
+			gift12ChestResetTimerRunning = true;
+			gift12ChestResetTimer:start();
+		end
+	end
+end
+
+function gift12_reset_chest()
+	gift12ChestPlayers = {};
+	gift12ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift12_chest", 397, "project33", -1732.0, 92.0, -1239.0);
+
+local gift13 = Location:new(world4, -1625, 64, -1168);
+local gift13s = Location:new(world4, -1767.0, 84.0, -1176.0);
+local gift13ChestPlayers = {};
+local gift13ChestResetTimer = Timer:new("gift13_reset_chest", 20 * 60 * 5);
+local gift13ChestResetTimerRunning = false;
+local gift13ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift13_chest(data)
+	local player = Player:new(data.player);
+	if not gift13ChestPlayers[player.name] then
+		gift13:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift13s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift13");
+		gift13ChestPlayers[player.name] = true; 
+		
+		if not gift13ChestResetTimerRunning then
+			gift13ChestResetTimerRunning = true;
+			gift13ChestResetTimer:start();
+		end
+	end
+end
+
+function gift13_reset_chest()
+	gift13ChestPlayers = {};
+	gift13ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift13_chest", 397, "project33", -1767.0, 84.0, -1176.0);
+
+local gift14 = Location:new(world4, -1625, 64, -1166);
+local gift14s = Location:new(world4, -1734.0, 77.0, -1159.0);
+local gift14ChestPlayers = {};
+local gift14ChestResetTimer = Timer:new("gift14_reset_chest", 20 * 60 * 5);
+local gift14ChestResetTimerRunning = false;
+local gift14ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift14_chest(data)
+	local player = Player:new(data.player);
+	if not gift14ChestPlayers[player.name] then
+		gift14:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift14s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift14");
+		gift14ChestPlayers[player.name] = true; 
+		
+		if not gift14ChestResetTimerRunning then
+			gift14ChestResetTimerRunning = true;
+			gift14ChestResetTimer:start();
+		end
+	end
+end
+
+function gift14_reset_chest()
+	gift14ChestPlayers = {};
+	gift14ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift14_chest", 397, "project33", -1734.0, 77.0, -1159.0);
+
+local gift15 = Location:new(world4, -1625, 64, -1164);
+local gift15s = Location:new(world4, -1707.0, 78.0, -1133.0);
+local gift15ChestPlayers = {};
+local gift15ChestResetTimer = Timer:new("gift15_reset_chest", 20 * 60 * 5);
+local gift15ChestResetTimerRunning = false;
+local gift15ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift15_chest(data)
+	local player = Player:new(data.player);
+	if not gift15ChestPlayers[player.name] then
+		gift15:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift15s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift15");
+		gift15ChestPlayers[player.name] = true; 
+		
+		if not gift15ChestResetTimerRunning then
+			gift15ChestResetTimerRunning = true;
+			gift15ChestResetTimer:start();
+		end
+	end
+end
+
+function gift15_reset_chest()
+	gift15ChestPlayers = {};
+	gift15ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift15_chest", 397, "project33", -1707.0, 78.0, -1133.0);
+
+local gift16 = Location:new(world4, -1625, 64, -1162);
+local gift16s = Location:new(world4, -1688.0, 78.0, -1167.0);
+local gift16ChestPlayers = {};
+local gift16ChestResetTimer = Timer:new("gift16_reset_chest", 20 * 60 * 5);
+local gift16ChestResetTimerRunning = false;
+local gift16ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift16_chest(data)
+	local player = Player:new(data.player);
+	if not gift16ChestPlayers[player.name] then
+		gift16:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift16s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift16");
+		gift16ChestPlayers[player.name] = true; 
+		
+		if not gift16ChestResetTimerRunning then
+			gift16ChestResetTimerRunning = true;
+			gift16ChestResetTimer:start();
+		end
+	end
+end
+
+function gift16_reset_chest()
+	gift16ChestPlayers = {};
+	gift16ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift16_chest", 397, "project33", -1688.0, 78.0, -1167.0);
+
+local gift17 = Location:new(world4, -1625, 64, -1160);
+local gift17s = Location:new(world4, -1708.0, 79.0, -1208.0);
+local gift17ChestPlayers = {};
+local gift17ChestResetTimer = Timer:new("gift17_reset_chest", 20 * 60 * 5);
+local gift17ChestResetTimerRunning = false;
+local gift17ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift17_chest(data)
+	local player = Player:new(data.player);
+	if not gift17ChestPlayers[player.name] then
+		gift17:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift17s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift17");
+		gift17ChestPlayers[player.name] = true; 
+		
+		if not gift17ChestResetTimerRunning then
+			gift17ChestResetTimerRunning = true;
+			gift17ChestResetTimer:start();
+		end
+	end
+end
+
+function gift17_reset_chest()
+	gift17ChestPlayers = {};
+	gift17ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift17_chest", 397, "project33", -1708.0, 79.0, -1208.0);
+
+local gift18 = Location:new(world4, -1625, 64, -1158);
+local gift18s = Location:new(world4, -1708.0, 79.0, -1208.0);
+local gift18ChestPlayers = {};
+local gift18ChestResetTimer = Timer:new("gift18_reset_chest", 20 * 60 * 5);
+local gift18ChestResetTimerRunning = false;
+local gift18ChestOpen = Location:new(world4, -64.0, 65.0, -515.0);
+
+function gift18_chest(data)
+	local player = Player:new(data.player);
+	if not gift18ChestPlayers[player.name] then
+		gift18:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		gift18s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
+                player:sendMessage('&7Test Debug');
+                player:addPermission("runsafe.event.gift18");
+		gift18ChestPlayers[player.name] = true; 
+		
+		if not gift18ChestResetTimerRunning then
+			gift18ChestResetTimerRunning = true;
+			gift18ChestResetTimer:start();
+		end
+	end
+end
+
+function gift18_reset_chest()
+	gift18ChestPlayers = {};
+	gift18ChestResetTimerRunning = false;
+end
+ 
+registerHook("LEFT_CLICK_BLOCK", "gift18_chest", 397, "project33", -1752.0, 78.0, -1222.0);
+
+
