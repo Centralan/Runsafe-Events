@@ -96,6 +96,24 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 --runsafe.event.sky
 --runsafe.event.skally
 --runsafe.event.az
+--runsafe.event.gift1
+--runsafe.event.gift2
+--runsafe.event.gift3
+--runsafe.event.gift4
+--runsafe.event.gift5
+--runsafe.event.gift6
+--runsafe.event.gift7
+--runsafe.event.gift8
+--runsafe.event.gift9
+--runsafe.event.gift10
+--runsafe.event.gift11
+--runsafe.event.gift12
+--runsafe.event.gift13
+--runsafe.event.gift14
+--runsafe.event.gift15
+--runsafe.event.gift16
+--runsafe.event.gift17
+--runsafe.event.gift18
 
 ---------------
 --Portal --
