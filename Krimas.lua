@@ -539,8 +539,8 @@ function gift1_reset_chest()
 	gift1ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift1_chest", 397, "project33", -1633.0, 65.0, -1336.0);
-
+registerHook("LEFT_CLICK_BLOCK", "gift1_chest", "project33", -1633.0, 65.0, -1336.0, 397);
+			
 local gift2 = Location:new(world4, -1625, 64, -1190);
 local gift2s = Location:new(world4, -1594.0, 66.0, -1288.0);
 local gift2ChestPlayers = {};
@@ -569,8 +569,8 @@ function gift2_reset_chest()
 	gift2ChestPlayers = {};
 	gift2ChestResetTimerRunning = false;
 end
- 
-registerHook("LEFT_CLICK_BLOCK", "gift2_chest", 397, "project33", -1594.0, 66.0, -1288.0);
+
+registerHook("LEFT_CLICK_BLOCK", "gift2_chest", "project33", -1594.0, 66.0, -1288.0, 397);		
 
 local gift3 = Location:new(world4, -1625, 64, -1188);
 local gift3s = Location:new(world4, -1708.0, 68.0, -1283.0);
@@ -601,7 +601,7 @@ function gift3_reset_chest()
 	gift3ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift3_chest", 397, "project33", -1708.0, 68.0, -1283.0);
+registerHook("LEFT_CLICK_BLOCK", "gift3_chest", "project33", -1708.0, 68.0, -1283.0, 397);
 
 local gift4 = Location:new(world4, -1625, 64, -1186);
 local gift4s = Location:new(world4, -1617.0, 70.0, -1267.0);
@@ -632,7 +632,7 @@ function gift4_reset_chest()
 	gift4ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift4_chest", 397, "project33", -1617.0, 70.0, -1267.0);
+registerHook("LEFT_CLICK_BLOCK", "gift4_chest", "project33", -1617.0, 70.0, -1267.0, 397);
 
 local gift5 = Location:new(world4, -1625, 64, -1184);
 local gift5s = Location:new(world4, -1602.0, 62.0, -1236.0);
@@ -663,7 +663,7 @@ function gift5_reset_chest()
 	gift5ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift5_chest", 397, "project33", -1602.0, 62.0, -1236.0);
+registerHook("LEFT_CLICK_BLOCK", "gift5_chest", "project33", -1602.0, 62.0, -1236.0, 397);
 
 local gift6 = Location:new(world4, -1625, 64, -1182);
 local gift6s = Location:new(world4, -1642.0, 72.0, -1214.0);
@@ -694,7 +694,7 @@ function gift6_reset_chest()
 	gift6ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift6_chest", 397, "project33", -1642.0, 72.0, -1214.0);
+registerHook("LEFT_CLICK_BLOCK", "gift6_chest", "project33", -1642.0, 72.0, -1214.0, 397);
 
 local gift7 = Location:new(world4, -1625, 64, -1180);
 local gift7s = Location:new(world4, -1596.0, 66.0, -1147.0);
@@ -725,7 +725,7 @@ function gift7_reset_chest()
 	gift7ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift7_chest", 397, "project33", -1596.0, 66.0, -1147.0);
+registerHook("LEFT_CLICK_BLOCK", "gift7_chest", "project33", -1596.0, 66.0, -1147.0, 397);
 
 local gift8 = Location:new(world4, -1625, 64, -1178);
 local gift8s = Location:new(world4, -1609.0, 65.0, -1134.0);
@@ -756,7 +756,7 @@ function gift8_reset_chest()
 	gift8ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift8_chest", 397, "project33", -1609.0, 65.0, -1134.0);
+registerHook("LEFT_CLICK_BLOCK", "gift8_chest", "project33", -1609.0, 65.0, -1134.0, 397);
 
 local gift9 = Location:new(world4, -1625, 64, -1176);
 local gift9s = Location:new(world4, -1621.0, 66.0, -1144.0);
@@ -787,7 +787,7 @@ function gift9_reset_chest()
 	gift9ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift9_chest", 397, "project33", -1621.0, 66.0, -1144.0);
+registerHook("LEFT_CLICK_BLOCK", "gift9_chest", "project33", -1621.0, 66.0, -1144.0, 397);
 
 local gift10 = Location:new(world4, -1625, 64, -1174);
 local gift10s = Location:new(world4, -1648.0, 68.0, -1179.0);
@@ -818,7 +818,7 @@ function gift10_reset_chest()
 	gift10ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift10_chest", 397, "project33", -1648.0, 68.0, -1179.0);
+registerHook("LEFT_CLICK_BLOCK", "gift10_chest", "project33", -1648.0, 68.0, -1179.0, 397);
 
 local gift11 = Location:new(world4, -1625, 64, -1172);
 local gift11s = Location:new(world4, -1742.0, 75.0, -1276.0);
@@ -849,7 +849,7 @@ function gift11_reset_chest()
 	gift11ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift11_chest", 397, "project33", -1742.0, 75.0, -1276.0);
+registerHook("LEFT_CLICK_BLOCK", "gift11_chest", "project33", -1742.0, 75.0, -1276.0, 397);
 
 local gift12 = Location:new(world4, -1625, 64, -1170);
 local gift12s = Location:new(world4, -1732.0, 92.0, -1239.0);
@@ -880,7 +880,7 @@ function gift12_reset_chest()
 	gift12ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift12_chest", 397, "project33", -1732.0, 92.0, -1239.0);
+registerHook("LEFT_CLICK_BLOCK", "gift12_chest", "project33", -1732.0, 92.0, -1239.0, 397);
 
 local gift13 = Location:new(world4, -1625, 64, -1168);
 local gift13s = Location:new(world4, -1767.0, 84.0, -1176.0);
@@ -911,7 +911,7 @@ function gift13_reset_chest()
 	gift13ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift13_chest", 397, "project33", -1767.0, 84.0, -1176.0);
+registerHook("LEFT_CLICK_BLOCK", "gift13_chest", "project33", -1767.0, 84.0, -1176.0, 397);
 
 local gift14 = Location:new(world4, -1625, 64, -1166);
 local gift14s = Location:new(world4, -1734.0, 77.0, -1159.0);
@@ -942,7 +942,7 @@ function gift14_reset_chest()
 	gift14ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift14_chest", 397, "project33", -1734.0, 77.0, -1159.0);
+registerHook("LEFT_CLICK_BLOCK", "gift14_chest", "project33", -1734.0, 77.0, -1159.0, 397);
 
 local gift15 = Location:new(world4, -1625, 64, -1164);
 local gift15s = Location:new(world4, -1707.0, 78.0, -1133.0);
@@ -973,7 +973,7 @@ function gift15_reset_chest()
 	gift15ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift15_chest", 397, "project33", -1707.0, 78.0, -1133.0);
+registerHook("LEFT_CLICK_BLOCK", "gift15_chest", "project33", -1707.0, 78.0, -1133.0, 397);
 
 local gift16 = Location:new(world4, -1625, 64, -1162);
 local gift16s = Location:new(world4, -1688.0, 78.0, -1167.0);
@@ -1004,7 +1004,7 @@ function gift16_reset_chest()
 	gift16ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift16_chest", 397, "project33", -1688.0, 78.0, -1167.0);
+registerHook("LEFT_CLICK_BLOCK", "gift16_chest", "project33", -1688.0, 78.0, -1167.0, 397);
 
 local gift17 = Location:new(world4, -1625, 64, -1160);
 local gift17s = Location:new(world4, -1708.0, 79.0, -1208.0);
@@ -1035,10 +1035,10 @@ function gift17_reset_chest()
 	gift17ChestResetTimerRunning = false;
 end
  
-registerHook("LEFT_CLICK_BLOCK", "gift17_chest", 397, "project33", -1708.0, 79.0, -1208.0);
+registerHook("LEFT_CLICK_BLOCK", "gift17_chest", "project33", -1708.0, 79.0, -1208.0, 397);
 
 local gift18 = Location:new(world4, -1625, 64, -1158);
-local gift18s = Location:new(world4, -1708.0, 79.0, -1208.0);
+local gift18s = Location:new(world4, -1752.0, 78.0, -1222.0);
 local gift18ChestPlayers = {};
 local gift18ChestResetTimer = Timer:new("gift18_reset_chest", 20 * 60 * 5);
 local gift18ChestResetTimerRunning = false;
@@ -1065,7 +1065,7 @@ function gift18_reset_chest()
 	gift18ChestPlayers = {};
 	gift18ChestResetTimerRunning = false;
 end
- 
-registerHook("LEFT_CLICK_BLOCK", "gift18_chest", 397, "project33", -1752.0, 78.0, -1222.0);
+
+registerHook("LEFT_CLICK_BLOCK", "gift18_chest", "project33", -1752.0, 78.0, -1222.0, 397);
 
 
