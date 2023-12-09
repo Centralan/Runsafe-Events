@@ -54,6 +54,15 @@ local xmas2 = AI:new("DOG", "AI", "survival3_nether");
 local xmas3 = AI:new("DOG", "AI", "azuren");
 local xmas4 = AI:new("DOG", "AI", "project33");
 
+---------------------------
+----------bounds check--------
+---------------------------
+
+function s_within_bounds(player, lX, lY, lZ, hX, hY, hZ)
+	local world, x, y, z = player:getLocation();
+	return x >= lX and y >= lY and z >= lZ and x <= hX and y <= hY and z <= hZ;
+end
+
 -------------------
 --Intro Book ------
 -------------------
@@ -194,6 +203,7 @@ local beanschestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
 
 function beans_snow(data)
 	local player = Player:new(data.player);
+	if s_within_bounds(player, 19537, 70, -20759, 19535, 73, -20761) then
 	if not beanschestChestPlayers[player.name] then
 		beanschest:cloneChestToPlayer(player.name);
 		player:closeInventory();
@@ -214,7 +224,7 @@ function beans_reset_chest()
 	beanschestChestResetTimerRunning = false;
 end
 
-registerHook("INTERACT", "beans_snow", 61, "survival3", 18446, 66, -17257);
+registerHook("PLAYER_ITEM_DROP", "beans_snow", "survival3", 264);
 
 ---------------
 --Task 3 --
