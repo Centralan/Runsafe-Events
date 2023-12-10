@@ -550,9 +550,12 @@ end
 				
 function castle_gate(data)
           local player = Player:new(data.player);
+         if not player:hasPermission("runsafe.event.lighthouse")
 	   player:sendMessage("&7You noticed a rusted lock on the gate.");
 	   player:sendMessage("&7You must need a key.");
 end
+end
+
 
 registerHook("REGION_ENTER", "castle_gate", "project33-door_check");
 
