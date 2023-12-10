@@ -539,7 +539,9 @@ registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 				
 local gatesound = Location:new(world4, -1619.0, 68.0, -1172.0);
 local gateY = Location:new(world4, -1619.0, 68.0, -1172.0);
-				
+gateY:setYaw(93.3);
+gateY:setPitch(-25.4);
+		
 function castle_gate2(data)
           local player = Player:new(data.player);
 	   if player:hasPermission("runsafe.event.lighthouse") then
