@@ -533,7 +533,47 @@ end
 
 registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 
+---------------------------
+----------Castle Door--------
+---------------------------
+				
+local gatesound = Location:new(world4, -1619.0, 68.0, -1172.0);
+local gateY = Location:new(world4, -1619.0, 68.0, -1172.0);
+				
+function castle_gate2(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.lighthouse") then
+	      player:teleport(gateY);
+	      gatesound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
+	end
+end
+				
+function castle_gate(data)
+          local player = Player:new(data.player);
+	   player:sendMessage("&7You noticed a rusted lock on the gate.");
+	   player:sendMessage("&7You must need a key.");
+end
 
+registerHook("REGION_ENTER", "castle_gate", "project33-door_check");
+
+---------------------------
+----------Lighthouse--------
+---------------------------
+				
+local event_tp_p33 = Location:new(world4, -1633.404, 65.0, -1340.674);
+event_tp_p33:setYaw(0.0);
+event_tp_p33:setPitch(2.9);
+
+function lighthouse(data)
+        local player = Player:new(data.player);
+           player:sendMessage("&7You find a peice of a key in the chest.");
+	   player:sendMessage("&7You keep looking for more peices.");
+           player:teleport(event_tp_p33);
+	   player:addPermission("runsafe.event.lighthouse");
+end
+
+registerHook("INTERACT", "lighthouse", 54, "project33", -1736.0, 62.0, -1323.0);
+				
 ---------------
 --Gift Handling--
 ---------------
