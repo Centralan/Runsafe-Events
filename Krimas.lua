@@ -566,8 +566,8 @@ event_tp_p33:setPitch(2.9);
 
 function lighthouse(data)
         local player = Player:new(data.player);
-           player:sendMessage("&7You find a peice of a key in the chest.");
-	   player:sendMessage("&7You keep looking for more peices.");
+           player:sendMessage("&7You find a piece of a key in the chest.");
+	   player:sendMessage("&7You keep looking for more pieces.");
            player:teleport(event_tp_p33);
 	   player:addPermission("runsafe.event.lighthouse");
 end
