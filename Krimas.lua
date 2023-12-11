@@ -551,24 +551,28 @@ function castle_gate2(data)
           local player = Player:new(data.player);
 	   if player:hasPermission("runsafe.event.lighthouse") then
 	   if player:hasPermission("runsafe.event.vt") then
+	   if player:hasPermission("runsafe.event.enchant") then
 	      player:teleport(gateY);
 	      gatesound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
 	end
 end
 end
-				
+end
+
 function castle_gate(data)
           local player = Player:new(data.player);
          if not player:hasPermission("runsafe.event.lighthouse") then
 	 if not player:hasPermission("runsafe.event.vt") then
+	 if not player:hasPermission("runsafe.event.enchant") then
 	   player:sendMessage("&7You noticed a rusted lock on the gate.");
 	   player:sendMessage("&7You must need a key.");
 end
 end
 end
+end
 
 registerHook("REGION_ENTER", "castle_gate", "project33-door_check");
-
+registerHook("REGION_ENTER", "castle_gate2", "project33-door_check");
 ---------------------------
 ----------Lighthouse--------
 ---------------------------
@@ -605,8 +609,27 @@ function village_tower(data)
 	   player:addPermission("runsafe.event.vt");
 end
 
-registerHook("INTERACT", "lighthouse", 54, "project33", -1627.0, 82.0, -1251.0);
+registerHook("INTERACT", "village_tower", 54, "project33", -1627.0, 82.0, -1251.0);
+
+---------------------------
+----------enchant--------
+---------------------------
 				
+local event_tp_p33 = Location:new(world4, -1633.404, 65.0, -1340.674);
+event_tp_p33:setYaw(0.0);
+event_tp_p33:setPitch(2.9);
+
+function village_e(data)
+        local player = Player:new(data.player);
+           player:sendMessage("&7A piece of the key come out of a page.");
+	   player:sendMessage("&7You keep looking for more pieces.");
+	   player:closeInventory();
+           player:teleport(event_tp_p33);
+	   player:addPermission("runsafe.event.enchant");
+end
+
+registerHook("INTERACT", "village_e", 116, "project33", -1600.0, 67.0, -1133.0);
+						
 ---------------
 --Gift Handling--
 ---------------
