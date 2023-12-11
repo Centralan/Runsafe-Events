@@ -537,7 +537,10 @@ registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 --runsafe.event.gift17
 --runsafe.event.gift18
 --runsafe.event.lighthouse
-				
+--runsafe.event.vt
+--runsafe.event.enchant
+--runsafe.event.boat
+
 ---------------------------
 ----------Castle Door--------
 ---------------------------
@@ -552,20 +555,24 @@ function castle_gate2(data)
 	   if player:hasPermission("runsafe.event.lighthouse") then
 	   if player:hasPermission("runsafe.event.vt") then
 	   if player:hasPermission("runsafe.event.enchant") then
+	   if player:hasPermission("runsafe.event.boat") then
 	      player:teleport(gateY);
 	      gatesound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
 	end
 end
 end
 end
-
+end
+					
 function castle_gate(data)
           local player = Player:new(data.player);
          if not player:hasPermission("runsafe.event.lighthouse") then
 	 if not player:hasPermission("runsafe.event.vt") then
 	 if not player:hasPermission("runsafe.event.enchant") then
+	 if not player:hasPermission("runsafe.event.boat") then
 	   player:sendMessage("&7You noticed a rusted lock on the gate.");
 	   player:sendMessage("&7You must need a key.");
+end
 end
 end
 end
@@ -629,6 +636,25 @@ function village_e(data)
 end
 
 registerHook("INTERACT", "village_e", 116, "project33", -1600.0, 67.0, -1133.0);
+
+---------------------------
+----------boat--------
+---------------------------
+				
+local event_tp_p33 = Location:new(world4, -1633.404, 65.0, -1340.674);
+event_tp_p33:setYaw(0.0);
+event_tp_p33:setPitch(2.9);
+
+function boat_c(data)
+        local player = Player:new(data.player);
+           player:sendMessage("&7You find a piece of a key in the chest.");
+	   player:sendMessage("&7You keep looking for more pieces.");
+	   player:closeInventory();
+           player:teleport(event_tp_p33);
+	   player:addPermission("runsafe.event.boat");
+end
+
+registerHook("INTERACT", "boat_c", 146, "project33", -1625.0, 63.0, -1367.0);
 						
 ---------------
 --Gift Handling--
