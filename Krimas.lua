@@ -576,7 +576,8 @@ registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 --runsafe.event.weep
 --runsafe.event.weepd
 --runsafe.event.break
-				
+--runsafe.event.pray
+			
 ---------------------------
 ----------Castle Door--------
 ---------------------------
@@ -725,7 +726,8 @@ local fireblocks = {
 };
 		
 function inn_break(data)
-		local player = Player:new(data.player);
+	   local player = Player:new(data.player);
+	    if player:hasPermission("runsafe.event.hc") then
 		player:sendMessage("&6Poor guy should have made a better house.");
 		player:addPermission("runsafe.event.break");
 		for index, key in ipairs(fireblocks) do
@@ -737,6 +739,89 @@ end
 
 registerHook("BLOCK_BREAK", "inn_break", "project33", -1737.0, 81.0, -1136.0, 1);
 
+function house_perm1(data)
+		local player = Player:new(data.player);
+		player:addPermission("runsafe.event.hc");
+end
+
+registerHook("REGION_ENTER", "house_perm1", "project33-house_check");
+
+function house_perm2(data)
+		local player = Player:new(data.player);
+		player:removePermission("runsafe.event.hc");
+end
+
+registerHook("REGION_LEAVE", "house_perm2", "project33-house_check");
+
+---------------------------
+----------pray--------
+---------------------------
+
+local prays = Location:new(world4, -1731.0, 79.0, -1241.0);
+		
+function tree_pray(data)
+	   local player = Player:new(data.player);
+	    if player:hasPermission("runsafe.event.log") then
+		prays:playSound('BLOCK_NOTE_HARP', 1, 0.5);
+		player:sendMessage('&7Sir Krimas shines joy on you.');
+		player:addPermission("runsafe.event.pray");
+	end
+end
+
+
+registerHook("REGION_ENTER", "tree_pray", "project33-tree_pray");
+
+function tree_perm1(data)
+		local player = Player:new(data.player);
+		player:addPermission("runsafe.event.log");
+end
+
+registerHook("REGION_ENTER", "tree_perm1", "project33-log");
+
+function tree_perm2(data)
+		local player = Player:new(data.player);
+		player:removePermission("runsafe.event.log");
+end
+
+registerHook("REGION_LEAVE", "tree_perm2", "project33-log");
+
+---------------------------
+----------final door check--------
+---------------------------
+local castlesound = Location:new(world4, -1740.0, 78.0, -1175.0);
+local castleY = Location:new(world4, -1740.0, 78.0, -1175.0);
+local castleN = Location:new(world4, -1679.0, 78.0, -1175.0);
+castleY:setYaw(89.3);
+castleY:setPitch(1.9);
+		
+function lobby_gate(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.weepd") then
+	   if player:hasPermission("runsafe.event.break") then
+	   if player:hasPermission("runsafe.event.pray") then
+	      player:teleport(castleY);
+	      castlesound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
+	end
+end
+end
+end
+					
+function lobby_gate2(data)
+          local player = Player:new(data.player);
+         if not player:hasPermission("runsafe.event.weepd") then
+	 if not player:hasPermission("runsafe.event.break") then
+	 if not player:hasPermission("runsafe.event.pray") then
+	   player:sendMessage("&7I must be missing something, let me keep looking.");
+	   player:teleport(castleN);
+end
+end
+end
+end
+
+registerHook("REGION_ENTER", "lobby_gate", "project33-castle1");
+registerHook("REGION_ENTER", "lobby_gate2", "project33-castle1");
+registerHook("REGION_ENTER", "lobby_gate", "project33-castle2");
+registerHook("REGION_ENTER", "lobby_gate2", "project33-castle2");
 
 ---------------
 --Gift Handling--
