@@ -41,6 +41,23 @@ function krimas_perms(data)
 
 registerHook("CHAT_MESSAGE", "krimas_perms", "survival3");
 
+local graveweep = Location:new(world4, -1706, 81, -1137);
+
+function grave_cry(data)
+	    local player = Player:new(data.player);
+	     if player:hasPermission("runsafe.event.weep") then
+		local message = data.message;
+		if hasPrefix(message, "weep") then
+			local playerName = splitPlayerName(message, 16);
+			   player:sendMessage("&cThe grave reacts to your emotions.");
+			   graveweep:playSound('ENTITY_GHAST_AMBIENT', 1, 0.5);
+			   player:addPermission("runsafe.event.weepd");
+			end
+		end
+	end
+
+registerHook("CHAT_MESSAGE", "grave_cry", "project33");
+
 ---------------------------
 ----------messaging--------
 ---------------------------
@@ -540,7 +557,9 @@ registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 --runsafe.event.vt
 --runsafe.event.enchant
 --runsafe.event.boat
-
+--runsafe.event.weep
+--runsafe.event.weepd
+				
 ---------------------------
 ----------Castle Door--------
 ---------------------------
@@ -655,7 +674,25 @@ function boat_c(data)
 end
 
 registerHook("INTERACT", "boat_c", 146, "project33", -1625.0, 63.0, -1367.0);
-						
+
+---------------------------
+----------grave--------
+---------------------------
+		
+function grave_perm1(data)
+		local player = Player:new(data.player);
+		player:addPermission("runsafe.event.weep");
+end
+
+registerHook("REGION_ENTER", "grave_perm1", "project33-grave");
+
+function grave_perm2(data)
+		local player = Player:new(data.player);
+		player:removePermission("runsafe.event.weep");
+end
+
+registerHook("REGION_LEAVE", "grave_perm2", "project33-grave");
+
 ---------------
 --Gift Handling--
 ---------------
