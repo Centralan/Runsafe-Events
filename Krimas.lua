@@ -113,6 +113,7 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 --runsafe.event.sky
 --runsafe.event.skally
 --runsafe.event.az
+--runsafe.event.igloo
 
 ---------------
 --Portal --
