@@ -575,6 +575,7 @@ registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 --runsafe.event.boat
 --runsafe.event.weep
 --runsafe.event.weepd
+--runsafe.event.break
 				
 ---------------------------
 ----------Castle Door--------
@@ -708,6 +709,34 @@ function grave_perm2(data)
 end
 
 registerHook("REGION_LEAVE", "grave_perm2", "project33-grave");
+
+
+---------------------------
+----------inn--------
+---------------------------
+
+local world = "project33";
+local firecurrent = 4;
+local firemaxData = 4;
+local fireblocks = {
+        Location:new(world4, -1737.0, 81.0, -1136.0),
+
+
+};
+		
+function inn_break(data)
+		local player = Player:new(data.player);
+		player:sendMessage("&6Poor guy should have made a better house.");
+		player:removePermission("runsafe.event.break");
+		for index, key in ipairs(fireblocks) do
+                key:setBlock(1, firecurrent);
+        end
+end
+
+end
+
+registerHook("BLOCK_BREAK", "inn_break", "project33", -1737.0, 81.0, -1136.0, 1);
+
 
 ---------------
 --Gift Handling--
