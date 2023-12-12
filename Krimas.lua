@@ -220,7 +220,7 @@ local beanschestChestOpen = Location:new(world, -64.0, 65.0, -515.0);
 
 function beans_snow(data)
 	local player = Player:new(data.player);
-	if s_within_bounds(player, 19537, 70, -20759, 19535, 73, -20761) then
+	if player:hasPermission("runsafe.event.igloo") then
 	if not beanschestChestPlayers[player.name] then
 		beanschest:cloneChestToPlayer(player.name);
 		player:closeInventory();
@@ -235,11 +235,26 @@ function beans_snow(data)
 		end
 	end
 end
+end
 
 function beans_reset_chest()
 	beanschestChestPlayers = {};
 	beanschestChestResetTimerRunning = false;
 end
+
+function igloo_perm1(data)
+		local player = Player:new(data.player);
+		player:addPermission("runsafe.event.igloo");
+end
+
+registerHook("REGION_ENTER", "igloo_perm1", "survival3-igloo");
+
+function igloo_perm2(data)
+		local player = Player:new(data.player);
+		player:removePermission("runsafe.event.igloo");
+end
+
+registerHook("REGION_LEAVE", "igloo_perm2", "survival3-igloo");
 
 registerHook("PLAYER_ITEM_DROP", "beans_snow", "survival3", 264);
 
