@@ -727,7 +727,7 @@ local fireblocks = {
 function inn_break(data)
 		local player = Player:new(data.player);
 		player:sendMessage("&6Poor guy should have made a better house.");
-		player:removePermission("runsafe.event.break");
+		player:addPermission("runsafe.event.break");
 		for index, key in ipairs(fireblocks) do
                 key:setBlock(1, firecurrent);
         end
