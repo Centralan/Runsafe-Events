@@ -823,6 +823,80 @@ registerHook("REGION_ENTER", "lobby_gate2", "project33-castle1");
 registerHook("REGION_ENTER", "lobby_gate", "project33-castle2");
 registerHook("REGION_ENTER", "lobby_gate2", "project33-castle2");
 
+
+---------------------------
+----------castle 1--------
+---------------------------
+local flush = Location:new(world4, -1764.0, 90.0, -1175.0);
+local flush2 = Location:new(world4, -1733.0, 81.0, -1184.0);
+local castleT = Location:new(world4, -1764.0, 90.0, -1175.0);
+castleT:setYaw(-90.1);
+castleT:setPitch(9.9);
+		
+function flush_tp(data)
+          local player = Player:new(data.player);
+	      player:teleport(castleT);
+	      flush:playSound('ITEM_BUCKET_EMPTY', 1, 0.5);
+end
+
+function flush_s(data)
+          local player = Player:new(data.player);
+	      flush2:playSound('ITEM_BUCKET_FILL', 1, 0.5);
+end
+
+registerHook("REGION_ENTER", "flush_tp", "project33-flush_tp");
+registerHook("INTERACT", "flush_s", 77, "project33", -1733.0, 81.0, -1184.0);
+			
+local dooropen = Location:new(world4, -1748.0, 93.0, -1167.0);
+local doorclose = Location:new(world4, -1732.0, 90.0, -1176.0);
+local world = "project33";
+local bookcurrent = 0;
+local bookmaxData = 0;
+local bookblocks = {
+        Location:new(world4, -1739.0, 91.0, -1170.0),
+        Location:new(world4, -1739.0, 90.0, -1170.0),
+        Location:new(world4, -1739.0, 91.0, -1182.0),
+	Location:new(world4, -1739.0, 90.0, -1182.0),
+};
+
+function book_break(data)
+	   local player = Player:new(data.player);
+		player:sendMessage("&7You hear something happen nearby.");
+		dooropen:playSound('BLOCK_PISTON_CONTRACT', 1, 0.5);
+		for index, key in ipairs(bookblocks) do
+                key:setBlock(0, bookcurrent);
+        end
+end
+
+function book_place(data)
+	   local player = Player:new(data.player);
+		player:sendMessage("&7You hear the door close behind you...");
+		doorclose:playSound('BLOCK_PISTON_EXTEND', 1, 0.5);
+		for index, key in ipairs(bookblocks) do
+                key:setBlock(47, bookcurrent);
+        end
+end
+
+
+registerHook("INTERACT", "book_break", 143, "project33", -1748.0, 93.0, -1167.0);
+registerHook("REGION_ENTER", "book_place", "project33-bookclose1");
+registerHook("REGION_ENTER", "book_place", "project33-bookclose2");
+			
+---------------------------
+----------fight--------
+---------------------------
+local fight_tp = Location:new(world4, -1705.0, 63.0, -1175.0);
+fight_tp:setYaw(50.2);
+fight_tp:setPitch(-0.4);
+		
+function fighttp(data)
+          local player = Player:new(data.player);
+	      player:teleport(fight_tp);
+	      EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+end
+
+registerHook("REGION_ENTER", "fighttp", "project33-final_tp1");
+
 ---------------
 --Gift Handling--
 ---------------
