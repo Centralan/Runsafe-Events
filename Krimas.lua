@@ -185,7 +185,7 @@ function find_trees(data)
 	    if not framechestChestPlayers[player.name] then
 		framechest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 1.");
 	         player:sendMessage('&7Something seems weird about these trees, almost like the server made them.');
 	         player:sendMessage('&7Why would an Admin do this? Maybe I can find something here to build the portal.');
                  player:addPermission("runsafe.event.trees");
@@ -225,7 +225,7 @@ function beans_snow(data)
 	if not beanschestChestPlayers[player.name] then
 		beanschest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 2.");
                 player:sendMessage('&7Someone is into some weird stuff...');
                 player:addPermission("runsafe.event.emerald");
 		beanschestChestPlayers[player.name] = true; 
@@ -276,7 +276,7 @@ function space_crash(data)
 	if not flowerchestChestPlayers[player.name] then
 		flowerchest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 3.");
                 player:sendMessage('&7Seems whatever caused this metor to crash left a ... flower?');
 		player:sendMessage('&7The flower has a strange glow to it. I wonder where it came from?');
 		player:sendMessage('&9[?] &bSP&4E&bNCE&4R&f: &kbto wpt mt&f.');
@@ -314,7 +314,7 @@ function cpu_core(data)
 	if not beaconchestChestPlayers[player.name] then
 		beaconchest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 4.");
                 player:sendMessage('&7Who knew Runsafe ran on beacons.');
 		player:sendMessage('&9[?] &bS&4P&bENC&4ER&f: Hey &kthat &fbel&kon&fgs &kto m&fe.');
                 player:addPermission("runsafe.event.beacon");
@@ -351,7 +351,7 @@ function feather_reef(data)
 	if not featherchestChestPlayers[player.name] then
 		featherchest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 5.");
                 player:sendMessage('&7I wonder what this feather was used for...');
                 player:addPermission("runsafe.event.feather");
 		featherchestChestPlayers[player.name] = true; 
@@ -387,7 +387,7 @@ function dragon_spawn(data)
 	if not dragonchestChestPlayers[player.name] then
 		dragonchest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 6.");
                 player:sendMessage('&7Did DOG experience memory loss?');
                 player:addPermission("runsafe.event.dog");
 		dragonchestChestPlayers[player.name] = true; 
@@ -423,7 +423,7 @@ function pleco_city(data)
 	if not plecochestChestPlayers[player.name] then
 		plecochest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 7.");
                 player:sendMessage('&7Man this city is almost majestic looking, it might even be the best.');
                 player:addPermission("runsafe.event.city");
 		plecochestChestPlayers[player.name] = true; 
@@ -458,7 +458,7 @@ function sky_limit(data)
 	if not skychestChestPlayers[player.name] then
 		skychest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas:speak( player.name .. " has completed the (classifed) objective.");
+		xmas:speak( player.name .. " has completed Trial 8.");
                 player:sendMessage('&7Thats a long way down.');
                 player:addPermission("runsafe.event.sky");
 		skychestChestPlayers[player.name] = true; 
@@ -494,7 +494,7 @@ function skally_nether(data)
 	if not skallychestChestPlayers[player.name] then
 		skallychest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas2:speak( player.name .. " has completed the (classifed) objective.");
+		xmas2:speak( player.name .. " has completed Trial 9.");
                 player:sendMessage('&7I wonder who Skalamander was?');
                 player:addPermission("runsafe.event.skally");
 		skallychestChestPlayers[player.name] = true; 
@@ -529,7 +529,7 @@ function az_tower(data)
 	if not azchestChestPlayers[player.name] then
 		azchest:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		xmas3:speak( player.name .. " has completed the (classifed) objective.");
+		xmas3:speak( player.name .. " has completed Trial 10.");
                 player:sendMessage('&7What even is the Azuren?');
                 player:addPermission("runsafe.event.az");
 		azchestChestPlayers[player.name] = true; 
@@ -548,6 +548,44 @@ end
 
 registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
 
+-------------------
+--Portal Check ------
+-------------------
+
+function trials_check(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.trees") then
+           if player:hasPermission("runsafe.event.emerald") then
+           if player:hasPermission("runsafe.event.flower") then
+           if player:hasPermission("runsafe.event.beacon") then
+           if player:hasPermission("runsafe.event.feather") then
+           if player:hasPermission("runsafe.event.dog") then
+	   if player:hasPermission("runsafe.event.sky") then
+	   if player:hasPermission("runsafe.event.skally") then
+	   if player:hasPermission("runsafe.event.az") then
+		player:sendMessage('&6The Portal to the Wonderland awaits you!');
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		
+registerHook("REGION_ENTER", "trials_check", "survival3-hunt_1");
+registerHook("PLAYER_ITEM_DROP", "trials_check", "survival3", 264);
+registerHook("INTERACT", "trials_check", 77, "survival3", 37043, 33, -22481);
+registerHook("INTERACT", "trials_check", 146, "survival3", 20737, 70, -21070);
+registerHook("INTERACT", "trials_check", 143, "survival3", 19881.0, 65.0, -22489);
+registerHook("INTERACT", "trials_check", 143, "survival3", 19473.0, 73.0, -20817.0);
+registerHook("INTERACT", "trials_check", 143, "creative", -1167.0, 249.0, -1406.0);
+registerHook("REGION_ENTER", "trials_check", "survival3-hunt8");
+registerHook("INTERACT", "trials_check", 143, "survival3_nether", -21.0, 66.0, 211.0);
+registerHook("REGION_ENTER", "trials_check", "azuren-hunt10_1");
+		
 -------------------
 --Event Perms ------
 -------------------
