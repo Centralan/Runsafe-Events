@@ -1711,3 +1711,49 @@ end
 end
 
 registerHook("REGION_ENTER", "sm_start_r1", "project33-start_fight");
+
+--healing gifts
+function gift_healing(data)
+        local player = Player:new(data["player"]);
+	player:sendMessage("&aYou have been healed.");
+        player :setHealth(100);
+end	
+				
+registerHook("REGION_ENTER", "gift_healing", "project33-heal1")
+registerHook("REGION_ENTER", "gift_healing", "project33-heal2")
+registerHook("REGION_ENTER", "gift_healing", "project33-heal3")
+registerHook("REGION_ENTER", "gift_healing", "project33-heal4")
+registerHook("REGION_ENTER", "gift_healing", "project33-heal5")
+				
+--helping gifts
+function gift_str(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'INCREASE_DAMAGE', 10, 10);
+	player:sendMessage("&aYou feel the power of Krimas coursing through you.");
+end
+
+registerHook("REGION_ENTER", "gift_str", "project33-str1")
+registerHook("REGION_ENTER", "gift_str", "project33-str2")
+registerHook("REGION_ENTER", "gift_str", "project33-str3")
+
+--speed gifts
+function gift_speed(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'SPEED', 10, 10);
+	player:sendMessage("&aSpeeeed Boosst!");
+end
+
+registerHook("REGION_ENTER", "gift_speed", "project33-speed1")
+registerHook("REGION_ENTER", "gift_speed", "project33-speed2")
+registerHook("REGION_ENTER", "gift_speed", "project33-speed3")
+
+--regen gifts
+function gift_regen(data)
+        local player = Player:new(data["player"]);
+        EventEngine.player.addPotionEffect(player.name, 'REGENERATION', 10, 10);
+	player:sendMessage("&aHealth is Regenerating.");
+end
+
+registerHook("REGION_ENTER", "gift_regen", "project33-regen1")
+registerHook("REGION_ENTER", "gift_regen", "project33-regen2")
+registerHook("REGION_ENTER", "gift_regen", "project33-regen3")
