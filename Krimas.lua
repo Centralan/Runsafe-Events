@@ -1477,3 +1477,89 @@ registerHook("REGION_ENTER", "gift17_chest", "project33-gift17");
 registerHook("REGION_ENTER", "gift18_chest", "project33-gift18");
 registerHook("REGION_ENTER", "gift19_chest", "project33-gift19");
 
+local gift100 = Location:new(world4, -1627, 64, -1156);
+
+function gift_cheevee(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.gift1") then
+           if player:hasPermission("runsafe.event.gift2") then
+           if player:hasPermission("runsafe.event.gift3") then
+           if player:hasPermission("runsafe.event.gift4") then
+           if player:hasPermission("runsafe.event.gift5") then
+           if player:hasPermission("runsafe.event.gift6") then
+	   if player:hasPermission("runsafe.event.gift7") then
+	   if player:hasPermission("runsafe.event.gift8") then
+	   if player:hasPermission("runsafe.event.gift9") then
+	   if player:hasPermission("runsafe.event.gift10") then
+	   if player:hasPermission("runsafe.event.gift11") then
+	   if player:hasPermission("runsafe.event.gift12") then
+	   if player:hasPermission("runsafe.event.gift13") then
+	   if player:hasPermission("runsafe.event.gift14") then
+	   if player:hasPermission("runsafe.event.gift15") then
+	   if player:hasPermission("runsafe.event.gift16") then
+	   if player:hasPermission("runsafe.event.gift17") then
+	   if player:hasPermission("runsafe.event.gift18") then
+	   if player:hasPermission("runsafe.event.gift19") then
+	        gift100:cloneChestToPlayer(player.name);
+		player:closeInventory();
+		player:sendMessage('&6 Congratulations on finding all thee gifts!');
+	        player:sendEvent("achievement.krimaself");
+		player:removePermission("runsafe.event.gift1");
+		player:removePermission("runsafe.event.gift2");
+	        player:removePermission("runsafe.event.gift3");
+		player:removePermission("runsafe.event.gift4");
+		player:removePermission("runsafe.event.gift5");
+		player:removePermission("runsafe.event.gift6");
+	        player:removePermission("runsafe.event.gift7");
+	        player:removePermission("runsafe.event.gift8");
+		player:removePermission("runsafe.event.gift9");
+		player:removePermission("runsafe.event.gift10");
+		player:removePermission("runsafe.event.gift11");
+		player:removePermission("runsafe.event.gift12");
+		player:removePermission("runsafe.event.gift13");
+		player:removePermission("runsafe.event.gift14");
+		player:removePermission("runsafe.event.gift15");
+		player:removePermission("runsafe.event.gift16");
+		player:removePermission("runsafe.event.gift17");
+		player:removePermission("runsafe.event.gift18");
+		player:removePermission("runsafe.event.gift19");
+																						end
+																					end
+																				end
+																			end
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift1");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift2");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift3");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift4");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift5");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift6");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift7");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift8");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift9");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift10");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift11");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift12");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift13");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift14");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift15");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift16");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift17");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift18");
+registerHook("REGION_ENTER", "gift_cheevee", "project33-gift19");
+
