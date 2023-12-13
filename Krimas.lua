@@ -1709,3 +1709,5 @@ function sm_end_r1()
 end
 end
 end
+
+registerHook("REGION_ENTER", "sm_start_r1", "project33-start_fight");
