@@ -894,6 +894,7 @@ function fighttp(data)
           local player = Player:new(data.player);
 	      player:teleport(fight_tp);
 	      EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+	      player:addPermission("runsafe.event.boss");
 end
 
 registerHook("REGION_ENTER", "fighttp", "project33-final_tp1");
@@ -1563,3 +1564,148 @@ registerHook("REGION_ENTER", "gift_cheevee", "project33-gift17");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift18");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift19");
 
+
+------------------------------------
+--------------Boss Fight------------
+------------------------------------
+
+--start
+local smsound = Location:new(world4, -2265.0, 99, -1162.0);
+local bossexit = Location:new(world, 19503.0, 72, -20790.0);
+local Esound = Location:new(world, 19503.0, 72, -20790.0);
+local gift101 = Location:new(world, 19535.0, 64.0, -20784.0);
+			
+function mine_start(data)
+        local player = Player:new(data.player);
+          smsound:playSound('ENTITY_EVOCATION_ILLAGER_PREPARE_WOLOLO', 1, 0.1);
+          player:sendMessage("&cI shouldn't be here.");
+	 
+end
+
+  
+registerHook("REGION_ENTER", "mine_start", "project33-start_fight");
+
+--mob control
+local entityList = {};
+
+local function SMspawnMob(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+	table.insert(entityList, entity);
+end
+
+local function purgeEntityListSM()
+	for index, value in pairs(entityList) do
+		entityList[index] = nil;
+	end
+end
+
+function check_alive_statsSM()
+	for key, value in pairs(entityList) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+--timers
+local sm1Done = false;
+local smRoundRunning = false;
+local smR1 = Timer:new("sm_end_r1", 1);
+
+--spawn points
+local smS1 = Location:new(world4, -2267.0, 101, -1149.0);
+local smS2 = Location:new(world4, -2260.0, 101, -1134.0);
+local smS3 = Location:new(world4, -2269.0, 101, -1121.0);
+local smS4 = Location:new(world4, -2284.0, 101, -1113.0);
+local smS5 = Location:new(world4, -2255.0, 101, -1112.0);
+local smS6 = Location:new(world4, -2254.0, 101, -1126.0);
+local smS7 = Location:new(world4, -2247.0, 101, -1136.0);
+local smS8 = Location:new(world4, -2234.0, 101, -1124.0);
+local smS9 = Location:new(world4, -2225.0, 101, -1137.0);
+local smS10 = Location:new(world4, -2234.0, 101, -1147.0);
+local smS11 = Location:new(world4, -2233.0, 101, -1161.0);
+local smS12 = Location:new(world4, -2233.0, 101, -1182.0);
+local smS13 = Location:new(world4, -2245.0, 101, -1188.0);
+local smS14 = Location:new(world4, -2234.0, 101, -1197.0);
+local smS15 = Location:new(world4, -2253.0, 101, -1194.0);
+local smS16 = Location:new(world4, -2244.0, 101, -1203.0);
+local smS17 = Location:new(world4, -2265.0, 101, -1191.0);
+local smS18 = Location:new(world4, -2273.0, 101, -1185.0);
+local smS19 = Location:new(world4, -2250.0, 101, -1175.0);
+local smS20 = Location:new(world4, -2281.0, 101, -1169.0);
+local smS21 = Location:new(world4, -2291.0, 101, -1181.0);
+local smS22 = Location:new(world4, -2283.0, 101, -1196.0);
+local smS23 = Location:new(world4, -2269.0, 101, -1199.0);
+local smS24 = Location:new(world4, -2258.0, 101, -1204.0);
+local smS25 = Location:new(world4, -2248.0, 101, -1214.0);
+local smS26 = Location:new(world4, -2271.0, 101, -1220.0);
+local smS27 = Location:new(world4, -2292.0, 101, -1215.0);
+local smS28 = Location:new(world4, -2290.0, 101, -1232.0);
+local smS29 = Location:new(world4, -2263.0, 101, -1235.0);
+local smS30 = Location:new(world4, -2255.0, 101, -1222.0);
+			
+--round
+function sm_start_r1(data)
+         local player = Player:new(data.player);
+    if player:hasPermission("runsafe.event.boss") then
+      if not smRoundRunning then
+         smRoundRunning = true;
+         smR1:startRepeating()
+	 SMspawnMob(smS1, "VINDICATOR");
+         SMspawnMob(smS2, "VINDICATOR");
+         SMspawnMob(smS3, "ILLUSIONER");
+         SMspawnMob(smS4, "VINDICATOR");
+         SMspawnMob(smS5, "VINDICATOR");
+         SMspawnMob(smS6, "VINDICATOR");
+         SMspawnMob(smS7, "ILLUSIONER");
+         SMspawnMob(smS8, "VINDICATOR");
+         SMspawnMob(smS9, "VINDICATOR");
+         SMspawnMob(smS10, "VINDICATOR");
+         SMspawnMob(smS11, "VINDICATOR");
+         SMspawnMob(smS12, "VINDICATOR");
+         SMspawnMob(smS13, "ILLUSIONER");
+         SMspawnMob(smS14, "VINDICATOR");
+         SMspawnMob(smS15, "VINDICATOR");
+         SMspawnMob(smS16, "VINDICATOR");
+         SMspawnMob(smS17, "VINDICATOR");
+         SMspawnMob(smS18, "ILLUSIONER");
+         SMspawnMob(smS19, "VINDICATOR");
+         SMspawnMob(smS20, "VINDICATOR");
+         SMspawnMob(smS21, "VINDICATOR");
+         SMspawnMob(smS22, "VINDICATOR");
+         SMspawnMob(smS23, "VINDICATOR");
+         SMspawnMob(smS24, "VINDICATOR");
+         SMspawnMob(smS25, "ILLUSIONER");
+         SMspawnMob(smS26, "VINDICATOR");
+         SMspawnMob(smS27, "VINDICATOR");
+         SMspawnMob(smS28, "VINDICATOR");
+         SMspawnMob(smS29, "VINDICATOR");
+         SMspawnMob(smS30, "EVOKER");
+      end
+   end
+
+function sm_end_r1()
+        if check_alive_statsSM() then
+	 if player:hasPermission("runsafe.event.boss") then
+           smR1:cancel()
+           smRoundRunning = false;
+	   player:teleport(bossexit);
+	   gift101:cloneChestToPlayer(player.name);
+	   player:closeInventory();
+	   player:sendEvent("achievement.krimasclaus");
+	   Esound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
+	   player:removePermission("runsafe.event.lighthouse");
+	   player:removePermission("runsafe.event.vt");
+	   player:removePermission("runsafe.event.enchant");
+	   player:removePermission("runsafe.event.boat");
+	   player:removePermission("runsafe.event.weep");
+	   player:removePermission("runsafe.event.weepd");
+	   player:removePermission("runsafe.event.break");
+	   player:removePermission("runsafe.event.pray");
+	   player:removePermission("runsafe.warp.use.krimas");
+end
+end
+end
