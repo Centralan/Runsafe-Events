@@ -4,7 +4,7 @@
 
 --World
 local world = World:new('tunnel');
-local world2 = World:new('spawn2');
+local world2 = World:new('survival3');
 
 --tps
 local tunnelrespawn = Location:new(world, 1.0, 168.0, -22.0);
