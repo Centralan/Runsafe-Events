@@ -40,7 +40,7 @@ local p12 = Location:new(world, 3.6, 168.0, -367.0);
 
 
 --chests
-local endloot = Location:new(world2, -1581.0, 44.0, -365.0);
+local endloot = Location:new(world2, 19536.0, 64.0, -20805.0);
 
 --misc
 local Tunneltimer = false;
