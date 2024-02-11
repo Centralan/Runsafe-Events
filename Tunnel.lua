@@ -91,7 +91,7 @@ function respawn_tunnel(data)
 function tunnel_start(data)
 	local p = Player:new(data["player"]);
 	p:removePotionEffects();
-	p:setMode("ADVENTURE");
+        p:setMode("ADVENTURE");
 end
 
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
@@ -336,12 +336,30 @@ function tunnel3_message3(data)
 	player:sendMessage("&4(???)&fStop! I will not let you go any further... you're hurting us both. GET OUT!!!");
         player:sendEvent("achievement.legacyofpain");
         sign:setSign('Recent Survivor:', player.name, 'Time:', '2h3?m??s');
-	player:addPermission("runsafe.tunnel3.complete");
-	player:addPermission("runsafe.tunnel3.loot");
-	player:sendMessage("&6You'll get your rewards for completing tunnel 3 once you return to spawn.");
 end
 
+function tunnel3_perm(data)
+	local player = Player:new(data.player);
+	if not player:hasPermission("runsafe.tunnel3.complete") then
+	        player:addPermission("runsafe.tunnel3.loot");
+	        player:addPermission("runsafe.tunnel3.complete");
+                player:sendMessage("&6You'll get your rewards for completing tunnel 3 once you return to spawn.");
+		
+	end
+end
+
+function tunnel3_perm2(data)
+	local player = Player:new(data.player);
+	if player:hasPermission("runsafe.tunnel3.complete") then
+                player:sendMessage("&cYou're crazy for doing this again...");
+		
+	end
+end
+
+
+
 registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-t3_message3");
+registerHook("REGION_LEAVE", "tunnel3_perm", "tunnel2-t3_message3");
 
 function tunnel3_endloot(data)
         local player = Player:new(data.player);
@@ -355,10 +373,10 @@ end
 registerHook("REGION_ENTER", "tunnel3_endloot", "survival3-spawn");
 
 
-
 --------------------------------------------------------------------------------------------------------
                                          ---- Tunnel 4 ----
 --------------------------------------------------------------------------------------------------------
+
 
 -- Emerald Blocks
 
@@ -373,6 +391,7 @@ registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health2");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health3");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health4");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health1");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health2");
 
 -- Start
 
