@@ -91,9 +91,11 @@ function respawn_tunnel(data)
 function tunnel_start(data)
 	local p = Player:new(data["player"]);
 	p:removePotionEffects();
+	p:setMode("ADVENTURE");
 end
 
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
+registerHook("REGION_ENTER", "tunnel_start", "tunnel2-effect_clear");
 
 function tunnel_tp_enter(data)
 	local player = Player:new(data["player"]);
@@ -352,6 +354,38 @@ end
  
 registerHook("REGION_ENTER", "tunnel3_endloot", "survival3-spawn");
 
-------------------
----- Tunnel 4 ----
-------------------
+
+
+--------------------------------------------------------------------------------------------------------
+                                         ---- Tunnel 4 ----
+--------------------------------------------------------------------------------------------------------
+
+-- Emerald Blocks
+
+function tunnel_health(data)
+          local player = Player:new(data.player);
+             player:setHealth(20);
+             player:sendMessage("&aThe tunnel shows sympathy...");
+end
+
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health1");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health2");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health3");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health4");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health1");
+
+-- Start
+
+local t4tp = Location:new(world, 1.5, 168.0, -682.0);
+t4tp:setYaw(178.4);
+t4tp:setPitch(6.7);
+
+function tunnel4_tp(data)
+        local player = Player:new(data.player);
+	  if player:hasPermission("runsafe.tunnel3.complete") then
+	     player:teleport(t4tp);
+
+	end
+end
+		
+registerHook("REGION_ENTER", "tunnel4_tp", "tunnel2-tunnel4_tp2");
