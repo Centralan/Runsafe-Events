@@ -96,6 +96,7 @@ end
 
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-effect_clear");
+registerHook("REGION_ENTER", "tunnel_start", "tunnel2-t4_gamecheck");
 
 function tunnel_tp_enter(data)
 	local player = Player:new(data["player"]);
@@ -383,7 +384,8 @@ registerHook("REGION_ENTER", "tunnel3_endloot", "survival3-spawn");
 function tunnel_health(data)
           local player = Player:new(data.player);
              player:setHealth(20);
-             player:sendMessage("&aThe tunnel shows sympathy...");
+             player:sendMessage("&aThe obsidian spits in your direction...");
+	     player:playSound('ENTITY_LLAMA_SPIT', 1, 2);
 end
 
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health1");
@@ -392,6 +394,52 @@ registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health3");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health4");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health1");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health2");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health3");
+-- Checkpoints
+
+local t4cp1 = Location:new(world, 4.1, 169.0, -890.203);
+t4cp1:setYaw(146.8);
+t4cp1:setPitch(4.5);
+
+local t4cp2 = Location:new(world, 1.549, 172.0, -976.515);
+t4cp2:setYaw(179.9);
+t4cp2:setPitch(29.6);
+
+
+function tunnel4_cp1_add(data)
+        local player = Player:new(data.player);
+	  player:addPermission("runsafe.tunnel4.cp1");
+end
+
+function tunnel4_cp2_add(data)
+        local player = Player:new(data.player);
+	  player:addPermission("runsafe.tunnel4.cp2");
+end
+
+
+registerHook("REGION_ENTER", "tunnel4_cp1_add", "tunnel2-tunnel4_cp1");
+registerHook("REGION_ENTER", "tunnel4_cp2_add", "tunnel2-tunnel4_cp2");
+
+function tunnel4_cp1(data)
+        local player = Player:new(data.player);
+	  if player:hasPermission("runsafe.tunnel4.cp1") then
+	     player:teleport(t4cp1);
+
+	end
+end
+
+function tunnel4_cp2(data)
+        local player = Player:new(data.player);
+	  if player:hasPermission("runsafe.tunnel4.cp2") then
+	     player:teleport(t4cp2);
+
+	end
+end
+
+
+registerHook("REGION_ENTER", "tunnel4_cp1", "tunnel2-tunnel4_point1"); 
+registerHook("REGION_ENTER", "tunnel4_cp2", "tunnel2-tunnel4_point2");
+
 
 -- Start
 
