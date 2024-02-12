@@ -424,7 +424,7 @@ function tunnel4_cp1(data)
         local player = Player:new(data.player);
 	  if player:hasPermission("runsafe.tunnel4.cp1") then
 	     player:teleport(t4cp1);
-
+             player:playSound('ENTITY_ENDERMEN_AMBIENT', 5, 0.5);
 	end
 end
 
@@ -432,7 +432,7 @@ function tunnel4_cp2(data)
         local player = Player:new(data.player);
 	  if player:hasPermission("runsafe.tunnel4.cp2") then
 	     player:teleport(t4cp2);
-
+	     player:playSound('ENTITY_ENDERMEN_AMBIENT', 5, 0.5);
 	end
 end
 
