@@ -451,8 +451,12 @@ function tunnel4_tp(data)
         local player = Player:new(data.player);
 	  if player:hasPermission("runsafe.tunnel3.complete") then
 	     player:teleport(t4tp);
+             player:sendMessage("&4&nY&ko&4&nu come &kt&4&no see&kk &4&na grea&kt&4&ner c&kh&4&nalla&kn&4&nge");
+             player:playSound('ENTITY_ENDERMEN_AMBIENT', 5, 0.5);
+
 
 	end
 end
+
 		
 registerHook("REGION_ENTER", "tunnel4_tp", "tunnel2-tunnel4_tp2");
