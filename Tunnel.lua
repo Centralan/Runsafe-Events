@@ -395,6 +395,12 @@ registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health4");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health1");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health2");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health3");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health4");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health5");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health6");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health7");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health8");
+
 -- Checkpoints
 
 local t4cp1 = Location:new(world, 4.1, 169.0, -890.203);
@@ -441,16 +447,21 @@ registerHook("REGION_ENTER", "tunnel4_cp1", "tunnel2-tunnel4_point1");
 registerHook("REGION_ENTER", "tunnel4_cp2", "tunnel2-tunnel4_point2");
 
 
--- Start
+-- Tp's
 
-local t4tp = Location:new(world, 1.5, 168.0, -682.0);
-t4tp:setYaw(178.4);
-t4tp:setPitch(6.7);
+local t4tp = Location:new(world, 2.113, 168.0, -1008.534);
+t4tp:setYaw(-89.7);
+t4tp:setPitch(7.0);
+
+local t4maze = Location:new(world, 1.5, 168.0, -682.0);
+t4maze:setYaw(178.4);
+t4maze:setPitch(6.7);
+
 
 function tunnel4_tp(data)
         local player = Player:new(data.player);
 	  if player:hasPermission("runsafe.tunnel3.complete") then
-	     player:teleport(t4tp);
+	     player:teleport(t4maze);
              player:sendMessage("&4&nY&ko&4&nu come &kt&4&no see&kk &4&na grea&kt&4&ner c&kh&4&nalla&kn&4&nge");
              player:playSound('ENTITY_ENDERMEN_AMBIENT', 5, 0.5);
 
@@ -458,5 +469,10 @@ function tunnel4_tp(data)
 	end
 end
 
+function tunnel4_icemaze(data)
+        local player = Player:new(data.player);
+	     player:teleport(t4tp);
+end
 		
 registerHook("REGION_ENTER", "tunnel4_tp", "tunnel2-tunnel4_tp2");
+registerHook("REGION_ENTER", "tunnel4_icemaze", "tunnel2-t4_icetp");
