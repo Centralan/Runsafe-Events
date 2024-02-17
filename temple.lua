@@ -10,10 +10,14 @@ local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
---enter lightning 1 placeholder
---enter lightning 2 placeholder
---enter lightning 3 placeholder
---enter lightning 4 placeholder
+local tlight1 = Location:new("survival3", -30853.0, 84.0, 34909.0); -- enter lightning 1
+local tlight2 = Location:new("survival3", -30853.0, 84.0, 34865.0); -- enter lightning 2
+local tlight3 = Location:new("survival3", -30897.0, 84.0, 34865.0); -- enter lightning 3
+local tlight4 = Location:new("survival3", -30897.0, 84.0, 34909.0); -- enter lightning 4
+local tlight5 = Location:new("survival3", -30811.0, 123.0, 34959.0); -- enter lightning 5
+local tlight6 = Location:new("survival3", -30828.0, 116.0, 34868.0); -- enter lightning 6
+local tlight7 = Location:new("survival3", -30908.0, 103.0, 34814.0); -- enter lightning 7
+local tlight8 = Location:new("survival3", -30957.0, 99.0, 34903.0); -- enter lightning 8
 
 -------------------------------------------
 ---------------Welcome-----------------
@@ -26,6 +30,14 @@ function temple_welcome(data)
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings have been rising since you're arrival..");
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
+	        tlight1:lightningStrike();
+		tlight2:lightningStrike();
+		tlight3:lightningStrike();
+		tlight4:lightningStrike();
+		tlight5:lightningStrike();
+		tlight6:lightningStrike();
+		tlight7:lightningStrike();
+		tlight8:lightningStrike();	
   end
 end
 
@@ -36,6 +48,19 @@ function temple_door_remove(data)
 
 registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_start");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear1");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear2");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear3");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear4");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear5");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear6");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear7");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear8");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear9");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear10");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear11");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear12");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear13");
 
 -------------------------------------------
 ---------------Loot Chests-----------------
@@ -288,7 +313,24 @@ registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
 ------------------Portal Room Door---------------
 -------------------------------------------------
 
+function temple_p_door(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.temple.portal.found") then
+              ts:speak( player.name .. " has uncovered the Portal To The Unknown.");
+              player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings are off the charts here..");
+              player:addPermission("runsafe.temple.portal.found");
+	        tlight1:lightningStrike();
+		tlight2:lightningStrike();
+		tlight3:lightningStrike();
+		tlight4:lightningStrike();
+		tlight5:lightningStrike();
+		tlight6:lightningStrike();
+		tlight7:lightningStrike();
+		tlight8:lightningStrike();	
+  end
+end
 
+registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
 
 -------------------------------------------------
 -------------------Portal------------------------
