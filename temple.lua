@@ -1,6 +1,11 @@
 local world = World:new('survival3');  --temple world
 local ts = AI:new("Temple Sentinel", "AI", "dergamir"); --temple ai
-local templechest1 = Location:new(world, -2.0, 170.0, -678.0); --loot chest
+local templechest1 = Location:new(world, -30872.0, 58.0, 34884.0); --loot chest
+local templechest2 = Location:new(world, -30870.0, 58.0, 34884.0); --loot chest
+local templechest3 = Location:new(world, -30868.0, 58.0, 34884.0); --loot chest
+local templechest4 = Location:new(world, -30866.0, 58.0, 34884.0); --loot chest
+local templechest5 = Location:new(world, -30872.0, 58.0, 34887.0); --loot chest
+local templechest6 = Location:new(world, -30870.0, 58.0, 34887.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
@@ -28,17 +33,52 @@ registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
 
 function templechest_1(data)
         local player = Player:new(data.player);
-              endloot:cloneChestToPlayer(player.name);
+              templechest1:cloneChestToPlayer(player.name);
+              player:closeInventory();
+              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_2(data)
+        local player = Player:new(data.player);
+              templechest2:cloneChestToPlayer(player.name);
+              player:closeInventory();
+              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_3(data)
+        local player = Player:new(data.player);
+              templechest3:cloneChestToPlayer(player.name);
+              player:closeInventory();
+              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_4(data)
+        local player = Player:new(data.player);
+              templechest4:cloneChestToPlayer(player.name);
+              player:closeInventory();
+              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_5(data)
+        local player = Player:new(data.player);
+              templechest5:cloneChestToPlayer(player.name);
+              player:closeInventory();
+              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_6(data)
+        local player = Player:new(data.player);
+              templechest6:cloneChestToPlayer(player.name);
               player:closeInventory();
               player:sendMessage("&cThat was risky...");
 end
 
 registerHook("INTERACT", "templechest_1", 146, "survival3", -30849.0, 22.0, 34882.0);
-registerHook("INTERACT", "templechest_1", 146, "survival3", -30855.0, 13.0, 34877.0);
-registerHook("INTERACT", "templechest_1", 146, "survival3", -30851.0, 5.0, 34890.0);
-registerHook("INTERACT", "templechest_1", 146, "survival3", -30879.0, 20.0, 34908.0);
-registerHook("INTERACT", "templechest_1", 146, "survival3", -30891.0, 12.0, 34817.0);
-registerHook("INTERACT", "templechest_1", 146, "survival3", -30854.0, 5.0, 34879.0);
+registerHook("INTERACT", "templechest_2", 146, "survival3", -30855.0, 13.0, 34877.0);
+registerHook("INTERACT", "templechest_3", 146, "survival3", -30851.0, 5.0, 34890.0);
+registerHook("INTERACT", "templechest_4", 146, "survival3", -30879.0, 20.0, 34908.0);
+registerHook("INTERACT", "templechest_5", 146, "survival3", -30891.0, 12.0, 34817.0);
+registerHook("INTERACT", "templechest_6", 146, "survival3", -30854.0, 5.0, 34879.0);
 
 -------------------------------------------
 ---------------empty Chests-----------------
