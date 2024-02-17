@@ -10,6 +10,10 @@ local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
+--enter lightning 1 placeholder
+--enter lightning 2 placeholder
+--enter lightning 3 placeholder
+--enter lightning 4 placeholder
 
 -------------------------------------------
 ---------------Welcome-----------------
@@ -25,7 +29,13 @@ function temple_welcome(data)
   end
 end
 
+function temple_door_remove(data)
+            local player = Player:new(data.player);
+                  EventEngine.player.removePotionEffects(player.name, 'NIGHT_VISION');
+          end
+
 registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_start");
 
 -------------------------------------------
 ---------------Loot Chests-----------------
@@ -35,42 +45,42 @@ function templechest_1(data)
         local player = Player:new(data.player);
               templechest1:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 function templechest_2(data)
         local player = Player:new(data.player);
               templechest2:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 function templechest_3(data)
         local player = Player:new(data.player);
               templechest3:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 function templechest_4(data)
         local player = Player:new(data.player);
               templechest4:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 function templechest_5(data)
         local player = Player:new(data.player);
               templechest5:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 function templechest_6(data)
         local player = Player:new(data.player);
               templechest6:cloneChestToPlayer(player.name);
               player:closeInventory();
-              player:sendMessage("&cThat was risky...");
+--              player:sendMessage("&cThat was risky...");
 end
 
 registerHook("INTERACT", "templechest_1", 146, "survival3", -30849.0, 22.0, 34882.0);
@@ -87,28 +97,28 @@ registerHook("INTERACT", "templechest_6", 146, "survival3", -30854.0, 5.0, 34879
 function templechest_bite(data)
         local player = Player:new(data.player);
               player:closeInventory();
-              player:sendMessage("&4[D] &bTemple Sentinel&f: Things are never as they seem here..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: Things are never as they seem here..");
               player:setHealth(5);
 end
 
 function templechest_bite2(data)
         local player = Player:new(data.player);
               player:closeInventory();
-              player:sendMessage("&4[D] &bTemple Sentinel&f: Mimic's are some nasty things arn't they?");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: Mimic's are some nasty things arn't they?");
               player:setHealth(3);
 end
 
 function templechest_bite3(data)
         local player = Player:new(data.player);
               player:closeInventory();
-              player:sendMessage("&4[D] &bTemple Sentinel&f: That was a nasty one, no two Mimics are the same..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: That was a nasty one, no two Mimics are the same..");
               player:setHealth(1);
 end
 
 function templechest_bite4(data)
         local player = Player:new(data.player);
               player:closeInventory();
-              player:sendMessage("&4[D] &bTemple Sentinel&f: We study you for a living, you're nothing but predictable..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: We study you for a living, you're nothing but predictable..");
               player:setHealth(0);
               templelightning1:lightningStrike();
 end
@@ -116,7 +126,7 @@ end
 function templechest_bite5(data)
         local player = Player:new(data.player);
               player:closeInventory();
-              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
               player:setHealth(11);
               EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
 end
@@ -134,7 +144,7 @@ registerHook("INTERACT", "templechest_bite5", 54, "survival3", -30900.0, 14.0, 3
 
 function templemob_2(data)
         local player = Player:new(data.player);
-              player:sendMessage("&4[D] &bTemple Sentinel&f: Everything here is working to stop you..");
+             player:sendMessage("&4[D] &bTemple Sentinel&f: Everything here is working to stop you..");
 end
 
 function templefall_trap(data)
@@ -145,27 +155,27 @@ end
 
 function templemob_3(data)
         local player = Player:new(data.player);
-              player:sendMessage("&4[D] &bTemple Sentinel&f: We too have learned to harness the power of lightning..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: We too have learned to harness the power of lightning..");
               templelightning1:lightningStrike();
               player:setHealth(6);
 end
 
 function templemob_4(data)
         local player = Player:new(data.player);
-              player:sendMessage("&4[D] &bTemple Sentinel&f: You are considered a mere peasant in comparison to us..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: You are considered a mere peasant in comparison to us..");
               player:setHealth(6);
 end
 
 function temple_fireball(data)
         local player = Player:new(data.player);
-              player:sendMessage("&4[D] &bTemple Sentinel&f: These came special from our most prized creation..");
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: These came special from our most prized creation..");
               player:setHealth(12);
 end
 
-registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_2");
-registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_3");
-registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_4");
-registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_5");
+--registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_2");
+--registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_3");
+--registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_4");
+--registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_5");
 registerHook("REGION_ENTER", "templemob_3", "survival3-temple_ai_6");
 registerHook("REGION_ENTER", "templemob_4", "survival3-temple_ai_7");
 registerHook("REGION_ENTER", "temple_fireball", "survival3-temple_fireballs");
@@ -177,7 +187,7 @@ registerHook("REGION_ENTER", "temple_fireball", "survival3-temple_fireballs");
 function kill_chest(data)
 	local player = Player:new(data["player"]);
 	      player:setHealth(0);
-        player:sendMessage("&4[D] &bTemple Sentinel&f: You need to prove your worth to be here..");
+--        player:sendMessage("&4[D] &bTemple Sentinel&f: You need to prove your worth to be here..");
 end
 
 registerHook("INTERACT", "kill_chest", 146, "survival3", -30882.0, 37.0, 34896.0);
@@ -243,13 +253,13 @@ registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall2");
 function wither_effect(data)
 	local player = Player:new(data["player"]);
 	         EventEngine.player.addPotionEffect(player.name, 'WITHER', 12, 10);
-           player:sendMessage("&4[D] &bTemple Sentinel&f: My creators see the conflict that tears your world apart..");
+--           player:sendMessage("&4[D] &bTemple Sentinel&f: My creators see the conflict that tears your world apart..");
 end
 
 function confus_effect(data)
 	local player = Player:new(data["player"]);
 	         EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 100, 10);
-           player:sendMessage("&4[D] &bTemple Sentinel&f: We sent them here in hopes to scare you off..");
+--           player:sendMessage("&4[D] &bTemple Sentinel&f: We sent them here in hopes to scare you off..");
 end
 
 registerHook("REGION_ENTER", "wither_effect", "survival3-temple_effect");
@@ -259,17 +269,27 @@ function temple_out(data)
 	local player = Player:new(data.player);
 	        player:teleport(temple_tp_out);
           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
-          player:sendMessage("&4[D] &bTemple Sentinel&f: Dimensions overlap here due to the overflow of magic from the portal..");
+--          player:sendMessage("&4[D] &bTemple Sentinel&f: Dimensions overlap here due to the overflow of magic from the portal..");
 end
 
 function temple_out2(data)
 	local player = Player:new(data.player);
 	        player:teleport(temple_tp_out2);
           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
-          player:sendMessage("&4[D] &bTemple Sentinel&f: Just like you will also get joy from punching our pray.");
+--          player:sendMessage("&4[D] &bTemple Sentinel&f: Just like you will also get joy from punching our pray.");
           player:setHealth(10);
 end
 
 registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
 registerHook("REGION_ENTER", "temple_out2", "survival3-temple_punch");
 registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
+
+-------------------------------------------------
+------------------Portal Room Door---------------
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+-------------------Portal------------------------
+-------------------------------------------------
