@@ -171,7 +171,7 @@ registerHook("REGION_ENTER", "templemob_4", "survival3-temple_ai_7");
 registerHook("REGION_ENTER", "temple_fireball", "survival3-temple_fireballs");
 
 -------------------------------------------
----------------Traps-----------------------
+---------------Code Traps------------------
 -------------------------------------------
 
 function kill_chest(data)
@@ -252,6 +252,7 @@ function confus_effect(data)
            player:sendMessage("&4[D] &bTemple Sentinel&f: We sent them here in hopes to scare you off..");
 end
 
+registerHook("REGION_ENTER", "wither_effect", "survival3-temple_effect");
 registerHook("REGION_ENTER", "confus_effect", "survival3-temple_effect2");
 
 function temple_out(data)
@@ -261,8 +262,6 @@ function temple_out(data)
           player:sendMessage("&4[D] &bTemple Sentinel&f: Dimensions overlap here due to the overflow of magic from the portal..");
 end
 
-registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
-
 function temple_out2(data)
 	local player = Player:new(data.player);
 	        player:teleport(temple_tp_out2);
@@ -271,5 +270,6 @@ function temple_out2(data)
           player:setHealth(10);
 end
 
+registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
 registerHook("REGION_ENTER", "temple_out2", "survival3-temple_punch");
 registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
