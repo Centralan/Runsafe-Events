@@ -319,6 +319,7 @@ function temple_p_door(data)
               ts:speak( player.name .. " has uncovered the Portal To The Unknown.");
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings are off the charts here..");
               player:addPermission("runsafe.temple.portal.found");
+	        player:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
