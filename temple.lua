@@ -1,11 +1,12 @@
 local world = World:new('survival3');  --temple world
 local ts = AI:new("Temple Sentinel", "AI", "dergamir"); --temple ai
-local templechest1 = Location:new(world, -30872.0, 58.0, 34884.0); --loot chest
-local templechest2 = Location:new(world, -30870.0, 58.0, 34884.0); --loot chest
-local templechest3 = Location:new(world, -30868.0, 58.0, 34884.0); --loot chest
-local templechest4 = Location:new(world, -30866.0, 58.0, 34884.0); --loot chest
-local templechest5 = Location:new(world, -30872.0, 58.0, 34887.0); --loot chest
-local templechest6 = Location:new(world, -30870.0, 58.0, 34887.0); --loot chest
+local templechest1 = Location:new(world, -30856.0, 36.0, 34877.0); --loot chest
+local templechest2 = Location:new(world, -30854.0, 36.0, 34877.0); --loot chest
+local templechest3 = Location:new(world, -30852.0, 36.0, 34877.0); --loot chest
+local templechest4 = Location:new(world, -30850.0, 36.0, 34881.0); --loot chest
+local templechest5 = Location:new(world, -30852.0, 36.0, 34881.0); --loot chest
+local templechest6 = Location:new(world, -30854.0, 36.0, 34881.0); --loot chest
+local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
@@ -365,6 +366,46 @@ registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall4");
 ------------------Portal Room Door---------------
 -------------------------------------------------
 
+local emeraldChestPlayers = {};
+local emeraldChestResetTimer = Timer:new("emerald_reset_chest", 200 * 600 * 50);
+local emeraldChestResetTimerRunning = false;
+local emeraldChestOpen = Location:new(world, -61.0, 65.0, -513.0);;
+
+function emerald_reset_chest()
+	emeraldChestPlayers = {};
+	emeraldChestResetTimerRunning = false;
+end
+
+function emerald_chest(data)
+        local player = Player:new(data.player);
+        if not emeraldChestPlayers[player.name] then
+                emerald:cloneChestToPlayer(player.name);
+                player:closeInventory();
+		emeraldChestPlayers[player.name] = true;
+		player:playSound('ENTITY_GHAST_AMBIENT', 1, 0.5);
+		player:addPermission("runsafe.temple.emerald");
+	if emeraldChestPlayers[player.name] then
+	          player:sendMessage('&7Something shiny pops out.');
+                  player:closeInventory();
+                if not emeraldChestResetTimerRunning then
+                        emeraldChestResetTimerRunning = true;
+                        emeraldChestResetTimer:start();
+                     end
+                end
+        end
+end
+		
+function temple_emerarld_check2(data)
+        local player = Player:new(data.player);
+          if player:hasPermission("runsafe.temple.emerald") then
+	else
+          if not player:hasPermission("runsafe.temple.emerald") then
+	         player:setHealth(0);
+
+		end
+	end
+end
+
 function temple_p_door(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.temple.portal.found") then
@@ -383,7 +424,11 @@ function temple_p_door(data)
   end
 end
 
+registerHook("INTERACT", "emerald_chest", 54, "survival3", -30880.0, 10.0, 34879.0);
+registerHook("REGION_ENTER", "temple_emerarld_check2", "survival3-temple_emerald2");
 registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
+
+
 
 -------------------------------------------------
 -------------------Portal------------------------
