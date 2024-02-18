@@ -7,6 +7,7 @@ local templechest4 = Location:new(world, -30866.0, 58.0, 34884.0); --loot chest
 local templechest5 = Location:new(world, -30872.0, 58.0, 34887.0); --loot chest
 local templechest6 = Location:new(world, -30870.0, 58.0, 34887.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
+local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
@@ -308,6 +309,57 @@ end
 registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
 registerHook("REGION_ENTER", "temple_out2", "survival3-temple_punch");
 registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
+
+local world = "survival3";
+local fall2current = 1;
+local fall2maxData = 1;
+local fall2blocks = {
+        Location:new(world, -30835.0 , 25.0, 34837.0),
+	Location:new(world, -30836.0 , 25.0, 34837.0),
+	Location:new(world, -30836.0 , 26.0, 34837.0),
+	Location:new(world, -30836.0 , 25.0, 34836.0),
+	Location:new(world, -30835.0 , 24.0, 34835.0),
+	Location:new(world, -30836.0 , 24.0, 34835.0),
+	Location:new(world, -30837.0 , 24.0, 34835.0),
+	Location:new(world, -30835.0 , 24.0, 34836.0),
+	Location:new(world, -30836.0 , 24.0, 34836.0),
+	Location:new(world, -30837.0 , 24.0, 34836.0),
+	Location:new(world, -30835.0 , 24.0, 34837.0),
+	Location:new(world, -30836.0 , 24.0, 34837.0),
+	Location:new(world, -30837.0 , 24.0, 34837.0),
+
+
+
+};
+
+function fall_2_pit(data)
+        if fall2current == fall2maxData then
+                fall2current = 1;
+        else
+                fall2current = fall2current + 1;
+        end
+        fall_2_setair();
+end
+
+function fall_2_setair()
+        for index, key in ipairs(fall2blocks) do
+                key:setBlock(0, fall2current);
+end
+end
+
+function fall_2_setstone()
+        for index, key in ipairs(fall2blocks) do
+                key:setBlock(1, fall2current);
+end
+end
+
+function fall_2_sound()
+            templesound2:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
+end
+
+registerHook("REGION_ENTER", "fall_1_setair", "survival3-temple_fall3");
+registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall4");
+
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
