@@ -9,6 +9,7 @@ local templechest6 = Location:new(world, -30854.0, 36.0, 34881.0); --loot chest
 local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
+local worldsound = Location:new(world, 0.0, 100.0, 0.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
@@ -32,6 +33,7 @@ function temple_welcome(data)
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings have been rising since you're arrival..");
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
+		worldsound:playSound('ENTITY_WITHER_SPAWN', 100000, 1);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
