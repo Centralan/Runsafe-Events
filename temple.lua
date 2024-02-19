@@ -6,10 +6,10 @@ local templechest3 = Location:new(world, -30852.0, 36.0, 34877.0); --loot chest
 local templechest4 = Location:new(world, -30850.0, 36.0, 34881.0); --loot chest
 local templechest5 = Location:new(world, -30852.0, 36.0, 34881.0); --loot chest
 local templechest6 = Location:new(world, -30854.0, 36.0, 34881.0); --loot chest
+local templechest7 = Location:new(world, -30848.0, 36.0, 34881.0); --loot chest
 local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
-local worldsound = Location:new(world, 0.0, 100.0, 0.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
@@ -33,7 +33,7 @@ function temple_welcome(data)
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings have been rising since you're arrival..");
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
-		worldsound:playSound('ENTITY_WITHER_SPAWN', 100000, 1);
+		worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
@@ -65,6 +65,7 @@ registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear10");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear11");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear12");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear13");
+registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear14");
 
 -------------------------------------------
 ---------------Loot Chests-----------------
@@ -112,12 +113,22 @@ function templechest_6(data)
 --              player:sendMessage("&cThat was risky...");
 end
 
+function templechest_7(data)
+        local player = Player:new(data.player);
+              templechest7:cloneChestToPlayer(player.name);
+              player:closeInventory();
+--              player:sendMessage("&cThat was risky...");
+end
+
+
 registerHook("INTERACT", "templechest_1", 146, "survival3", -30849.0, 22.0, 34882.0);
 registerHook("INTERACT", "templechest_2", 146, "survival3", -30855.0, 13.0, 34877.0);
 registerHook("INTERACT", "templechest_3", 146, "survival3", -30851.0, 5.0, 34890.0);
 registerHook("INTERACT", "templechest_4", 146, "survival3", -30879.0, 20.0, 34908.0);
 registerHook("INTERACT", "templechest_5", 146, "survival3", -30891.0, 12.0, 34817.0);
 registerHook("INTERACT", "templechest_6", 146, "survival3", -30854.0, 5.0, 34879.0);
+registerHook("INTERACT", "templechest_7", 54, "survival3", -30875.0, 20.0, 34864.0);
+
 
 -------------------------------------------
 ---------------empty Chests-----------------
@@ -156,7 +167,7 @@ function templechest_bite5(data)
         local player = Player:new(data.player);
               player:closeInventory();
 --              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
-              player:setHealth(11);
+              player:setHealth(5);
               EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
 end
 
@@ -165,7 +176,9 @@ registerHook("INTERACT", "templechest_bite", 54, "survival3", -30880.0, 31.0, 34
 registerHook("INTERACT", "templechest_bite2", 54, "survival3", -30881.0, 40.0, 34883.0);
 registerHook("INTERACT", "templechest_bite3", 54, "survival3", -30872.0, 47.0, 34895.0);
 registerHook("INTERACT", "templechest_bite4", 54, "survival3", -30830.0, 7.0, 34887.0);
+registerHook("INTERACT", "templechest_bite4", 146, "survival3", -30826.0, 18.0, 34887.0);
 registerHook("INTERACT", "templechest_bite5", 54, "survival3", -30900.0, 14.0, 34850.0);
+registerHook("INTERACT", "templechest_bite5", 146, "survival3", -30791.0, 14.0, 34849.0);
 
 ---------------------------------------------
 ---------------no code traps-----------------
@@ -201,6 +214,13 @@ function temple_fireball(data)
               player:setHealth(12);
 end
 
+function temple_fireball2(data)
+        local player = Player:new(data.player);
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: These came special from our most prized creation..");
+              player:setHealth(6);
+end
+
+
 --registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_2");
 --registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_3");
 --registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_4");
@@ -208,6 +228,7 @@ end
 registerHook("REGION_ENTER", "templemob_3", "survival3-temple_ai_6");
 registerHook("REGION_ENTER", "templemob_4", "survival3-temple_ai_7");
 registerHook("REGION_ENTER", "temple_fireball", "survival3-temple_fireballs");
+registerHook("REGION_ENTER", "temple_fireball2", "survival3-temple_fireballs2");
 
 -------------------------------------------
 ---------------Code Traps------------------
@@ -277,11 +298,13 @@ end
 registerHook("REGION_ENTER", "fall_1_setair", "survival3-temple_fall1");
 registerHook("REGION_ENTER", "fall_1_sound", "survival3-temple_fall1");
 registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall2");
+registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall6");
+registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall7");
 
 
 function wither_effect(data)
 	local player = Player:new(data["player"]);
-	         EventEngine.player.addPotionEffect(player.name, 'WITHER', 12, 10);
+	         EventEngine.player.addPotionEffect(player.name, 'WITHER', 30, 30);
 --           player:sendMessage("&4[D] &bTemple Sentinel&f: My creators see the conflict that tears your world apart..");
 end
 
@@ -293,6 +316,8 @@ end
 
 registerHook("REGION_ENTER", "wither_effect", "survival3-temple_effect");
 registerHook("REGION_ENTER", "confus_effect", "survival3-temple_effect2");
+registerHook("INTERACT", "wither_effect", 146, "survival3", -30842.0, 33.0, 34882.0);
+
 
 function temple_out(data)
 	local player = Player:new(data.player);
@@ -360,9 +385,51 @@ function fall_2_sound()
             templesound2:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
 end
 
-registerHook("REGION_ENTER", "fall_1_setair", "survival3-temple_fall3");
-registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall4");
+registerHook("REGION_ENTER", "fall_2_setair", "survival3-temple_fall3");
+registerHook("REGION_ENTER", "fall_2_setstone", "survival3-temple_fall4");
+registerHook("REGION_ENTER", "fall_2_setstone", "survival3-temple_fall5");
+registerHook("REGION_ENTER", "fall_2_setstone", "survival3-temple_fall8");
 
+local world = "survival3";
+local fall3current = 1;
+local fall3maxData = 1;
+local fall3blocks = {
+        Location:new(world, -30862.0 , 26.0, 34854.0),
+        Location:new(world, -30862.0 , 26.0, 34853.0),
+        Location:new(world, -30862.0 , 26.0, 34852.0),
+        Location:new(world, -30863.0 , 26.0, 34854.0),
+        Location:new(world, -30863.0 , 26.0, 34853.0),
+        Location:new(world, -30863.0 , 26.0, 34852.0),
+        Location:new(world, -30864.0 , 26.0, 34854.0),
+        Location:new(world, -30864.0 , 26.0, 34853.0),
+        Location:new(world, -30864.0 , 26.0, 34852.0),
+};
+
+function fall_3_pit(data)
+        if fall3current == fall3maxData then
+                fall3current = 1;
+        else
+                fall3current = fall3current + 1;
+        end
+        fall_3_setair();
+end
+
+function fall_3_setair()
+        for index, key in ipairs(fall3blocks) do
+                key:setBlock(0, fall3current);
+end
+end
+
+function fall_3_setstone()
+        for index, key in ipairs(fall3blocks) do
+                key:setBlock(1, fall3current);
+end
+end
+
+registerHook("REGION_ENTER", "fall_3_setair", "survival3-temple_fall10");
+registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall11");
+registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall12");
+registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall13");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
@@ -426,7 +493,7 @@ function temple_p_door(data)
   end
 end
 
-registerHook("INTERACT", "emerald_chest", 54, "survival3", -30880.0, 10.0, 34879.0);
+--registerHook("INTERACT", "emerald_chest", 54, "survival3", -30880.0, 10.0, 34879.0);
 registerHook("REGION_ENTER", "temple_emerarld_check2", "survival3-temple_emerald2");
 registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
 
