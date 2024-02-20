@@ -509,13 +509,22 @@ end
 function temple_spook(data)
             local player = Player:new(data.player);
 	           player:playSound('ENTITY_ENDERDRAGON_AMBIENT', 1, 1);
-                   EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 90, 10);
-	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 10);
+                   EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 90, 90);
+	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
 	           player:setHealth(20);
 end
 
+function temple_spook2(data)
+            local player = Player:new(data.player);
+	           worldsound:playSound('ENTITY_TNT_PRIMED', 10000, 1);
+	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
+	           player:setHealth(20);
+end
+
+
 registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
 registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare");
+registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare2");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
