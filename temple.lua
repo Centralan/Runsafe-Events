@@ -11,6 +11,7 @@ local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
 local worldsound = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
+local templespawnsound = Location:new(world, 19475.0, 73.0, -20780.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
@@ -460,6 +461,7 @@ function temple_strike_trap(data)
 	           trapL12:lightningStrike();
 	           trapL13:lightningStrike();
 	           worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+                   templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 end
 
 registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
