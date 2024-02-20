@@ -460,7 +460,7 @@ function temple_strike_trap(data)
 	           trapL13:lightningStrike();
 end
 
-registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_lightning_trap");
+registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
