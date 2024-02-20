@@ -458,6 +458,7 @@ function temple_strike_trap(data)
 	           trapL11:lightningStrike();
 	           trapL12:lightningStrike();
 	           trapL13:lightningStrike();
+	           worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 end
 
 registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
