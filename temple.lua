@@ -20,7 +20,19 @@ local tlight4 = Location:new("survival3", -30897.0, 84.0, 34909.0); -- enter lig
 local tlight5 = Location:new("survival3", -30811.0, 123.0, 34959.0); -- enter lightning 5
 local tlight6 = Location:new("survival3", -30828.0, 116.0, 34868.0); -- enter lightning 6
 local tlight7 = Location:new("survival3", -30908.0, 103.0, 34814.0); -- enter lightning 7
-local tlight8 = Location:new("survival3", -30957.0, 99.0, 34903.0); -- enter lightning 8
+local trapL1 = Location:new("survival3", -30792.0, 10.0, 34833.0); -- trap lightning 1
+local trapL2 = Location:new("survival3", -30792.0, 11.0, 34834.0); -- trap lightning 2
+local trapL3 = Location:new("survival3", -30791.0, 11.0, 34834.0); -- trap lightning 3
+local trapL4 = Location:new("survival3", -30791.0, 10.0, 34833.0); -- trap lightning 4
+local trapL5 = Location:new("survival3", -30791.0, 11.0, 34832.0); -- trap lightning 5
+local trapL6 = Location:new("survival3", -30792.0, 11.0, 34831.0); -- trap lightning 6
+local trapL7 = Location:new("survival3", -30791.0, 12.0, 34830.0); -- trap lightning 7
+local trapL8 = Location:new("survival3", -30793.0, 12.0, 34831.0); -- trap lightning 8
+local trapL9 = Location:new("survival3", -30789.0, 11.0, 34833.0); -- trap lightning 9
+local trapL10 = Location:new("survival3", -30789.0, 11.0, 34832.0); -- trap lightning 10
+local trapL11 = Location:new("survival3", -30790.0, 10.0, 34831.0); -- trap lightning 11
+local trapL12 = Location:new("survival3", -30787.0, 10.0, 34833.0); -- trap lightning 12
+local trapL13 = Location:new("survival3", -30787.0, 11.0, 34831.0); -- trap lightning 13
 
 -------------------------------------------
 ---------------Welcome-----------------
@@ -430,6 +442,25 @@ registerHook("REGION_ENTER", "fall_3_setair", "survival3-temple_fall10");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall11");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall12");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall13");
+
+function temple_strike_trap(data)
+            local player = Player:new(data.player);
+                   trapL1:lightningStrike();
+	           trapL2:lightningStrike();
+	           trapL3:lightningStrike();
+	           trapL4:lightningStrike();
+	           trapL5:lightningStrike();
+	           trapL6:lightningStrike();
+	           trapL7:lightningStrike();
+	           trapL8:lightningStrike();
+	           trapL9:lightningStrike();
+	           trapL10:lightningStrike();
+	           trapL11:lightningStrike();
+	           trapL12:lightningStrike();
+	           trapL13:lightningStrike();
+end
+
+registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_lightning_trap");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
