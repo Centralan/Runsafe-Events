@@ -524,7 +524,7 @@ end
 
 registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
 registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare");
-registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare2");
+registerHook("REGION_ENTER", "temple_spook2", "survival3-temple_scare2");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
