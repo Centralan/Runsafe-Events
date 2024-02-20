@@ -7,6 +7,9 @@ local templechest4 = Location:new(world, -30850.0, 36.0, 34881.0); --loot chest
 local templechest5 = Location:new(world, -30852.0, 36.0, 34881.0); --loot chest
 local templechest6 = Location:new(world, -30854.0, 36.0, 34881.0); --loot chest
 local templechest7 = Location:new(world, -30848.0, 36.0, 34881.0); --loot chest
+local templechest8 = Location:new(world, -30846.0, 36.0, 34880.0); --loot chest
+local templechest9 = Location:new(world, -30846.0, 36.0, 34878.0); --loot chest
+local templechest10 = Location:new(world, -30848.0, 36.0, 34877.0); --loot chest
 local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
@@ -48,6 +51,7 @@ function temple_welcome(data)
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
 		worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+                templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
@@ -134,6 +138,27 @@ function templechest_7(data)
 --              player:sendMessage("&cThat was risky...");
 end
 
+function templechest_8(data)
+        local player = Player:new(data.player);
+              templechest8:cloneChestToPlayer(player.name);
+              player:closeInventory();
+--              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_9(data)
+        local player = Player:new(data.player);
+              templechest9:cloneChestToPlayer(player.name);
+              player:closeInventory();
+--              player:sendMessage("&cThat was risky...");
+end
+
+function templechest_10(data)
+        local player = Player:new(data.player);
+              templechest10:cloneChestToPlayer(player.name);
+              player:closeInventory();
+--              player:sendMessage("&cThat was risky...");
+end
+
 
 registerHook("INTERACT", "templechest_1", 146, "survival3", -30849.0, 22.0, 34882.0);
 registerHook("INTERACT", "templechest_2", 146, "survival3", -30855.0, 13.0, 34877.0);
@@ -142,6 +167,9 @@ registerHook("INTERACT", "templechest_4", 146, "survival3", -30879.0, 20.0, 3490
 registerHook("INTERACT", "templechest_5", 146, "survival3", -30891.0, 12.0, 34817.0);
 registerHook("INTERACT", "templechest_6", 146, "survival3", -30854.0, 5.0, 34879.0);
 registerHook("INTERACT", "templechest_7", 54, "survival3", -30875.0, 20.0, 34864.0);
+registerHook("INTERACT", "templechest_8", 54, "survival3", -30859.0, 7.0, 34871.0);
+registerHook("INTERACT", "templechest_9", 54, "survival3", -30839.0, 6.0, 34865.0);
+registerHook("INTERACT", "templechest_10", 54, "survival3", -30816.0, 31.0, 34911.0);
 
 
 -------------------------------------------
@@ -185,6 +213,16 @@ function templechest_bite5(data)
               EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
 end
 
+function templechest_bite6(data)
+        local player = Player:new(data.player);
+              player:closeInventory();
+--              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
+              player:setHealth(18);
+              EventEngine.player.addPotionEffect(player.name, 'WITHER', 10, 10);
+	      EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
+	      EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 10, 10);
+end
+
 
 registerHook("INTERACT", "templechest_bite", 54, "survival3", -30880.0, 31.0, 34921.0);
 registerHook("INTERACT", "templechest_bite2", 54, "survival3", -30881.0, 40.0, 34883.0);
@@ -193,6 +231,7 @@ registerHook("INTERACT", "templechest_bite4", 54, "survival3", -30830.0, 7.0, 34
 registerHook("INTERACT", "templechest_bite4", 146, "survival3", -30826.0, 18.0, 34887.0);
 registerHook("INTERACT", "templechest_bite5", 54, "survival3", -30900.0, 14.0, 34850.0);
 registerHook("INTERACT", "templechest_bite5", 146, "survival3", -30791.0, 14.0, 34849.0);
+registerHook("INTERACT", "templechest_bite6", 146, "survival3", -30839.0, 6.0, 34864.0);
 
 ---------------------------------------------
 ---------------no code traps-----------------
@@ -214,6 +253,8 @@ function templemob_3(data)
 --              player:sendMessage("&4[D] &bTemple Sentinel&f: We too have learned to harness the power of lightning..");
               templelightning1:lightningStrike();
               player:setHealth(6);
+	      worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+              templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 end
 
 function templemob_4(data)
@@ -465,7 +506,16 @@ function temple_strike_trap(data)
 	           player:setHealth(8);
 end
 
+function temple_spook(data)
+            local player = Player:new(data.player);
+	           player:playSound('ENTITY_ENDERDRAGON_AMBIENT', 1, 1);
+                   EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 90, 10);
+	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 10);
+	           player:setHealth(20);
+end
+
 registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
+registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
