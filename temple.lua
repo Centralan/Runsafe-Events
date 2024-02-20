@@ -231,7 +231,7 @@ registerHook("INTERACT", "templechest_bite4", 54, "survival3", -30830.0, 7.0, 34
 registerHook("INTERACT", "templechest_bite4", 146, "survival3", -30826.0, 18.0, 34887.0);
 registerHook("INTERACT", "templechest_bite5", 54, "survival3", -30900.0, 14.0, 34850.0);
 registerHook("INTERACT", "templechest_bite5", 146, "survival3", -30791.0, 14.0, 34849.0);
-registerHook("INTERACT", "templechest_bite6", 146, "survival3", -30839.0, 6.0, 34864.0);
+registerHook("INTERACT", "templechest_bite6", 54, "survival3", -30839.0, 6.0, 34864.0);
 
 ---------------------------------------------
 ---------------no code traps-----------------
