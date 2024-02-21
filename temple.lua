@@ -89,8 +89,7 @@ function temple_welcome(data)
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings have been rising since you're arrival..");
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
-		worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
-                templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+		worldsound:playSound('ENTITY_ENDERDRAGON_AMBIENT', 10000, 1);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
@@ -119,6 +118,12 @@ function panic_room(data)
 	end
 end
 
+function temple_wither_troll(data)
+            local player = Player:new(data.player);
+                  worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+                  templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+          end
+
 registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_start");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear1");
@@ -136,6 +141,7 @@ registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear12");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear13");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear14");
 registerHook("REGION_ENTER", "panic_room", "survival3-temple_panicroom");
+registerHook("INTERACT", "temple_wither_troll", 143, "survival3", -30859.0, 36.0, 34879.0);
 
 -------------------------------------------
 ---------------Loot Chests-----------------
