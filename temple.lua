@@ -38,6 +38,41 @@ local trapL10 = Location:new("survival3", -30789.0, 11.0, 34832.0); -- trap ligh
 local trapL11 = Location:new("survival3", -30790.0, 10.0, 34831.0); -- trap lightning 11
 local trapL12 = Location:new("survival3", -30787.0, 10.0, 34833.0); -- trap lightning 12
 local trapL13 = Location:new("survival3", -30787.0, 11.0, 34831.0); -- trap lightning 13
+local chest1sign = Location:new(world, -30860.0, 37.0, 34881.0); -- sign for chest 1
+local chest2sign = Location:new(world, -30861.0, 37.0, 34881.0); -- sign for chest 2
+local chest3sign = Location:new(world, -30862.0, 37.0, 34881.0); -- sign for chest 3
+local chest4sign = Location:new(world, -30863.0, 37.0, 34881.0); -- sign for chest 4
+local chest5sign = Location:new(world, -30864.0, 37.0, 34881.0); -- sign for chest 5
+local chest6sign = Location:new(world, -30865.0, 37.0, 34881.0); -- sign for chest 6
+local chest7sign = Location:new(world, -30866.0, 37.0, 34881.0); -- sign for chest 7
+local chest8sign = Location:new(world, -30867.0, 37.0, 34881.0); -- sign for chest 8
+local chest9sign = Location:new(world, -30868.0, 37.0, 34881.0); -- sign for chest 9
+local chest10sign = Location:new(world, -30869.0, 37.0, 34881.0); -- sign for chest 10
+local tentersign = Location:new(world, -30859.0, 37.0, 34879.0); -- sign for temple entrance
+local tfentersign = Location:new(world, -30859.0, 37.0, 34881.0); -- sign for final tunnel
+local tchest1sign = Location:new(world, -30859.0, 37.0, 34877.0); -- sign for trap chest 1
+local tchest2sign = Location:new(world, -30860.0, 37.0, 34877.0); -- sign for trap chest 2
+local tchest3sign = Location:new(world, -30861.0, 37.0, 34877.0); -- sign for trap chest 3
+local tchest4sign = Location:new(world, -30862.0, 37.0, 34877.0); -- sign for trap chest 4
+local tchest5sign = Location:new(world, -30863.0, 37.0, 34877.0); -- sign for trap chest 5
+local tchest6sign = Location:new(world, -30864.0, 37.0, 34877.0); -- sign for trap chest 6
+local tchest7sign = Location:new(world, -30865.0, 37.0, 34877.0); -- sign for kill chests
+local tmob1sign = Location:new(world, -30866.0, 37.0, 34877.0); -- sign for mob trap 1
+local tmob2sign = Location:new(world, -30867.0, 37.0, 34877.0); -- sign for mob trap 1
+local tfireball1sign = Location:new(world, -30868.0, 37.0, 34877.0); -- sign for fireball trap 1
+local tfireball2sign = Location:new(world, -30869.0, 37.0, 34877.0); -- sign for fireball trap 2
+local tlightning1sign = Location:new(world, -30870.0, 37.0, 34877.0); -- sign for lightning trap 1
+local twithersign = Location:new(world, -30871.0, 37.0, 34877.0); -- sign for wither trap
+local tconfussign = Location:new(world, -30872.0, 37.0, 34877.0); -- sign for confusion trap
+local tblind1sign = Location:new(world, -30873.0, 37.0, 34877.0); -- sign for blind trap
+local tblind2sign = Location:new(world, -30874.0, 37.0, 34877.0); -- sign for blind trap
+local tdragonsign = Location:new(world, -30874.0, 37.0, 34878.0); -- sign for dragon scare
+local ttntsign = Location:new(world, -30874.0, 37.0, 34879.0); -- sign for tnt scare
+local taarowsign = Location:new(world, -30874.0, 37.0, 34880.0); -- sign for tnt scare
+local tlava1sign = Location:new(world, -30870.0, 37.0, 34881.0); -- sign for lava 1 trap
+local tlava2sign = Location:new(world, -30871.0, 37.0, 34881.0); -- sign for lava 2 trap
+local tendsign = Location:new(world, -30872.0, 37.0, 34881.0); -- sign for end trap
+local tdebsign = Location:new(world, -30873.0, 37.0, 34881.0); -- sign for deb trap
 
 -------------------------------------------
 ---------------Welcome-----------------
@@ -60,6 +95,7 @@ function temple_welcome(data)
 		tlight6:lightningStrike();
 		tlight7:lightningStrike();
 		tlight8:lightningStrike();	
+		tentersign:setSign('Latest', 'Explorer:', '', player.name);
   end
 end
 
@@ -93,70 +129,70 @@ function templechest_1(data)
         local player = Player:new(data.player);
               templechest1:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest1sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_2(data)
         local player = Player:new(data.player);
               templechest2:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest2sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_3(data)
         local player = Player:new(data.player);
               templechest3:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest3sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_4(data)
         local player = Player:new(data.player);
               templechest4:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest4sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_5(data)
         local player = Player:new(data.player);
               templechest5:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest5sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_6(data)
         local player = Player:new(data.player);
               templechest6:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest6sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_7(data)
         local player = Player:new(data.player);
               templechest7:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest7sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_8(data)
         local player = Player:new(data.player);
               templechest8:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest8sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_9(data)
         local player = Player:new(data.player);
               templechest9:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest9sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 function templechest_10(data)
         local player = Player:new(data.player);
               templechest10:cloneChestToPlayer(player.name);
               player:closeInventory();
---              player:sendMessage("&cThat was risky...");
+              chest10sign:setSign('Last Player', 'Looted:', '', player.name);
 end
 
 
@@ -173,34 +209,34 @@ registerHook("INTERACT", "templechest_10", 54, "survival3", -30816.0, 31.0, 3491
 
 
 -------------------------------------------
----------------empty Chests-----------------
+---------------Bait Chests-----------------
 -------------------------------------------
 
 function templechest_bite(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: Things are never as they seem here..");
+              tchest1sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(5);
 end
 
 function templechest_bite2(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: Mimic's are some nasty things arn't they?");
+              tchest2sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(3);
 end
 
 function templechest_bite3(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: That was a nasty one, no two Mimics are the same..");
+              tchest3sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(1);
 end
 
 function templechest_bite4(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: We study you for a living, you're nothing but predictable..");
+              tchest4sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(0);
               templelightning1:lightningStrike();
 end
@@ -208,7 +244,7 @@ end
 function templechest_bite5(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
+              tchest5sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(5);
               EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
 end
@@ -216,14 +252,22 @@ end
 function templechest_bite6(data)
         local player = Player:new(data.player);
               player:closeInventory();
---              player:sendMessage("&4[D] &bTemple Sentinel&f: You really are showing my creators your temptations..");
+              tchest6sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(18);
               EventEngine.player.addPotionEffect(player.name, 'WITHER', 10, 10);
 	      EventEngine.player.addPotionEffect(player.name, 'POISON', 10, 10);
 	      EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 10, 10);
 end
 
+function kill_chest(data)
+	local player = Player:new(data["player"]);
+	      player:setHealth(0);
+              tchest7sign:setSign('', 'Lastest Victim:', '', player.name);
+end
 
+registerHook("INTERACT", "kill_chest", 146, "survival3", -30882.0, 37.0, 34896.0);
+registerHook("INTERACT", "kill_chest", 146, "survival3", -30820.0, 13.0, 34859.0);
+registerHook("INTERACT", "kill_chest", 146, "survival3", -30844.0, 26.0, 34832.0);
 registerHook("INTERACT", "templechest_bite", 54, "survival3", -30880.0, 31.0, 34921.0);
 registerHook("INTERACT", "templechest_bite2", 54, "survival3", -30881.0, 40.0, 34883.0);
 registerHook("INTERACT", "templechest_bite3", 54, "survival3", -30872.0, 47.0, 34895.0);
@@ -234,23 +278,12 @@ registerHook("INTERACT", "templechest_bite5", 146, "survival3", -30791.0, 14.0, 
 registerHook("INTERACT", "templechest_bite6", 54, "survival3", -30839.0, 6.0, 34864.0);
 
 ---------------------------------------------
----------------no code traps-----------------
+---------------Redstone Traps----------------
 ---------------------------------------------
-
-function templemob_2(data)
-        local player = Player:new(data.player);
-             player:sendMessage("&4[D] &bTemple Sentinel&f: Everything here is working to stop you..");
-end
-
-function templefall_trap(data)
-        local player = Player:new(data.player);
-              player:sendMessage("&4[D] &bTemple Sentinel&f: May your items be sacrificed for the greater good..");
-end
-
 
 function templemob_3(data)
         local player = Player:new(data.player);
---              player:sendMessage("&4[D] &bTemple Sentinel&f: We too have learned to harness the power of lightning..");
+              tmob1sign:setSign('', 'Lastest Victim:', '', player.name);
               templelightning1:lightningStrike();
               player:setHealth(6);
 	      worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
@@ -259,45 +292,122 @@ end
 
 function templemob_4(data)
         local player = Player:new(data.player);
---              player:sendMessage("&4[D] &bTemple Sentinel&f: You are considered a mere peasant in comparison to us..");
+              tmob2sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(6);
 end
 
 function temple_fireball(data)
         local player = Player:new(data.player);
---              player:sendMessage("&4[D] &bTemple Sentinel&f: These came special from our most prized creation..");
+              tfireball1sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(12);
 end
 
 function temple_fireball2(data)
         local player = Player:new(data.player);
---              player:sendMessage("&4[D] &bTemple Sentinel&f: These came special from our most prized creation..");
+              tfireball2sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(6);
 end
 
+function temple_strike_trap(data)
+            local player = Player:new(data.player);
+                   trapL1:lightningStrike();
+	           trapL2:lightningStrike();
+	           trapL3:lightningStrike();
+	           trapL4:lightningStrike();
+	           trapL5:lightningStrike();
+	           trapL6:lightningStrike();
+	           trapL7:lightningStrike();
+	           trapL8:lightningStrike();
+	           trapL9:lightningStrike();
+	           trapL10:lightningStrike();
+	           trapL11:lightningStrike();
+	           trapL12:lightningStrike();
+	           trapL13:lightningStrike();
+	           worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+                   templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+	           player:setHealth(8);
+	           tlightning1sign:setSign('', 'Lastest Victim:', '', player.name);
+end
 
---registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_2");
---registerHook("REGION_ENTER", "templemob_2", "survival3-temple_ai_3");
---registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_4");
---registerHook("REGION_ENTER", "templefall_trap", "survival3-temple_ai_5");
+function temple_arrow1(data)
+        local player = Player:new(data.player);
+              taarowsign:setSign('', 'Lastest Victim:', '', player.name);
+              player:setHealth(10);
+end
+
+function temple_deb_trap(data)
+        local player = Player:new(data.player);
+              tdebsign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
 registerHook("REGION_ENTER", "templemob_3", "survival3-temple_ai_6");
 registerHook("REGION_ENTER", "templemob_4", "survival3-temple_ai_7");
 registerHook("REGION_ENTER", "temple_fireball", "survival3-temple_fireballs");
 registerHook("REGION_ENTER", "temple_fireball2", "survival3-temple_fireballs2");
+registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
+registerHook("REGION_ENTER", "temple_arrow1", "survival3-temple_arrow");
+registerHook("REGION_ENTER", "temple_deb_trap", "survival3-temple_deb");
 
--------------------------------------------
----------------Code Traps------------------
--------------------------------------------
+-------------------------------------------------
+---------------Effect Traps------------------
+-------------------------------------------------
 
-function kill_chest(data)
+function wither_effect(data)
 	local player = Player:new(data["player"]);
-	      player:setHealth(0);
---        player:sendMessage("&4[D] &bTemple Sentinel&f: You need to prove your worth to be here..");
+	         EventEngine.player.addPotionEffect(player.name, 'WITHER', 30, 30);
+	           twithersign:setSign('', 'Lastest Victim:', '', player.name);
 end
 
-registerHook("INTERACT", "kill_chest", 146, "survival3", -30882.0, 37.0, 34896.0);
-registerHook("INTERACT", "kill_chest", 146, "survival3", -30820.0, 13.0, 34859.0);
-registerHook("INTERACT", "kill_chest", 146, "survival3", -30844.0, 26.0, 34832.0);
+function confus_effect(data)
+	local player = Player:new(data["player"]);
+	         EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 100, 10);
+	           tconfussign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
+function temple_out(data)
+	local player = Player:new(data.player);
+	        player:teleport(temple_tp_out);
+          EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+          tblind1sign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
+function temple_out2(data)
+	local player = Player:new(data.player);
+	        player:teleport(temple_tp_out2);
+          EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
+          tblind2sign:setSign('', 'Lastest Victim:', '', player.name);
+          player:setHealth(10);
+end
+
+function temple_spook(data)
+            local player = Player:new(data.player);
+                   templespawnsound:playSound('ENTITY_ENDERDRAGON_AMBIENT', 10000, 1);
+                   EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 90, 90);
+	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
+	           player:setHealth(20);
+	           tdragonsign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
+function temple_spook2(data)
+            local player = Player:new(data.player);
+	           worldsound:playSound('ENTITY_TNT_PRIMED', 10000, 1);
+	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
+	           player:setHealth(20);
+	           ttntsign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
+registerHook("REGION_ENTER", "wither_effect", "survival3-temple_effect");
+registerHook("REGION_ENTER", "confus_effect", "survival3-temple_effect2");
+registerHook("INTERACT", "wither_effect", 146, "survival3", -30842.0, 33.0, 34882.0);
+registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
+registerHook("REGION_ENTER", "temple_out2", "survival3-temple_punch");
+registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
+registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare");
+registerHook("REGION_ENTER", "temple_spook2", "survival3-temple_scare2");
+
+-------------------------------------------------
+---------------Block Edit Traps------------------
+-------------------------------------------------
 
 local world = "survival3";
 local fall1current = 1;
@@ -346,8 +456,10 @@ function fall_1_setstone()
 end
 end
 
-function fall_1_sound()
+function fall_1_sound(data)
+	local player = Player:new(data.player);
             templesound:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
+	    tlava1sign:setSign('', 'Lastest Victim:', '', player.name);
 end
 
 registerHook("REGION_ENTER", "fall_1_setair", "survival3-temple_fall1");
@@ -355,43 +467,6 @@ registerHook("REGION_ENTER", "fall_1_sound", "survival3-temple_fall1");
 registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall2");
 registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall6");
 registerHook("REGION_ENTER", "fall_1_setstone", "survival3-temple_fall7");
-
-
-function wither_effect(data)
-	local player = Player:new(data["player"]);
-	         EventEngine.player.addPotionEffect(player.name, 'WITHER', 30, 30);
---           player:sendMessage("&4[D] &bTemple Sentinel&f: My creators see the conflict that tears your world apart..");
-end
-
-function confus_effect(data)
-	local player = Player:new(data["player"]);
-	         EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 100, 10);
---           player:sendMessage("&4[D] &bTemple Sentinel&f: We sent them here in hopes to scare you off..");
-end
-
-registerHook("REGION_ENTER", "wither_effect", "survival3-temple_effect");
-registerHook("REGION_ENTER", "confus_effect", "survival3-temple_effect2");
-registerHook("INTERACT", "wither_effect", 146, "survival3", -30842.0, 33.0, 34882.0);
-
-
-function temple_out(data)
-	local player = Player:new(data.player);
-	        player:teleport(temple_tp_out);
-          EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
---          player:sendMessage("&4[D] &bTemple Sentinel&f: Dimensions overlap here due to the overflow of magic from the portal..");
-end
-
-function temple_out2(data)
-	local player = Player:new(data.player);
-	        player:teleport(temple_tp_out2);
-          EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
---          player:sendMessage("&4[D] &bTemple Sentinel&f: Just like you will also get joy from punching our pray.");
-          player:setHealth(10);
-end
-
-registerHook("REGION_ENTER", "temple_out", "survival3-temple_out");
-registerHook("REGION_ENTER", "temple_out2", "survival3-temple_punch");
-registerHook("REGION_ENTER", "temple_out", "survival3-temple_out2");
 
 local world = "survival3";
 local fall2current = 1;
@@ -436,8 +511,10 @@ function fall_2_setstone()
 end
 end
 
-function fall_2_sound()
-            templesound2:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
+function fall_2_sound(data)
+	local player = Player:new(data.player);
+            templesound:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
+	    tlava2sign:setSign('', 'Lastest Victim:', '', player.name);
 end
 
 registerHook("REGION_ENTER", "fall_2_setair", "survival3-temple_fall3");
@@ -481,83 +558,21 @@ function fall_3_setstone()
 end
 end
 
+function fall_3_sound(data)
+	local player = Player:new(data.player);
+            templesound:playSound('BLOCK_PISTON_CONTRACT', 1, 1);
+	    tendsign:setSign('', 'Lastest Victim:', '', player.name);
+end
+
 registerHook("REGION_ENTER", "fall_3_setair", "survival3-temple_fall10");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall11");
+registerHook("REGION_ENTER", "fall_3_sound", "survival3-temple_fall11");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall12");
 registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall13");
 
-function temple_strike_trap(data)
-            local player = Player:new(data.player);
-                   trapL1:lightningStrike();
-	           trapL2:lightningStrike();
-	           trapL3:lightningStrike();
-	           trapL4:lightningStrike();
-	           trapL5:lightningStrike();
-	           trapL6:lightningStrike();
-	           trapL7:lightningStrike();
-	           trapL8:lightningStrike();
-	           trapL9:lightningStrike();
-	           trapL10:lightningStrike();
-	           trapL11:lightningStrike();
-	           trapL12:lightningStrike();
-	           trapL13:lightningStrike();
-	           worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
-                   templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
-	           player:setHealth(8);
-end
-
-function temple_spook(data)
-            local player = Player:new(data.player);
-	           player:playSound('ENTITY_ENDERDRAGON_AMBIENT', 1, 1);
-                   EventEngine.player.addPotionEffect(player.name, 'CONFUSION', 90, 90);
-	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
-	           player:setHealth(20);
-end
-
-function temple_spook2(data)
-            local player = Player:new(data.player);
-	           worldsound:playSound('ENTITY_TNT_PRIMED', 10000, 1);
-	           EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 90, 90);
-	           player:setHealth(20);
-end
-
-
-registerHook("REGION_ENTER", "temple_strike_trap", "survival3-temple_lightning_trap");
-registerHook("REGION_ENTER", "temple_spook", "survival3-temple_scare");
-registerHook("REGION_ENTER", "temple_spook2", "survival3-temple_scare2");
-
 -------------------------------------------------
-------------------Portal Room Door---------------
+------------------Emerald Check---------------
 -------------------------------------------------
-
-local emeraldChestPlayers = {};
-local emeraldChestResetTimer = Timer:new("emerald_reset_chest", 200 * 600 * 50);
-local emeraldChestResetTimerRunning = false;
-local emeraldChestOpen = Location:new(world, -61.0, 65.0, -513.0);;
-
-function emerald_reset_chest()
-	emeraldChestPlayers = {};
-	emeraldChestResetTimerRunning = false;
-end
-
-function emerald_chest(data)
-        local player = Player:new(data.player);
-        if not emeraldChestPlayers[player.name] then
-                emerald:cloneChestToPlayer(player.name);
-                player:closeInventory();
-		emeraldChestPlayers[player.name] = true;
-		player:playSound('ENTITY_GHAST_AMBIENT', 1, 0.5);
-		player:addPermission("runsafe.temple.emerald");
-	if emeraldChestPlayers[player.name] then
-	          player:sendMessage('&7Something shiny pops out.');
-                  player:closeInventory();
-                if not emeraldChestResetTimerRunning then
-                        emeraldChestResetTimerRunning = true;
-                        emeraldChestResetTimer:start();
-                     end
-                end
-        end
-end
 		
 function temple_emerarld_check2(data)
         local player = Player:new(data.player);
@@ -565,10 +580,17 @@ function temple_emerarld_check2(data)
 	else
           if not player:hasPermission("runsafe.temple.emerald") then
 	         player:setHealth(0);
+		 tfentersign:setSign('Latest', 'Explorer:', '', player.name);
 
 		end
 	end
 end
+
+registerHook("REGION_ENTER", "temple_emerarld_check2", "survival3-temple_emerald2");
+
+-------------------------------------------------
+------------------Portal Room Door---------------
+-------------------------------------------------
 
 function temple_p_door(data)
         local player = Player:new(data.player);
@@ -588,8 +610,6 @@ function temple_p_door(data)
   end
 end
 
---registerHook("INTERACT", "emerald_chest", 54, "survival3", -30880.0, 10.0, 34879.0);
-registerHook("REGION_ENTER", "temple_emerarld_check2", "survival3-temple_emerald2");
 registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
 
 
