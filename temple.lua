@@ -603,6 +603,7 @@ function temple_emerarld_check2(data)
           if not player:hasPermission("runsafe.temple.emerald") then
 	         player:setHealth(0);
 		 tfentersign:setSign('Latest', 'Explorer:', '', player.name);
+                 player:sendMessage("&4[D] &bTemple Sentinel&f: You have not yet proven your worth..");
 
 		end
 	end
