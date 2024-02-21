@@ -639,6 +639,8 @@ function temple_p_door(data)
 		tlight6:lightningStrike();
 		tlight7:lightningStrike();
 		tlight8:lightningStrike();	
+		worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+                templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
   end
 end
 
