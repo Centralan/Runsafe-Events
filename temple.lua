@@ -74,6 +74,10 @@ local tlava2sign = Location:new(world, -30871.0, 37.0, 34881.0); -- sign for lav
 local tendsign = Location:new(world, -30872.0, 37.0, 34881.0); -- sign for end trap
 local tdebsign = Location:new(world, -30873.0, 37.0, 34881.0); -- sign for deb trap
 
+local spawn_catch = Location:new(world, 19549.456, 72.0, -20790.600);
+spawn_catch:setYaw(90.2);
+spawn_catch:setPitch(0.4);
+
 -------------------------------------------
 ---------------Welcome-----------------
 -------------------------------------------
@@ -104,6 +108,17 @@ function temple_door_remove(data)
                   EventEngine.player.removePotionEffects(player.name, 'NIGHT_VISION');
           end
 
+function panic_room(data)
+	local player = Player:new(data.player);
+           if player:hasPermission("runsafe.toybox.mode") then
+		EventEngine.player.addPotionEffect(player.name, 'NIGHT_VISION', 1000, 1000);
+         else
+                player:teleport(spawn_catch);
+                player:sendTitle("", "&4&k0&cNobody likes a nosy player :] &4&k0&c");
+	        player:playSound('ENTITY_SHULKER_AMBIENT', 1, 0.1);
+	end
+end
+
 registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_start");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear1");
@@ -120,6 +135,7 @@ registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear11");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear12");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear13");
 registerHook("REGION_ENTER", "temple_door_remove", "survival3-temple_clear14");
+registerHook("REGION_ENTER", "panic_room", "survival3-temple_panicroom");
 
 -------------------------------------------
 ---------------Loot Chests-----------------
