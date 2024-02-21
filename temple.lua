@@ -89,7 +89,7 @@ function temple_welcome(data)
               player:sendMessage("&4[D] &bTemple Sentinel&f: Dark magic readings have been rising since you're arrival..");
               player:sendEvent("achievement.templeunknown");
               player:addPermission("runsafe.temple.found");
-		worldsound:playSound('ENTITY_ENDERDRAGON_AMBIENT', 10000, 1);
+		worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 0.5);
 	        tlight1:lightningStrike();
 		tlight2:lightningStrike();
 		tlight3:lightningStrike();
@@ -120,8 +120,8 @@ end
 
 function temple_wither_troll(data)
             local player = Player:new(data.player);
-                  worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
-                  templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+                  worldsound:playSound('ENTITY_WITHER_SPAWN', 10000, 3);
+                  templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 3);
           end
 
 registerHook("REGION_ENTER", "temple_welcome", "survival3-temple");
