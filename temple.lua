@@ -17,6 +17,7 @@ local worldsound = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound 
 local templespawnsound = Location:new(world, 19475.0, 73.0, -20780.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
 local templelightning1 = Location:new("survival3", -30871.0, 25.0, 34893.0); --charged creeper trap
+local templelightningE = Location:new("survival3", -30809.0, 19.0, 34846.0); --emerald lightning
 local temple_tp_out2 = Location:new(world, -30887.924, 12.0, 34816.526); --lava drop trap
 local tlight1 = Location:new("survival3", -30853.0, 84.0, 34909.0); -- enter lightning 1
 local tlight2 = Location:new("survival3", -30853.0, 84.0, 34865.0); -- enter lightning 2
@@ -261,6 +262,8 @@ function templechest_bite4(data)
               tchest4sign:setSign('', 'Lastest Victim:', '', player.name);
               player:setHealth(0);
               templelightning1:lightningStrike();
+	      worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+              templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 end
 
 function templechest_bite5(data)
@@ -285,6 +288,9 @@ function kill_chest(data)
 	local player = Player:new(data["player"]);
 	      player:setHealth(0);
               tchest7sign:setSign('', 'Lastest Victim:', '', player.name);
+	      templelightning1:lightningStrike();
+	      worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+              templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 end
 
 registerHook("INTERACT", "kill_chest", 146, "survival3", -30882.0, 37.0, 34896.0);
@@ -604,6 +610,9 @@ function temple_emerarld_check2(data)
 	         player:setHealth(0);
 		 tfentersign:setSign('Latest', 'Explorer:', '', player.name);
                  player:sendMessage("&4[D] &bTemple Sentinel&f: You have not yet proven your worth..");
+		 templelightningE:lightningStrike();
+	         worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+                 templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
 
 		end
 	end
