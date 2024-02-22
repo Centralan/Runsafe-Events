@@ -80,7 +80,7 @@ local spawn_catch = Location:new(world, 19549.456, 72.0, -20790.600);
 spawn_catch:setYaw(-144.2);
 spawn_catch:setPitch(0.4);
 
-local etp = Location:new(world, -30806.207, 16.0, -34850.754);
+local etp = Location:new(world, -30806.207, 16.0, 34850.754);
 etp:setYaw(90.2);
 etp:setPitch(15.6);
 
