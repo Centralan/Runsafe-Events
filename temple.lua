@@ -302,6 +302,7 @@ end
 registerHook("INTERACT", "kill_chest", 146, "survival3", -30882.0, 37.0, 34896.0);
 registerHook("INTERACT", "kill_chest", 146, "survival3", -30820.0, 13.0, 34859.0);
 registerHook("INTERACT", "kill_chest", 146, "survival3", -30844.0, 26.0, 34832.0);
+registerHook("INTERACT", "kill_chest", 146, "survival3", -30880.0, 10.0, 34879.0);
 registerHook("INTERACT", "templechest_bite", 54, "survival3", -30880.0, 31.0, 34921.0);
 registerHook("INTERACT", "templechest_bite2", 54, "survival3", -30881.0, 40.0, 34883.0);
 registerHook("INTERACT", "templechest_bite3", 54, "survival3", -30872.0, 47.0, 34895.0);
