@@ -663,6 +663,7 @@ function emerald_global(data)
                  templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
 		 player:addPermission("runsafe.temple.ewall");
 end
+end
 	
 registerHook("BLOCK_GAINS_CURRENT", "emerald1_air", "survival3", -30800.0, 10.0, 34844.0);
 registerHook("REGION_ENTER", "emerald1_stone", "survival3-temple_ewall");
