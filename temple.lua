@@ -13,6 +13,7 @@ local templechest10 = Location:new(world, -30848.0, 36.0, 34877.0); --loot chest
 local emerald = Location:new(world, -30856.0, 36.0, 34881.0); --loot chest
 local templesound = Location:new(world, -30869.0, 24.0, 34885.0); --temple sound source
 local templesound2 = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
+local templesound3 = Location:new(world, -30807.0, 20.0, 34847.0); --temple sound source
 local worldsound = Location:new(world, -30838.0, 26.0, 34837.0); --temple sound source
 local templespawnsound = Location:new(world, 19475.0, 73.0, -20780.0); --temple sound source
 local temple_tp_out = Location:new(world, -30936.610, 207.0, 35071.649); --outside temple drop
@@ -647,6 +648,7 @@ end
 function emerald1_air()
         for index, key in ipairs(ewallblocks) do
                 key:setBlock(0, ewallcurrent);
+                templesound3:playSound('BLOCK_SHULKER_BOX_OPEN', 1, 0.1);
 end
 end
 
