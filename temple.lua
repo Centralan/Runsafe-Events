@@ -648,7 +648,7 @@ end
 function emerald1_air()
         for index, key in ipairs(ewallblocks) do
                 key:setBlock(0, ewallcurrent);
-                templesound3:playSound('BLOCK_SHULKER_BOX_OPEN', 1, 0.1);
+                templesound3:playSound('ENTITY_EVOCATION_ILLAGER_CAST_SPELL', 1, 0.1);
 end
 end
 
