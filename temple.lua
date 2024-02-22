@@ -678,6 +678,7 @@ registerHook("REGION_ENTER", "emerald_global", "survival3-temple_ewall");
 function e_leave(data)
 	local player = Player:new(data.player);
               player:teleport(etp);
+              templesound3:playSound('ENTITY_EVOCATION_ILLAGER_CAST_SPELL', 1, 0.1);
 end
 
 registerHook("REGION_ENTER", "e_leave", "survival3-temple_eleave");
