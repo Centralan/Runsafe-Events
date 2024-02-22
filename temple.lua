@@ -81,8 +81,8 @@ spawn_catch:setYaw(-144.2);
 spawn_catch:setPitch(0.4);
 
 local etp = Location:new(world, -30806.207, 16.0, 34850.754);
-etp:setYaw(90.2);
-etp:setPitch(15.6);
+etp:setYaw(-137.8);
+etp:setPitch(16.5);
 
 -------------------------------------------
 ---------------Welcome-----------------
