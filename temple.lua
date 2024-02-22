@@ -602,14 +602,14 @@ registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall13");
 ------------------Emerald Check---------------
 -------------------------------------------------
 		
-function temple_emerarld_check2(data)
+function temple_emerarld(data)
         local player = Player:new(data.player);
-          if player:hasPermission("runsafe.temple.emerald") then
+          if player:hasPermission("runsafe.toybox.mode") then
 	else
-          if not player:hasPermission("runsafe.temple.emerald") then
+          if not player:hasPermission("runsafe.toybox.mode") then
 	         player:setHealth(0);
 		 tfentersign:setSign('Latest', 'Explorer:', '', player.name);
---                 player:sendMessage("&4[D] &bTemple Sentinel&f: You have not yet proven your worth..");
+                 player:sendMessage("&4[D] &bTemple Sentinel&f: You have not yet proven your worth..");
 		 templelightningE:lightningStrike();
 	         worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
                  templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
@@ -618,7 +618,55 @@ function temple_emerarld_check2(data)
 	end
 end
 
-registerHook("REGION_ENTER", "temple_emerarld_check2", "survival3-temple_emerald2");
+registerHook("REGION_ENTER", "temple_emerarld", "survival3-temple_emerald2");
+
+local world = "survival3";
+local ewallcurrent = 1;
+local ewallmaxData = 1;
+local ewallblocks = {
+        Location:new(world, -30806.0 , 21.0, 34846.0),
+	Location:new(world, -30806.0 , 21.0, 34845.0),
+	Location:new(world, -30806.0 , 22.0, 34847.0),
+	Location:new(world, -30806.0 , 22.0, 34846.0),
+	Location:new(world, -30806.0 , 22.0, 34845.0),
+	Location:new(world, -30806.0 , 23.0, 34847.0),
+	Location:new(world, -30806.0 , 23.0, 34846.0),
+	Location:new(world, -30806.0 , 23.0, 34845.0),
+	
+};
+
+function emerald1(data)
+        if ewallcurrent == ewallmaxData then
+                ewallcurrent = 1;
+        else
+                ewallcurrent = ewallcurrent + 1;
+        end
+        emerald1_air();
+end
+
+function emerald1_air()
+        for index, key in ipairs(ewallblocks) do
+                key:setBlock(0, ewallcurrent);
+end
+end
+
+function emerald1_stone()
+        for index, key in ipairs(ewallblocks) do
+                key:setBlock(1, ewallcurrent);
+end
+end
+
+function emerald_global(data)
+	local player = Player:new(data.player);
+	  if not player:hasPermission("runsafe.temple.ewall") then
+                 ts:speak( player.name .. " is worthy.");
+                 templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
+		 player:addPermission("runsafe.temple.ewall");
+end
+	
+registerHook("BLOCK_GAINS_CURRENT", "emerald1_air", "survival3", -30800.0, 10.0, 34844.0);
+registerHook("REGION_ENTER", "emerald1_stone", "survival3-temple_ewall");
+registerHook("REGION_ENTER", "emerald_global", "survival3-temple_ewall");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
