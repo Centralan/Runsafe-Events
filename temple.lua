@@ -75,6 +75,7 @@ local tlava1sign = Location:new(world, -30870.0, 37.0, 34881.0); -- sign for lav
 local tlava2sign = Location:new(world, -30871.0, 37.0, 34881.0); -- sign for lava 2 trap
 local tendsign = Location:new(world, -30872.0, 37.0, 34881.0); -- sign for end trap
 local tdebsign = Location:new(world, -30873.0, 37.0, 34881.0); -- sign for deb trap
+local tepasssign = Location:new(world, -30874.0, 37.0, 34881.0); -- sign for deb trap
 
 local spawn_catch = Location:new(world, 19549.456, 72.0, -20790.600);
 spawn_catch:setYaw(-144.2);
@@ -668,6 +669,7 @@ function emerald_global(data)
                  ts:speak( player.name .. " is worthy.");
                  templespawnsound:playSound('ENTITY_WITHER_SPAWN', 10000, 1);
 		 player:addPermission("runsafe.temple.ewall");
+		 tepasssign:setSign('Latest', 'Explorer:', '', player.name);
 end
 end
 	
