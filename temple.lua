@@ -77,8 +77,12 @@ local tendsign = Location:new(world, -30872.0, 37.0, 34881.0); -- sign for end t
 local tdebsign = Location:new(world, -30873.0, 37.0, 34881.0); -- sign for deb trap
 
 local spawn_catch = Location:new(world, 19549.456, 72.0, -20790.600);
-spawn_catch:setYaw(90.2);
+spawn_catch:setYaw(-144.2);
 spawn_catch:setPitch(0.4);
+
+local etp = Location:new(world, -30806.207, 16.0, -34850.754);
+etp:setYaw(90.2);
+etp:setPitch(15.6);
 
 -------------------------------------------
 ---------------Welcome-----------------
@@ -670,6 +674,13 @@ end
 registerHook("BLOCK_GAINS_CURRENT", "emerald1_air", "survival3", -30800.0, 10.0, 34844.0);
 registerHook("REGION_ENTER", "emerald1_stone", "survival3-temple_ewall");
 registerHook("REGION_ENTER", "emerald_global", "survival3-temple_ewall");
+
+function e_leave(data)
+	local player = Player:new(data.player);
+              player:teleport(etp);
+end
+
+registerHook("REGION_ENTER", "e_leave", "survival3-temple_eleave");
 
 -------------------------------------------------
 ------------------Portal Room Door---------------
