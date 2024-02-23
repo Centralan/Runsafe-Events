@@ -612,9 +612,9 @@ registerHook("REGION_ENTER", "fall_3_setstone", "survival3-temple_fall13");
 		
 function temple_emerarld(data)
         local player = Player:new(data.player);
-          if player:hasPermission("runsafe.toybox.mode") then
+          if player:hasPermission("runsafe.temple.ewall") then
 	else
-          if not player:hasPermission("runsafe.toybox.mode") then
+          if not player:hasPermission("runsafe.temple.ewall") then
 	         player:setHealth(0);
 		 tfentersign:setSign('Latest', 'Explorer:', '', player.name);
                  player:sendMessage("&4[D] &bTemple Sentinel&f: You have not yet proven your worth..");
