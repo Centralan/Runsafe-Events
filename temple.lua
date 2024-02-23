@@ -771,15 +771,16 @@ local world = "survival3";
 local pheadcurrent = 1;
 local pheadmaxData = 1;
 local pheadblocks = {
-        Location:new(world, -30806.0 , 21.0, 34846.0),
-	Location:new(world, -30806.0 , 21.0, 34845.0),
-	Location:new(world, -30806.0 , 22.0, 34847.0),
-	Location:new(world, -30806.0 , 22.0, 34846.0),
-	Location:new(world, -30806.0 , 22.0, 34845.0),
-	Location:new(world, -30806.0 , 23.0, 34847.0),
-	Location:new(world, -30806.0 , 23.0, 34846.0),
-	Location:new(world, -30806.0 , 23.0, 34845.0),
-	
+        Location:new(world, -30853.0 , 18.0, 34836.0),
+	Location:new(world, -30855.0 , 18.0, 34837.0),
+	Location:new(world, -30855.0 , 18.0, 34835.0),
+	Location:new(world, -30857.0 , 18.0, 34838.0),
+	Location:new(world, -30857.0 , 18.0, 34836.0),
+        Location:new(world, -30857.0 , 18.0, 34834.0),
+	Location:new(world, -30859.0 , 18.0, 34839.0),
+	Location:new(world, -30859.0 , 18.0, 34837.0),
+	Location:new(world, -30859.0 , 18.0, 34835.0),
+	Location:new(world, -30859.0 , 18.0, 34833.0),
 };
 
 function portal_head(data)
