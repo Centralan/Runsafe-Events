@@ -27,6 +27,7 @@ local tlight4 = Location:new("survival3", -30897.0, 84.0, 34909.0); -- enter lig
 local tlight5 = Location:new("survival3", -30811.0, 123.0, 34959.0); -- enter lightning 5
 local tlight6 = Location:new("survival3", -30828.0, 116.0, 34868.0); -- enter lightning 6
 local tlight7 = Location:new("survival3", -30908.0, 103.0, 34814.0); -- enter lightning 7
+local tlightF = Location:new("survival3", -30847.0, 17.0, 34836.0); -- failed head selection
 local trapL1 = Location:new("survival3", -30792.0, 10.0, 34833.0); -- trap lightning 1
 local trapL2 = Location:new("survival3", -30792.0, 11.0, 34834.0); -- trap lightning 2
 local trapL3 = Location:new("survival3", -30791.0, 11.0, 34834.0); -- trap lightning 3
@@ -712,8 +713,101 @@ end
 
 registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
 
-
-
 -------------------------------------------------
 -------------------Portal------------------------
 -------------------------------------------------
+
+function temple_portal_fail1(data)
+        local player = Player:new(data.player);
+                  ts:speak("Improper heads detected, removing foreign contamination in 10 seconds");        
+end
+
+function temple_portal_fail2(data)
+        local player = Player:new(data.player);
+                  ts:speak("9 seconds");        
+end
+
+function temple_portal_fail3(data)
+        local player = Player:new(data.player);
+                  ts:speak("8 seconds");        
+end
+
+function temple_portal_fail4(data)
+        local player = Player:new(data.player);
+                  ts:speak("7 seconds");        
+end
+
+function temple_portal_fail5(data)
+        local player = Player:new(data.player);
+                  ts:speak("6 seconds");        
+end
+
+function temple_portal_fail6(data)
+        local player = Player:new(data.player);
+                  ts:speak("5 seconds");        
+end
+
+function temple_portal_fail7(data)
+        local player = Player:new(data.player);
+                  ts:speak("4 seconds");        
+end
+
+function temple_portal_fail8(data)
+        local player = Player:new(data.player);
+                  ts:speak("3 seconds");        
+end
+
+function temple_portal_fail9(data)
+        local player = Player:new(data.player);
+                  ts:speak("2 seconds");        
+end
+
+function temple_portal_fail10(data)
+        local player = Player:new(data.player);
+                  ts:speak("1 second");        
+end
+
+local world = "survival3";
+local pheadcurrent = 1;
+local pheadmaxData = 1;
+local pheadblocks = {
+        Location:new(world, -30806.0 , 21.0, 34846.0),
+	Location:new(world, -30806.0 , 21.0, 34845.0),
+	Location:new(world, -30806.0 , 22.0, 34847.0),
+	Location:new(world, -30806.0 , 22.0, 34846.0),
+	Location:new(world, -30806.0 , 22.0, 34845.0),
+	Location:new(world, -30806.0 , 23.0, 34847.0),
+	Location:new(world, -30806.0 , 23.0, 34846.0),
+	Location:new(world, -30806.0 , 23.0, 34845.0),
+	
+};
+
+function portal_head(data)
+        if pheadcurrent == pheadmaxData then
+                pheadcurrent = 1;
+        else
+                pheadcurrent = pheadcurrent + 1;
+        end
+        portal_head_clear();
+end
+
+function portal_head_clear()
+        for index, key in ipairs(pheadblocks) do
+                key:setBlock(0, pheadcurrent);
+		worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+                templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
+		ts:speak("Contamination Cleared.");
+end
+end
+
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail1", "survival3", -30847.0, 15.0, 34834.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail2", "survival3", -30847.0, 15.0, 34829.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail3", "survival3", -30847.0, 15.0, 34827.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail4", "survival3", -30847.0, 15.0, 34823.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail5", "survival3", -30847.0, 15.0, 34819.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail6", "survival3", -30847.0, 15.0, 34815.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail7", "survival3", -30846.0, 15.0, 34811.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail8", "survival3", -30846.0, 15.0, 34807.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail9", "survival3", -30846.0, 15.0, 34803.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail10", "survival3", -30846.0, 15.0, 34799.0);
+registerHook("BLOCK_GAINS_CURRENT", "portal_head_clear", "survival3", -30846.0, 15.0, 34795.0);
