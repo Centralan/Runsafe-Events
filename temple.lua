@@ -718,54 +718,49 @@ registerHook("REGION_ENTER", "temple_p_door", "survival3-temple_portal_door");
 -------------------------------------------------
 
 function temple_portal_fail1(data)
-        local player = Player:new(data.player);
                   ts:speak("Improper heads detected, removing foreign contamination in 10 seconds");        
 end
 
 function temple_portal_fail2(data)
-        local player = Player:new(data.player);
-                  ts:speak("9 seconds");        
-end
-
-function temple_portal_fail3(data)
-        local player = Player:new(data.player);
                   ts:speak("8 seconds");        
 end
 
+function temple_portal_fail3(data)
+                  ts:speak("9 seconds");        
+end
+
 function temple_portal_fail4(data)
-        local player = Player:new(data.player);
                   ts:speak("7 seconds");        
 end
 
 function temple_portal_fail5(data)
-        local player = Player:new(data.player);
                   ts:speak("6 seconds");        
 end
 
 function temple_portal_fail6(data)
-        local player = Player:new(data.player);
                   ts:speak("5 seconds");        
 end
 
 function temple_portal_fail7(data)
-        local player = Player:new(data.player);
                   ts:speak("4 seconds");        
 end
 
 function temple_portal_fail8(data)
-        local player = Player:new(data.player);
                   ts:speak("3 seconds");        
 end
 
 function temple_portal_fail9(data)
-        local player = Player:new(data.player);
                   ts:speak("2 seconds");        
 end
 
 function temple_portal_fail10(data)
-        local player = Player:new(data.player);
                   ts:speak("1 second");        
 end
+
+function temple_portal_failF(data)
+                  ts:speak("Contamination Cleared.");       
+end
+
 
 local world = "survival3";
 local pheadcurrent = 1;
@@ -797,18 +792,18 @@ function portal_head_clear()
                 key:setBlock(0, pheadcurrent);
 		worldsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
                 templespawnsound:playSound('ENTITY_LIGHTNING_THUNDER', 10000, 1);
-		ts:speak("Contamination Cleared.");
 end
 end
 
 registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail1", "survival3", -30847.0, 15.0, 34834.0);
-registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail2", "survival3", -30847.0, 15.0, 34829.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail2", "survival3", -30847.0, 15.0, 34826.0);
 registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail3", "survival3", -30847.0, 15.0, 34827.0);
 registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail4", "survival3", -30847.0, 15.0, 34823.0);
 registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail5", "survival3", -30847.0, 15.0, 34819.0);
 registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail6", "survival3", -30847.0, 15.0, 34815.0);
-registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail7", "survival3", -30846.0, 15.0, 34811.0);
-registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail8", "survival3", -30846.0, 15.0, 34807.0);
-registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail9", "survival3", -30846.0, 15.0, 34803.0);
-registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail10", "survival3", -30846.0, 15.0, 34799.0);
-registerHook("BLOCK_GAINS_CURRENT", "portal_head_clear", "survival3", -30846.0, 15.0, 34795.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail7", "survival3", -30847.0, 15.0, 34811.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail8", "survival3", -30847.0, 15.0, 34807.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail9", "survival3", -30847.0, 15.0, 34803.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_fail10", "survival3", -30847.0, 15.0, 34799.0);
+registerHook("BLOCK_GAINS_CURRENT", "portal_head_clear", "survival3", -30847.0, 15.0, 34795.0);
+registerHook("BLOCK_GAINS_CURRENT", "temple_portal_failF", "survival3", -30847.0, 15.0, 34789.0);
