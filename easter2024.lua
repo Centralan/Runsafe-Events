@@ -741,7 +741,7 @@ end
 -----------------------------------------------------------------------
 local egg28 = Location:new(world, 19573.0, 56.0, -20825.0);
 local egg28ChestPlayers = {};
-local egg28uChestResetTimer = Timer:new("egg28_reset_chest", 20 * 60 * 5);
+local egg28ChestResetTimer = Timer:new("egg28_reset_chest", 20 * 60 * 5);
 local egg28ChestResetTimerRunning = false;
 
 function e28(data)
@@ -768,7 +768,7 @@ end
 -----------------------------------------------------------------------
 local egg29 = Location:new(world, 19571.0, 56.0, -20825.0);
 local egg29ChestPlayers = {};
-local egg29uChestResetTimer = Timer:new("egg29_reset_chest", 20 * 60 * 5);
+local egg29ChestResetTimer = Timer:new("egg29_reset_chest", 20 * 60 * 5);
 local egg29ChestResetTimerRunning = false;
 
 function e29(data)
@@ -795,7 +795,7 @@ end
 -----------------------------------------------------------------------
 local egg30 = Location:new(world, 19569.0, 56.0, -20825.0);
 local egg30ChestPlayers = {};
-local egg30uChestResetTimer = Timer:new("egg30_reset_chest", 20 * 60 * 5);
+local egg30ChestResetTimer = Timer:new("egg30_reset_chest", 20 * 60 * 5);
 local egg30ChestResetTimerRunning = false;
 
 function e30(data)
