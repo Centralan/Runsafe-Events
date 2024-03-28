@@ -851,3 +851,99 @@ registerHook("REGION_ENTER", "e27", "survival3-eg1");
 registerHook("REGION_ENTER", "e28", "survival3-eg1");
 registerHook("REGION_ENTER", "e29", "survival3-eg1");
 registerHook("REGION_ENTER", "e30", "survival3-eg1");
+
+function egg_cheevee(data)
+          local player = Player:new(data.player);
+	   if player:hasPermission("runsafe.event.egg1") then
+           if player:hasPermission("runsafe.event.egg2") then
+           if player:hasPermission("runsafe.event.egg3") then
+           if player:hasPermission("runsafe.event.egg4") then
+           if player:hasPermission("runsafe.event.egg5") then
+           if player:hasPermission("runsafe.event.egg6") then
+	   if player:hasPermission("runsafe.event.egg7") then
+	   if player:hasPermission("runsafe.event.egg8") then
+	   if player:hasPermission("runsafe.event.egg9") then
+	   if player:hasPermission("runsafe.event.egg10") then
+	   if player:hasPermission("runsafe.event.egg11") then
+	   if player:hasPermission("runsafe.event.egg12") then
+	   if player:hasPermission("runsafe.event.egg13") then
+	   if player:hasPermission("runsafe.event.egg14") then
+	   if player:hasPermission("runsafe.event.egg15") then
+	   if player:hasPermission("runsafe.event.egg16") then
+	   if player:hasPermission("runsafe.event.egg17") then
+	   if player:hasPermission("runsafe.event.egg18") then
+	   if player:hasPermission("runsafe.event.egg19") then
+	   if player:hasPermission("runsafe.event.egg20") then	
+	   if player:hasPermission("runsafe.event.egg21") then
+	   if player:hasPermission("runsafe.event.egg22") then
+	   if player:hasPermission("runsafe.event.egg23") then
+	   if player:hasPermission("runsafe.event.egg24") then
+	   if player:hasPermission("runsafe.event.egg25") then
+	   if player:hasPermission("runsafe.event.egg26") then
+	   if player:hasPermission("runsafe.event.egg27") then
+	   if player:hasPermission("runsafe.event.egg28") then
+	   if player:hasPermission("runsafe.event.egg29") then
+           if player:hasPermission("runsafe.event.egg30") then
+		player:sendMessage('&6 Congratulations on finding all the eggs!');
+	        player:sendEvent("achievement.egghunt");
+		player:removePermission("runsafe.event.egg1");
+		player:removePermission("runsafe.event.egg2");
+	        player:removePermission("runsafe.event.egg3");
+		player:removePermission("runsafe.event.egg4");
+		player:removePermission("runsafe.event.egg5");
+		player:removePermission("runsafe.event.egg6");
+	        player:removePermission("runsafe.event.egg7");
+	        player:removePermission("runsafe.event.egg8");
+		player:removePermission("runsafe.event.egg9");
+		player:removePermission("runsafe.event.egg10");
+		player:removePermission("runsafe.event.egg11");
+		player:removePermission("runsafe.event.egg12");
+		player:removePermission("runsafe.event.egg13");
+		player:removePermission("runsafe.event.egg14");
+		player:removePermission("runsafe.event.egg15");
+		player:removePermission("runsafe.event.egg16");
+		player:removePermission("runsafe.event.egg17");
+		player:removePermission("runsafe.event.egg18");
+		player:removePermission("runsafe.event.egg19");
+		player:removePermission("runsafe.event.egg30");
+		player:removePermission("runsafe.event.egg20");
+		player:removePermission("runsafe.event.egg21");
+		player:removePermission("runsafe.event.egg22");
+		player:removePermission("runsafe.event.egg23");
+		player:removePermission("runsafe.event.egg24");
+		player:removePermission("runsafe.event.egg25");
+		player:removePermission("runsafe.event.egg26");
+                player:removePermission("runsafe.event.egg27");
+		player:removePermission("runsafe.event.egg28");
+		player:removePermission("runsafe.event.egg29");
+																														end
+																													end
+																												end
+																											end
+																										end
+																									end
+																								end
+																							end
+																						end
+																					end
+																				end
+																			end
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
