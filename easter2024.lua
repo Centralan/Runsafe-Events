@@ -183,7 +183,7 @@ function e7(data)
 		        player:closeInventory();
 --		        player:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
             player:sendMessage('&aEgg 7/30');
-            player:addPermission("runsafe.event.egg6");
+            player:addPermission("runsafe.event.egg7");
 		        egg7ChestPlayers[player.name] = true; 
 		
 		if not egg7ChestResetTimerRunning then
@@ -947,3 +947,34 @@ function egg_cheevee(data)
 		end
 	end
 end
+
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-eg1");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e2");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e3");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e4");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e5");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e6");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e7");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e8");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e9");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e10");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e11");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e12");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e13");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e14");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e15");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e16");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e17");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e18");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e19");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e20");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e21");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e22");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e23");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e24");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e25");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e26");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e27");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e28");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e29");
+registerHook("REGION_ENTER", "egg_cheevee", "survival3-e30");
