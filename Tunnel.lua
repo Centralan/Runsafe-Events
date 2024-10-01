@@ -105,6 +105,7 @@ function tunnel_tp_enter(data)
 end
 
 registerHook("REGION_ENTER", "tunnel_tp_enter", "survival3-tunnel_e");
+registerHook("REGION_ENTER", "tunnel_tp_enter", "survival3-newspawn_tunnel_portal1");
 
 function tunnel_e_message(data)
 	local p = Player:new(data["player"]);
