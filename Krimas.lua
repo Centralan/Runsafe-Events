@@ -83,22 +83,25 @@ end
 -------------------
 --Intro Book ------
 -------------------
+
 local event_start_book = Location:new(world, 19536.0, 69.0, -20813.0);
 local event_start_sound = Location:new(world, 19536.0, 69.0, -20813.0);
 
 function event_start(data)
         local player = Player:new(data.player);
-	  player:sendMessage('&cKrimasSoon');	
-	  event_start_sound:playSound('ENTITY_VILLAGER_NO', 1, 0.2);
+	  --player:sendMessage('&cKrimas soon');
+            --event_start_sound:playSound('ENTITY_VILLAGER_NO', 1, 0.2);	
 	  event_start_book:cloneChestToPlayer(player.name);
 	  player:closeInventory();
-	  player:sendMessage('&aLet the trials begin.');
+	  player:sendMessage('&aLet the Trials begin.');
 	  player:sendEvent("achievement.krimas");
 	  event_start_sound:playSound('ENTITY_VEX_CHARGE', 1, 0.2);
 end
 	
 registerHook("INTERACT", "event_start", 143, "survival3", 19536, 70, -20810);
-registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
+--registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);	
+registerHook("INTERACT", "event_start", 143, "survival3", 19536, 70, -20810);
+--registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 
 -------------------
 --Event Perms ------
@@ -109,11 +112,9 @@ registerHook("INTERACT", "event_start", 143, "survival3", 19540, 70, -20810);
 --runsafe.event.beacon
 --runsafe.event.feather
 --runsafe.event.dog
---runsafe.event.city
 --runsafe.event.sky
 --runsafe.event.skally
 --runsafe.event.az
---runsafe.event.igloo
 
 ---------------
 --Portal --
@@ -126,22 +127,12 @@ local event_tp_sound = Location:new(world4, -1633.404, 65.0, -1340.674);
 	
 function end_event(data)
           local player = Player:new(data.player);
-	   if player:hasPermission("runsafe.event.trees") then
-           if player:hasPermission("runsafe.event.emerald") then
-           if player:hasPermission("runsafe.event.flower") then
-           if player:hasPermission("runsafe.event.beacon") then
-           if player:hasPermission("runsafe.event.feather") then
-           if player:hasPermission("runsafe.event.dog") then
-	   if player:hasPermission("runsafe.event.city") then
-	   if player:hasPermission("runsafe.event.sky") then
-	   if player:hasPermission("runsafe.event.skally") then
-	   if player:hasPermission("runsafe.event.az") then
 		player:teleport(event_tp_p33);
 		event_tp_sound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
-		xmas4:speak( player.name .. " has crossed to the wonderland.");
+		xmas4:speak( player.name .. " has crossed to the Wonderland.");
 		player:sendMessage('&aYou have received a checkpoint! You can return here with /krimas until you comeplete this part of the event.');
 		player:addPermission("runsafe.warp.use.krimas");
-		player:sendEvent("achievement.trialsofkrimas");
+--                player:sendEvent("achievement.trialsofkrimas");
                 player:removePermission("runsafe.event.trees");
 		player:removePermission("runsafe.event.emerald");
 		player:removePermission("runsafe.event.flower");
@@ -151,19 +142,9 @@ function end_event(data)
 		player:removePermission("runsafe.event.city");
 		player:removePermission("runsafe.event.sky");
 		player:removePermission("runsafe.event.skally");
-		player:removePermission("runsafe.event.az");
-											
-		else
-								
-		player:sendMessage('&cYou are not yet worthy.');						
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
+		player:removePermission("runsafe.event.az");				
+end
+
 
 registerHook("REGION_ENTER", "end_event", "survival3-hunt_tp");
 
@@ -197,14 +178,12 @@ local player = Player:new(data.player);
 registerHook("REGION_ENTER", "find_trees", "survival3-hunt_1");
 registerHook("REGION_ENTER", "find_trees2", "survival3-hunt_1");
 
-
-
-
 ---------------
 --Task 2 --
 ---------------
 --warp hunt2
 --18444,-17258
+---------------------
 
 local beanschest = Location:new(world, 18444.0, 62.0, -17258.0);
 		
@@ -221,12 +200,6 @@ function beans_snow(data)
 						end
 					end
 end		
-function beans_snow2(data)
-local player = Player:new(data.player);
-         if player:hasPermission("runsafe.event.2") then
-	    player:sendMessage('&cYou have already completed this trial.');
-					end
-				end
 
 function igloo_perm1(data)
 		local player = Player:new(data.player);
@@ -243,8 +216,6 @@ end
 registerHook("REGION_LEAVE", "igloo_perm2", "survival3-igloo");
 
 registerHook("PLAYER_ITEM_DROP", "beans_snow", "survival3", 264);
-registerHook("PLAYER_ITEM_DROP", "beans_snow2", "survival3", 264);
-
 
 ---------------
 --Task 3 --
@@ -307,7 +278,6 @@ local player = Player:new(data.player);
 
 registerHook("INTERACT", "cpu_core", 146, "survival3", 20737, 70, -21070);
 registerHook("INTERACT", "cpu_core2", 146, "survival3", 20737, 70, -21070);
-			
 ---------------
 --Task 5 --
 ---------------
@@ -344,6 +314,7 @@ registerHook("INTERACT", "feather_reef2", 143, "survival3", 19881.0, 65.0, -2248
 --warp hunt6
 --spawn
 
+
 local dragonchest = Location:new(world, 19473.0, 70.0, -20817.0);
 
 function dragon_spawn(data)
@@ -354,7 +325,7 @@ function dragon_spawn(data)
 		xmas:speak( player.name .. " has completed Trial 6.");
                 player:sendMessage('&7Did DOG experience memory loss?');
                 player:addPermission("runsafe.event.dog");
-		player:addPermission("runsafe.event.6"); 
+		player:addPermission("runsafe.event.6");
 				end
 			end
 		
@@ -367,6 +338,7 @@ local player = Player:new(data.player);
 
 registerHook("INTERACT", "dragon_spawn", 143, "survival3", 19473.0, 73.0, -20817.0);
 registerHook("INTERACT", "dragon_spawn2", 143, "survival3", 19473.0, 73.0, -20817.0);
+
 ---------------
 --Task 7 --
 ---------------
@@ -383,7 +355,7 @@ function pleco_city(data)
 		xmas:speak( player.name .. " has completed Trial 7.");
                 player:sendMessage('&7Man this city is almost majestic looking, it might even be the best.');
                 player:addPermission("runsafe.event.city");
-		player:addPermission("runsafe.event.7");
+		player:addPermission("runsafe.event.7"); 
 				end
 			end
 		
@@ -428,7 +400,7 @@ registerHook("REGION_ENTER", "sky_limit2", "survival3-hunt8");
 ---------------
 --Task 9 --
 ---------------
---warp hunt9(hunt9_1)
+--warp hunt9
 --skally
 
 local skallychest = Location:new(world2, -21.0, 66.0, -209.0);
@@ -444,6 +416,7 @@ function skally_nether(data)
 		player:addPermission("runsafe.event.9");  
 				end
 			end
+
 function skally_nether2(data)
 local player = Player:new(data.player);
          if player:hasPermission("runsafe.event.9") then
@@ -480,8 +453,8 @@ local player = Player:new(data.player);
 					end
 				end
 
-registerHook("REGION_ENTER", "saz_tower", "azuren-hunt10_1");
-registerHook("REGION_ENTER", "saz_tower2", "azuren-hunt10_1");
+registerHook("REGION_ENTER", "az_tower", "azuren-hunt10_1");
+registerHook("REGION_ENTER", "az_tower2", "azuren-hunt10_1");
 
 -------------------
 --Portal Check ------
@@ -509,9 +482,10 @@ function trials_check(data)
 					end
 				end
 			end
+	
 		
 registerHook("REGION_ENTER", "trials_check", "survival3-hunt_1");
-registerHook("PLAYER_ITEM_DROP", "trials_check", "survival3", 264);
+--registerHook("PLAYER_ITEM_DROP", "trials_check", "survival3", 264);
 registerHook("INTERACT", "trials_check", 77, "survival3", 37043, 33, -22481);
 registerHook("INTERACT", "trials_check", 146, "survival3", 20737, 70, -21070);
 registerHook("INTERACT", "trials_check", 143, "survival3", 19881.0, 65.0, -22489);
@@ -520,38 +494,8 @@ registerHook("INTERACT", "trials_check", 143, "creative", -1167.0, 249.0, -1406.
 registerHook("REGION_ENTER", "trials_check", "survival3-hunt8");
 registerHook("INTERACT", "trials_check", 143, "survival3_nether", -21.0, 66.0, 211.0);
 registerHook("REGION_ENTER", "trials_check", "azuren-hunt10_1");
-		
--------------------
---Event Perms ------
--------------------
---runsafe.event.gift1
---runsafe.event.gift2
---runsafe.event.gift3
---runsafe.event.gift4
---runsafe.event.gift5
---runsafe.event.gift6
---runsafe.event.gift7
---runsafe.event.gift8
---runsafe.event.gift9
---runsafe.event.gift10
---runsafe.event.gift11
---runsafe.event.gift12
---runsafe.event.gift13
---runsafe.event.gift14
---runsafe.event.gift15
---runsafe.event.gift16
---runsafe.event.gift17
---runsafe.event.gift18
---runsafe.event.gift19
---runsafe.event.lighthouse
---runsafe.event.vt
---runsafe.event.enchant
---runsafe.event.boat
---runsafe.event.weep
---runsafe.event.weepd
---runsafe.event.break
---runsafe.event.pray
-			
+
+
 ---------------------------
 ----------Castle Door--------
 ---------------------------
@@ -591,6 +535,7 @@ end
 
 registerHook("REGION_ENTER", "castle_gate", "project33-door_check");
 registerHook("REGION_ENTER", "castle_gate2", "project33-door_check");
+
 ---------------------------
 ----------Lighthouse--------
 ---------------------------
@@ -603,7 +548,7 @@ function lighthouse(data)
         local player = Player:new(data.player);
            player:sendMessage("&7You find a piece of a key in the chest.");
 	   player:sendMessage("&7You keep looking for more pieces.");
-	   player:closeInventory();
+           player:closeInventory();
            player:teleport(event_tp_p33);
 	   player:addPermission("runsafe.event.lighthouse");
 end
@@ -684,7 +629,6 @@ function grave_perm2(data)
 end
 
 registerHook("REGION_LEAVE", "grave_perm2", "project33-grave");
-
 
 ---------------------------
 ----------inn--------
@@ -797,7 +741,6 @@ registerHook("REGION_ENTER", "lobby_gate2", "project33-castle1");
 registerHook("REGION_ENTER", "lobby_gate", "project33-castle2");
 registerHook("REGION_ENTER", "lobby_gate2", "project33-castle2");
 
-
 ---------------------------
 ----------castle 1--------
 ---------------------------
@@ -820,7 +763,7 @@ end
 
 registerHook("REGION_ENTER", "flush_tp", "project33-flush_tp");
 registerHook("INTERACT", "flush_s", 77, "project33", -1733.0, 81.0, -1184.0);
-			
+
 local dooropen = Location:new(world4, -1748.0, 93.0, -1167.0);
 local doorclose = Location:new(world4, -1732.0, 90.0, -1176.0);
 local world = "project33";
@@ -855,11 +798,10 @@ end
 registerHook("INTERACT", "book_break", 143, "project33", -1748.0, 93.0, -1167.0);
 registerHook("REGION_ENTER", "book_place", "project33-bookclose1");
 registerHook("REGION_ENTER", "book_place", "project33-bookclose2");
-			
 ---------------------------
 ----------fight--------
 ---------------------------
-local fight_tp = Location:new(world4, -1705.0, 63.0, -1175.0);
+local fight_tp = Location:new(world4, -2262.0, 100.0, -1163.0);
 fight_tp:setYaw(50.2);
 fight_tp:setPitch(-0.4);
 		
@@ -867,11 +809,14 @@ function fighttp(data)
           local player = Player:new(data.player);
 	      player:teleport(fight_tp);
 	      EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10, 5);
-	      player:addPermission("runsafe.event.boss");
+              player:addPermission("runsafe.event.boss");
+              player:sendMessage("&cI shouldn't be here.");
 end
 
 registerHook("REGION_ENTER", "fighttp", "project33-final_tp1");
 
+
+local bot2 = AI:new("DOG", "AI", "Project33");
 ---------------
 --Gift Handling--
 ---------------
@@ -889,7 +834,7 @@ function g1(data)
 		gift1:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift1s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift1/19: &6Is this chew toy covered in drool? EWWWW');
+                player:sendTitle("&eGift 1/19", "&6Chew toy covered in drool");
                 player:addPermission("runsafe.event.gift1");
 		gift1ChestPlayers[player.name] = true; 
 		
@@ -918,7 +863,7 @@ function gift2_chest(data)
 		gift2:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift2s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift2/19: &6Some Charcoal...');
+                player:sendTitle("&eGift 2/19", "&6Some Charcoal...");
                 player:addPermission("runsafe.event.gift2");
 		gift2ChestPlayers[player.name] = true; 
 		
@@ -948,7 +893,7 @@ function gift3_chest(data)
 		gift3:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift3s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift3/19: &6Is this a foot??');
+                player:sendTitle("&eGift 3/19", "&6Is this a foot??");
                 player:addPermission("runsafe.event.gift3");
 		gift3ChestPlayers[player.name] = true; 
 		
@@ -977,7 +922,7 @@ function gift4_chest(data)
 		gift4:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift4s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift4/19: &6 Cookies!!!!');
+                player:sendTitle("&eGift 4/19", "&6 Cookies!!!!");
                 player:addPermission("runsafe.event.gift4");
 		gift4ChestPlayers[player.name] = true; 
 		
@@ -1006,7 +951,7 @@ function gift5_chest(data)
 		gift5:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift5s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift5/19: &6Is that a hammer?');
+                player:sendTitle("&eGift 5/19", "&6Is that a hammer?");
                 player:addPermission("runsafe.event.gift5");
 		gift5ChestPlayers[player.name] = true; 
 		
@@ -1035,7 +980,7 @@ function gift6_chest(data)
 		gift6:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift6s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift6/19: &6I always hated getting weird gifts.');
+                player:sendTitle("&eGift 6/19", "&6Weird");
                 player:addPermission("runsafe.event.gift6");
 		gift6ChestPlayers[player.name] = true; 
 		
@@ -1064,7 +1009,7 @@ function gift7_chest(data)
 		gift7:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift7s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift7/19: &6OMG IS THIS THING SIGNED?');
+                player:sendTitle("&eGift 7/19", "&6IS THIS THING SIGNED?");
                 player:addPermission("runsafe.event.gift7");
 		gift7ChestPlayers[player.name] = true; 
 		
@@ -1093,7 +1038,7 @@ function gift8_chest(data)
 		gift8:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift8s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift8/19: &6I love fresh flowers.');
+                player:sendTitle("&eGift 8/19", "&6I love fresh flowers.");
                 player:addPermission("runsafe.event.gift8");
 		gift8ChestPlayers[player.name] = true; 
 		
@@ -1122,7 +1067,7 @@ function gift9_chest(data)
 		gift9:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift9s:playSound('ENTITY_SHEEP_DEATH', 1, 0.5);
-                player:sendMessage('&aGift9/19: &6R.I.P Bluey');
+                player:sendTitle("&eGift 9/19", "&6Get Inked!");
                 player:addPermission("runsafe.event.gift9");
 		gift9ChestPlayers[player.name] = true; 
 		
@@ -1151,7 +1096,7 @@ function gift10_chest(data)
 		gift10:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift10s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift10/19: &6This proto guy must have been pretty cool.');
+                player:sendTitle("&eGift 10/19", "&6This proto guy must have been pretty cool.");
                 player:addPermission("runsafe.event.gift10");
 		gift10ChestPlayers[player.name] = true; 
 		
@@ -1180,7 +1125,7 @@ function gift11_chest(data)
 		gift11:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift11s:playSound('ENTITY_HORSE_GALLOP', 1, 0.5);
-                player:sendMessage('&aGift11/19: &6Awww I miss bumble.');
+                player:sendTitle("&eGift 11/19", "&6Awww I miss bumble.");
                 player:addPermission("runsafe.event.gift11");
 		gift11ChestPlayers[player.name] = true; 
 		
@@ -1210,7 +1155,7 @@ function gift12_chest(data)
 		gift12:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift12s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift12/19: &6Awww I love weddings!');
+                player:sendTitle("&eGift 12/19", "&6Awww I love weddings!");
                 player:addPermission("runsafe.event.gift12");
 		gift12ChestPlayers[player.name] = true; 
 		
@@ -1239,7 +1184,7 @@ function gift13_chest(data)
 		gift13:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift13s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift13/19: &6...creepy');
+                player:sendTitle("&eGift 13/19", "&6...creepy");
                 player:addPermission("runsafe.event.gift13");
 		gift13ChestPlayers[player.name] = true; 
 		
@@ -1268,7 +1213,7 @@ function gift14_chest(data)
 		gift14:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift14s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift14/19: &6What the heck is that smell.');
+                player:sendTitle("&eGift 14/19", "&6What the heck is that smell.");
                 player:addPermission("runsafe.event.gift14");
 		gift14ChestPlayers[player.name] = true; 
 		
@@ -1298,7 +1243,7 @@ function gift15_chest(data)
 		gift15:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift15s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift15/19: &6This smells freshly made.');
+                player:sendTitle("&eGift 15/19", "&6This smells freshly made.");
                 player:addPermission("runsafe.event.gift15");
 		gift15ChestPlayers[player.name] = true; 
 		
@@ -1327,7 +1272,7 @@ function gift16_chest(data)
 		gift16:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift16s:playSound('ENTITY_PARROT_IMITATE_SLIME', 1, 0.5);
-                player:sendMessage('&aGift16/19: &6This present was sticky...');
+                player:sendTitle("&eGift 16/19", "&6This present was sticky...");
                 player:addPermission("runsafe.event.gift16");
 		gift16ChestPlayers[player.name] = true; 
 		
@@ -1356,7 +1301,7 @@ function gift17_chest(data)
 		gift17:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift17s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift17/19: &6This thing is covered in blood.');
+                player:sendTitle("&eGift 17/19", "&6This thing is covered in blood.");
                 player:addPermission("runsafe.event.gift17");
 		gift17ChestPlayers[player.name] = true; 
 		
@@ -1386,7 +1331,7 @@ function gift18_chest(data)
 		gift18:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift18s:playSound('ENTITY_TNT_PRIMED', 1, 0.5);
-                player:sendMessage('&aGift18/19: &6Did that gift just hiss at me?');
+                player:sendTitle("&eGift 18/19", "&6Did that gift just hiss at me?");
                 player:addPermission("runsafe.event.gift18");
 		gift18ChestPlayers[player.name] = true; 
 		
@@ -1415,7 +1360,7 @@ function gift19_chest(data)
 		gift19:cloneChestToPlayer(player.name);
 		player:closeInventory();
 		gift19s:playSound('ENTITY_SHULKER_TELEPORT', 1, 0.5);
-                player:sendMessage('&aGift19/19: &6Man this place looks beautiful.');
+                player:sendTitle("&eGift 19/19", "&6Man this place looks beautiful.");
                 player:addPermission("runsafe.event.gift19");
 		gift19ChestPlayers[player.name] = true; 
 		
@@ -1430,6 +1375,8 @@ function gift19_reset_chest()
 	gift19ChestPlayers = {};
 	gift19ChestResetTimerRunning = false;
 end
+
+
 
 registerHook("REGION_ENTER", "g1", "project33-gift1");
 registerHook("REGION_ENTER", "gift2_chest", "project33-gift2");
@@ -1476,7 +1423,8 @@ function gift_cheevee(data)
 	   if player:hasPermission("runsafe.event.gift19") then
 	        gift100:cloneChestToPlayer(player.name);
 		player:closeInventory();
-		player:sendMessage('&6 Congratulations on finding all thee gifts!');
+		player:sendMessage('&d Congratulations on finding all the gifts!');
+	        bot2:speak( player.name .. " has found all the Krimas gifts!");
 	        player:sendEvent("achievement.krimaself");
 		player:removePermission("runsafe.event.gift1");
 		player:removePermission("runsafe.event.gift2");
@@ -1517,6 +1465,7 @@ function gift_cheevee(data)
 					end
 				end
 			end
+
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift1");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift2");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift3");
@@ -1536,207 +1485,3 @@ registerHook("REGION_ENTER", "gift_cheevee", "project33-gift16");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift17");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift18");
 registerHook("REGION_ENTER", "gift_cheevee", "project33-gift19");
-
-
-------------------------------------
---------------Boss Fight------------
-------------------------------------
-
---start
-local smsound = Location:new(world4, -2265.0, 99, -1162.0);
-local bossexit = Location:new(world, 19503.0, 72, -20790.0);
-local Esound = Location:new(world, 19503.0, 72, -20790.0);
-local gift101 = Location:new(world, 19535.0, 64.0, -20784.0);
-			
-function mine_start(data)
-        local player = Player:new(data.player);
-          smsound:playSound('ENTITY_EVOCATION_ILLAGER_PREPARE_WOLOLO', 1, 0.1);
-          player:sendMessage("&cI shouldn't be here.");
-	 
-end
-
-  
-registerHook("REGION_ENTER", "mine_start", "project33-start_fight");
-
---mob control
-local entityList = {};
-
-local function SMspawnMob(position, mobType)
-	local entity = Entity:new(position);
-	entity:spawn(mobType);
-	table.insert(entityList, entity);
-end
-
-local function purgeEntityListSM()
-	for index, value in pairs(entityList) do
-		entityList[index] = nil;
-	end
-end
-
-function check_alive_statsSM()
-	for key, value in pairs(entityList) do
-		if value:isAlive() then
-			return false;
-		end
-	end
-
-	return true;
-end
-
---timers
-local sm1Done = false;
-local smRoundRunning = false;
-local smR1 = Timer:new("sm_end_r1", 1);
-
---spawn points
-local smS1 = Location:new(world4, -2267.0, 101, -1149.0);
-local smS2 = Location:new(world4, -2260.0, 101, -1134.0);
-local smS3 = Location:new(world4, -2269.0, 101, -1121.0);
-local smS4 = Location:new(world4, -2284.0, 101, -1113.0);
-local smS5 = Location:new(world4, -2255.0, 101, -1112.0);
-local smS6 = Location:new(world4, -2254.0, 101, -1126.0);
-local smS7 = Location:new(world4, -2247.0, 101, -1136.0);
-local smS8 = Location:new(world4, -2234.0, 101, -1124.0);
-local smS9 = Location:new(world4, -2225.0, 101, -1137.0);
-local smS10 = Location:new(world4, -2234.0, 101, -1147.0);
-local smS11 = Location:new(world4, -2233.0, 101, -1161.0);
-local smS12 = Location:new(world4, -2233.0, 101, -1182.0);
-local smS13 = Location:new(world4, -2245.0, 101, -1188.0);
-local smS14 = Location:new(world4, -2234.0, 101, -1197.0);
-local smS15 = Location:new(world4, -2253.0, 101, -1194.0);
-local smS16 = Location:new(world4, -2244.0, 101, -1203.0);
-local smS17 = Location:new(world4, -2265.0, 101, -1191.0);
-local smS18 = Location:new(world4, -2273.0, 101, -1185.0);
-local smS19 = Location:new(world4, -2250.0, 101, -1175.0);
-local smS20 = Location:new(world4, -2281.0, 101, -1169.0);
-local smS21 = Location:new(world4, -2291.0, 101, -1181.0);
-local smS22 = Location:new(world4, -2283.0, 101, -1196.0);
-local smS23 = Location:new(world4, -2269.0, 101, -1199.0);
-local smS24 = Location:new(world4, -2258.0, 101, -1204.0);
-local smS25 = Location:new(world4, -2248.0, 101, -1214.0);
-local smS26 = Location:new(world4, -2271.0, 101, -1220.0);
-local smS27 = Location:new(world4, -2292.0, 101, -1215.0);
-local smS28 = Location:new(world4, -2290.0, 101, -1232.0);
-local smS29 = Location:new(world4, -2263.0, 101, -1235.0);
-local smS30 = Location:new(world4, -2255.0, 101, -1222.0);
-			
---round
-function sm_start_r1(data)
-         local player = Player:new(data.player);
-    if player:hasPermission("runsafe.event.boss") then
-      if not smRoundRunning then
-         smRoundRunning = true;
-         smR1:startRepeating()
-	 SMspawnMob(smS1, "VINDICATOR");
-         SMspawnMob(smS2, "VINDICATOR");
-         SMspawnMob(smS3, "ILLUSIONER");
-         SMspawnMob(smS4, "VINDICATOR");
-         SMspawnMob(smS5, "VINDICATOR");
-         SMspawnMob(smS6, "VINDICATOR");
-         SMspawnMob(smS7, "ILLUSIONER");
-         SMspawnMob(smS8, "VINDICATOR");
-         SMspawnMob(smS9, "VINDICATOR");
-         SMspawnMob(smS10, "VINDICATOR");
-         SMspawnMob(smS11, "VINDICATOR");
-         SMspawnMob(smS12, "VINDICATOR");
-         SMspawnMob(smS13, "ILLUSIONER");
-         SMspawnMob(smS14, "VINDICATOR");
-         SMspawnMob(smS15, "VINDICATOR");
-         SMspawnMob(smS16, "VINDICATOR");
-         SMspawnMob(smS17, "VINDICATOR");
-         SMspawnMob(smS18, "ILLUSIONER");
-         SMspawnMob(smS19, "VINDICATOR");
-         SMspawnMob(smS20, "VINDICATOR");
-         SMspawnMob(smS21, "VINDICATOR");
-         SMspawnMob(smS22, "VINDICATOR");
-         SMspawnMob(smS23, "VINDICATOR");
-         SMspawnMob(smS24, "VINDICATOR");
-         SMspawnMob(smS25, "ILLUSIONER");
-         SMspawnMob(smS26, "VINDICATOR");
-         SMspawnMob(smS27, "VINDICATOR");
-         SMspawnMob(smS28, "VINDICATOR");
-         SMspawnMob(smS29, "VINDICATOR");
-         SMspawnMob(smS30, "EVOKER");
-      end
-   end
-
-function sm_end_r1()
-        if check_alive_statsSM() then
-	 if player:hasPermission("runsafe.event.boss") then
-           smR1:cancel()
-           smRoundRunning = false;
-	   player:teleport(bossexit);
-	   gift101:cloneChestToPlayer(player.name);
-	   player:closeInventory();
-	   player:sendEvent("achievement.krimasclaus");
-	   Esound:playSound('UI_TOAST_CHALLENGE_COMPLETE', 1, 1);
-	   player:removePermission("runsafe.event.lighthouse");
-	   player:removePermission("runsafe.event.vt");
-	   player:removePermission("runsafe.event.enchant");
-	   player:removePermission("runsafe.event.boat");
-	   player:removePermission("runsafe.event.weep");
-	   player:removePermission("runsafe.event.weepd");
-	   player:removePermission("runsafe.event.break");
-	   player:removePermission("runsafe.event.pray");
-	   player:removePermission("runsafe.warp.use.krimas");
-	   player:removePermission("runsafe.event.1");
-	   player:removePermission("runsafe.event.2");
-	   player:removePermission("runsafe.event.3");
-	   player:removePermission("runsafe.event.4");
-	   player:removePermission("runsafe.event.5");
-           player:removePermission("runsafe.event.6");
-	   player:removePermission("runsafe.event.7");
-	   player:removePermission("runsafe.event.8");
-	   player:removePermission("runsafe.event.9");
-	   player:removePermission("runsafe.event.10");
-end
-end
-end
-
-registerHook("REGION_ENTER", "sm_start_r1", "project33-start_fight");
-
---healing gifts
-function gift_healing(data)
-        local player = Player:new(data["player"]);
-	player:sendMessage("&aYou have been healed.");
-        player :setHealth(100);
-end	
-				
-registerHook("REGION_ENTER", "gift_healing", "project33-heal1")
-registerHook("REGION_ENTER", "gift_healing", "project33-heal2")
-registerHook("REGION_ENTER", "gift_healing", "project33-heal3")
-registerHook("REGION_ENTER", "gift_healing", "project33-heal4")
-registerHook("REGION_ENTER", "gift_healing", "project33-heal5")
-				
---helping gifts
-function gift_str(data)
-        local player = Player:new(data["player"]);
-        EventEngine.player.addPotionEffect(player.name, 'INCREASE_DAMAGE', 10, 10);
-	player:sendMessage("&aYou feel the power of Krimas coursing through you.");
-end
-
-registerHook("REGION_ENTER", "gift_str", "project33-str1")
-registerHook("REGION_ENTER", "gift_str", "project33-str2")
-registerHook("REGION_ENTER", "gift_str", "project33-str3")
-
---speed gifts
-function gift_speed(data)
-        local player = Player:new(data["player"]);
-        EventEngine.player.addPotionEffect(player.name, 'SPEED', 10, 10);
-	player:sendMessage("&aSpeeeed Boosst!");
-end
-
-registerHook("REGION_ENTER", "gift_speed", "project33-speed1")
-registerHook("REGION_ENTER", "gift_speed", "project33-speed2")
-registerHook("REGION_ENTER", "gift_speed", "project33-speed3")
-
---regen gifts
-function gift_regen(data)
-        local player = Player:new(data["player"]);
-        EventEngine.player.addPotionEffect(player.name, 'REGENERATION', 10, 10);
-	player:sendMessage("&aHealth is Regenerating.");
-end
-
-registerHook("REGION_ENTER", "gift_regen", "project33-regen1")
-registerHook("REGION_ENTER", "gift_regen", "project33-regen2")
-registerHook("REGION_ENTER", "gift_regen", "project33-regen3")
