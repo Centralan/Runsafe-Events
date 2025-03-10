@@ -89,9 +89,15 @@ function respawn_tunnel(data)
 --------------------
 
 function tunnel_start(data)
-	local p = Player:new(data["player"]);
-	p:removePotionEffects();
-        p:setMode("ADVENTURE");
+        local player = Player:new(data.player);
+        if player:hasPermission("runsafe.toybox.mode") then
+           player:sendMessage("&7Gamemode check ignored.");
+        else
+           local player = Player:new(data.player);
+                player:setMode("ADVENTURE");
+                player:clearInventory();
+                player:setHealth(20);
+end
 end
 
 registerHook("REGION_ENTER", "tunnel_start", "tunnel2-tunnel3_main");
@@ -362,6 +368,7 @@ end
 
 registerHook("REGION_LEAVE", "tunnel3_message3", "tunnel2-t3_message3");
 registerHook("REGION_LEAVE", "tunnel3_perm", "tunnel2-t3_message3");
+registerHook("REGION_LEAVE", "tunnel3_perm2", "tunnel2-t3_message3");
 
 function tunnel3_endloot(data)
         local player = Player:new(data.player);
@@ -385,8 +392,8 @@ registerHook("REGION_ENTER", "tunnel3_endloot", "survival3-spawn");
 function tunnel_health(data)
           local player = Player:new(data.player);
              player:setHealth(20);
-             player:sendMessage("&aThe obsidian spits in your direction...");
-	     player:playSound('ENTITY_LLAMA_SPIT', 1, 2);
+             player:sendMessage("&aThe obsidian shows mercy..");
+	     player:playSound('ENTITY_LLAMA_SPIT', 1, 1);
 end
 
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t3_health1");
@@ -401,6 +408,10 @@ registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health5");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health6");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health7");
 registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health8");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health9");
+registerHook("REGION_ENTER", "tunnel_health", "tunnel2-t4_health10");
+
+
 
 -- Checkpoints
 
@@ -411,6 +422,10 @@ t4cp1:setPitch(4.5);
 local t4cp2 = Location:new(world, 1.549, 172.0, -976.515);
 t4cp2:setYaw(179.9);
 t4cp2:setPitch(29.6);
+
+local t4cp3 = Location:new(world, 1.568, 167.87500, -1115.485);
+t4cp3:setYaw(178.2);
+t4cp3:setPitch(3.8);
 
 
 function tunnel4_cp1_add(data)
@@ -423,9 +438,15 @@ function tunnel4_cp2_add(data)
 	  player:addPermission("runsafe.tunnel4.cp2");
 end
 
+function tunnel4_cp3_add(data)
+        local player = Player:new(data.player);
+	  player:addPermission("runsafe.tunnel4.cp3");
+end
+
 
 registerHook("REGION_ENTER", "tunnel4_cp1_add", "tunnel2-tunnel4_cp1");
 registerHook("REGION_ENTER", "tunnel4_cp2_add", "tunnel2-tunnel4_cp2");
+registerHook("REGION_ENTER", "tunnel4_cp3_add", "tunnel2-cp3");
 
 function tunnel4_cp1(data)
         local player = Player:new(data.player);
@@ -443,10 +464,18 @@ function tunnel4_cp2(data)
 	end
 end
 
+function tunnel4_cp3(data)
+        local player = Player:new(data.player);
+	  if player:hasPermission("runsafe.tunnel4.cp3") then
+	     player:teleport(t4cp3);
+	     player:playSound('ENTITY_ENDERMEN_AMBIENT', 5, 0.5);
+	end
+end
+
 
 registerHook("REGION_ENTER", "tunnel4_cp1", "tunnel2-tunnel4_point1"); 
 registerHook("REGION_ENTER", "tunnel4_cp2", "tunnel2-tunnel4_point2");
-
+registerHook("REGION_ENTER", "tunnel4_cp3", "tunnel2-tunnel4_point3");
 
 -- Tp's
 
@@ -477,3 +506,20 @@ end
 		
 registerHook("REGION_ENTER", "tunnel4_tp", "tunnel2-tunnel4_tp2");
 registerHook("REGION_ENTER", "tunnel4_icemaze", "tunnel2-t4_icetp");
+
+-- Effects's
+
+function spider_maze1(data)
+	local player = Player:new(data["player"]);
+	EventEngine.player.addPotionEffect(player.name, 'BLINDNESS', 10000, 10000);
+end
+
+function spider_maze2(data)
+        local player = Player:new(data.player);
+        EventEngine.player.removePotionEffects(player.name, 'BLINDNESS');
+end
+
+
+registerHook("REGION_LEAVE", "spider_maze1", "tunnel2-spider_m1");
+registerHook("REGION_ENTER", "spider_maze2", "tunnel2-spider_m2");
+
